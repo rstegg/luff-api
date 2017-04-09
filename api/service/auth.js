@@ -39,7 +39,6 @@ module.exports = function(options) {
 
   const jwtStrategy = new JwtStrategy(jwtOptions,
     function(jwt_payload, done) {
-      console.log(jwt_payload);
       User.findById(jwt_payload.id)
         .then(function(user) {
           if(!user) {

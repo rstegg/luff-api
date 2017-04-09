@@ -4,10 +4,8 @@ module.exports = function(app, options) {
     models.Stub.findAll({ where: { userId: req.user.id }})
       .then(function(stubs) {
         res.status(200).json({stubs})
-        console.log(stubs);
       })
       .catch(function(err) {
-        console.log(err);
         res.status(400).json({message: 'Bad request'})
       })
   })
