@@ -1,0 +1,39 @@
+const crypto = require('crypto')
+
+module.exports = function(app, options) {
+  const { models, API_HOST, passport, jwt } = options
+  return app.post(`${API_HOST}/signup`, function(req, res) {
+    const ip = req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress || ''
+    if(req.body.email && req.body.password && req.body.first_name && req.body.last_name && req.body.country) {
+      //TODO: Check if req.body.country is valid
+      const salt = (Math.floor(Math.random() * 1000000000)).toString(36)
+      const hash = crypto.createHash('md5').update(req.body.password + salt).digest("hex")
+
+      const user = {
+        email: req.body.email,
+        password: hash,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        country: req.body.country,
+        salt,
+        ip_address: ip
+      }
+      models.User
+        .create(user)
+        .then(function(user) {
+          const payload = { id: user.id }
+          const token = jwt.sign(payload, process.env.JWT_SECRET)
+          res.status(200).json({user, token})
+        })
+        .catch(function(error) {
+          let returnError = 'Invalid user'
+          if(error.errors && Array.isArray(error.errors) && error.errors[0].message) {
+            returnError = error.errors[0].message
+          }
+          res.status(400).json({message: 'Invalid user', error: returnError})
+        })
+    } else {
+      res.status(400).json({message: 'missing fields'})
+    }
+  })
+}
