@@ -24,10 +24,10 @@ module.exports = function(options) {
       User.findOne({ where: { email: email } })
         .then(function (user) {
           if (!user) {
-            return done(null, false, { message: 'Incorrect email' })
+            return done(null, false, { error: 'Incorrect email' })
           }
           if (!user.validPassword(password)) {
-            return done(null, false, { message: 'Incorrect password' })
+            return done(null, false, { error: 'Incorrect password' })
           }
           return done(null, user)
         })
@@ -42,7 +42,7 @@ module.exports = function(options) {
       User.findById(jwt_payload.id)
         .then(function(user) {
           if(!user) {
-            return done(null, false, { message: 'Invalid token' })
+            return done(null, false, { error: 'Invalid token' })
           }
           return done(null, user)
         })

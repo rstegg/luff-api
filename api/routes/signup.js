@@ -27,13 +27,13 @@ module.exports = function(app, options) {
         })
         .catch(function(error) {
           let returnError = 'Invalid user'
-          if(error.errors && Array.isArray(error.errors) && error.errors[0].message) {
-            returnError = error.errors[0].message
+          if(error.errors && Array.isArray(error.errors) && error.errors[0].error) {
+            returnError = error.errors[0].error
           }
-          res.status(400).json({message: 'Invalid user', error: returnError})
+          res.status(400).json({error: returnError})
         })
     } else {
-      res.status(400).json({message: 'missing fields'})
+      res.status(400).json({error: 'missing fields'})
     }
   })
 }

@@ -5,6 +5,7 @@ const API_HOST = process.env.API_HOST
 const login = require('./routes/login')
 const signup = require('./routes/signup')
 const stubs = require('./routes/stubs')
+const payments = require('./routes/payments')
 
 const configureAuth = require('./service/auth')
 
@@ -24,6 +25,7 @@ module.exports = function(options) {
   login(app, authOptions)
   signup(app, authOptions)
   stubs(app, authOptions)
+  payments(app, authOptions)
   /**
    * All of your api routes go here.
    * Format them in the following way:
