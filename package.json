@@ -4,14 +4,19 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.40.0",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.3",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
+    "from2": "^2.3.0",
+    "jimp": "^0.2.27",
     "jsonwebtoken": "^7.3.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
+    "s3-blob-store": "^1.2.3",
     "sequelize": "^3.24.1"
   },
   "devDependencies": {
