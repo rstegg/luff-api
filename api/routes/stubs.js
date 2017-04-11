@@ -12,18 +12,19 @@ module.exports = function(app, options) {
   })
 
   app.post(`${API_HOST}/stubs`, passport.authenticate('jwt', { session: false }), function(req, res) {
-    if(req.body.stub && req.user) {
-      if(!req.body.stub.name) {
+    if(req.body.name && req.body.amount_type && req.user) {
+      if(!req.body.name) {
         res.status(400).json({error: 'Stub name required'})
       }
-      if(!req.body.stub.amount_type) {
+      if(!req.body.amount_type) {
         res.status(400).json({error: 'Stub amount type required'})
       }
       if(!req.user.id) {
         res.status(400).json({error: 'Invalid user'})
       }
-      models.Stub.create({name: req.body.stub.name, description: req.body.stub.description || '', amount_type: req.body.stub.amount_type, userId: req.user.id})
+      models.Stub.create({name: req.body.name, description: req.body.description || '', amount_type: req.body.amount_type, userId: req.user.id})
         .then(function(stub) {
+          console.log(stub);
           res.status(200).json({stub})
         })
         .catch(function(err) {
