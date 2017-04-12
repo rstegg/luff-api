@@ -1,5 +1,7 @@
 {
   "main": "index.js",
+  "license": "MIT",
+  "repository": "",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -17,7 +19,6 @@
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
-    "s3-blob-store": "^1.2.3",
     "sequelize": "^3.24.1"
   },
   "devDependencies": {
