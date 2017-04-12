@@ -3,11 +3,17 @@ const crypto = require('crypto')
 module.exports = function(app, options) {
   const { models, API_HOST, passport, jwt } = options
   return app.post(`${API_HOST}/signup`, function(req, res) {
-    const ip = req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress || ''
     if(req.body.email && req.body.password && req.body.first_name && req.body.last_name && req.body.country) {
       //TODO: Check if req.body.country is valid
       const salt = (Math.floor(Math.random() * 1000000000)).toString(36)
       const hash = crypto.createHash('md5').update(req.body.password + salt).digest("hex")
+      const ip =
+        req.ip
+          || req.headers['x-forwarded-for']
+          || req.connection.remoteAddress
+          || req.socket.remoteAddress
+          || req.connection.socket.remoteAddress
+          || ''
 
       const user = {
         email: req.body.email,

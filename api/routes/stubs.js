@@ -24,7 +24,6 @@ module.exports = function(app, options) {
       }
       models.Stub.create({name: req.body.name, description: req.body.description || '', amount_type: req.body.amount_type, userId: req.user.id})
         .then(function(stub) {
-          console.log(stub);
           res.status(200).json({stub})
         })
         .catch(function(err) {
