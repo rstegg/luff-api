@@ -11,7 +11,7 @@ module.exports = function(app, options) {
   })
 
   app.post(`${API_HOST}/payments`, passport.authenticate('jwt', { session: false }), function(req, res) {
-    if(req.body.payment && req.user) {
+    if(req.body.payment && req.user && req.body.stubId) {
       if(!req.body.payment.name) {
         res.status(400).json({error: 'Payment name required'})
       }
@@ -24,7 +24,7 @@ module.exports = function(app, options) {
       if(!req.stub.id) {
         res.status(400).json({error: 'Invalid stub'})
       }
-      models.Payment.create({name: req.body.payment.name, description: req.body.payment.description || '', amount: req.body.payment.amount, stubId: req.stub.id, userId: req.user.id})
+      models.Payment.create({name: req.body.payment.name, description: req.body.payment.description || '', amount: req.body.payment.amount, stubId: req.body.stubId, userId: req.user.id})
         .then(function(payment) {
           res.status(200).json({payment})
         })

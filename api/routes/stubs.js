@@ -1,3 +1,5 @@
+const shortId = require('shortId')
+
 module.exports = function(app, options) {
   const { models, API_HOST, passport, jwt } = options
 
@@ -5,6 +7,16 @@ module.exports = function(app, options) {
     models.Stub.findAll({ where: { userId: req.user.id }})
       .then(function(stubs) {
         res.status(200).json({stubs})
+      })
+      .catch(function(err) {
+        res.status(400).json({error: 'Bad request'})
+      })
+  })
+
+  app.get(`${API_HOST}/stub/:id`, passport.authenticate('jwt', { session: false }), function(req, res) {
+    models.Stub.findOne({ where: { slug: req.params.id }})
+      .then(function(stub) {
+        res.status(200).json({stub})
       })
       .catch(function(err) {
         res.status(400).json({error: 'Bad request'})
@@ -22,7 +34,13 @@ module.exports = function(app, options) {
       if(!req.user.id) {
         res.status(400).json({error: 'Invalid user'})
       }
-      models.Stub.create({name: req.body.name, description: req.body.description || '', amount_type: req.body.amount_type, userId: req.user.id})
+      models.Stub.create({
+        name: req.body.name,
+        description: req.body.description || '',
+        amount_type: req.body.amount_type,
+        userId: req.user.id,
+        slug: shortId.generate()
+      })
         .then(function(stub) {
           res.status(200).json({stub})
         })
@@ -34,18 +52,15 @@ module.exports = function(app, options) {
     }
   })
 
-  app.put(`${API_HOST}/stubs`, passport.authenticate('jwt', { session: false }), function(req, res) {
-    if(req.body.stub && req.body.stub.id) {
-      models.Stub.update(req.body.stub, { where: { id: req.body.stub.id } })
-        .then(function(stub) {
-          res.status(200).json({stub})
-        })
-        .catch(function(err) {
-          res.status(400).json({error: 'Bad request'})
-        })
-    } else {
-      res.status(400).json({error: 'Bad request'})
-    }
+  //TODO: Test with multiple users?
+  app.put(`${API_HOST}/stub/:id`, passport.authenticate('jwt', { session: false }), function(req, res) {
+    models.Stub.update(req.body.stub, { where: { id: req.body.stub.id, userId: req.user.id } })
+      .then(function(stub) {
+        res.status(200).json({stub})
+      })
+      .catch(function(err) {
+        res.status(400).json({error: 'Bad request'})
+      })
   })
 
   app.delete(`${API_HOST}/stubs`, passport.authenticate('jwt', { session: false }), function(req, res) {
