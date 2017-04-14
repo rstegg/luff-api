@@ -38,6 +38,7 @@ module.exports = function(app, options) {
         name: req.body.name,
         description: req.body.description || '',
         amount_type: req.body.amount_type,
+        is_public: req.body.is_public || false,
         userId: req.user.id,
         slug: shortId.generate()
       })

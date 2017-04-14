@@ -8,6 +8,7 @@ const stubs = require('./routes/stubs')
 const payments = require('./routes/payments')
 const profile = require('./routes/profile')
 const images = require('./routes/images')
+const feed = require('./routes/feed')
 
 const configureAuth = require('./service/auth')
 
@@ -30,6 +31,7 @@ module.exports = function(options) {
   payments(app, authOptions)
   profile(app, authOptions)
   images(app, authOptions)
+  feed(app, authOptions)
   /**
    * All of your api routes go here.
    * Format them in the following way:
