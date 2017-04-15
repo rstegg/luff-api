@@ -28,7 +28,7 @@ Object.keys(models)
 
 db.sync({force: true})
 
-const port = process.env.PORT || 3030
+const port = process.env.PORT || 3000
 http.listen(port, function() {
   console.log(`Listening on port ${port}`)
 })
@@ -40,3 +40,9 @@ const apiOptions = {
 }
 
 configureApi(apiOptions)
+
+app.use(express.static('./build'))
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, './build', 'index.html'))
+})

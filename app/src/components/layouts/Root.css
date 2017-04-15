@@ -1,0 +1,20 @@
+.root {
+    height: 95vh;
+    position: absolute;
+    top: 2.5vh;
+    bottom: 2.5vh;
+    left: 2.5vw;
+    right: 2.5vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

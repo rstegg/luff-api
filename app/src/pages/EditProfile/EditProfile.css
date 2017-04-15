@@ -1,0 +1,12 @@
+.editable {
+  cursor: pointer;
+  border-color: rgba(33, 186, 69, 0.4);
+  border-width: thin;
+  border-style: solid;
+  border-radius: inherit;
+
+  &:hover {
+    border-color: rgba(33, 186, 69, 0.4);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  }
+}
