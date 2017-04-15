@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 
 module.exports = function(app, options) {
-  const { models, API_HOST, passport, jwt } = options
+  const { models, API_HOST, passport, jwt, sendEmail } = options
   return app.post(`${API_HOST}/signup`, function(req, res) {
     if(req.body.email && req.body.password && req.body.first_name && req.body.last_name && req.body.country) {
       //TODO: Check if req.body.country is valid
@@ -24,11 +24,19 @@ module.exports = function(app, options) {
         salt,
         ip_address: ip
       }
+
       models.User
         .create(user)
         .then(function(user) {
           const payload = { id: user.id }
           const token = jwt.sign(payload, process.env.JWT_SECRET)
+          // const emailData = {
+          //   from: 'luvpay.io <support@mg.luvpay.io>',
+          //   to: user.email,
+          //   subject: 'Verify your email address to use luvpay.io',
+          //   text: 'Hi!please follow this link to verify your email address.',
+          //   html: `<a href=${}>Verify Email</a>`
+          // }
           res.status(200).json({user, token})
         })
         .catch(function(error) {

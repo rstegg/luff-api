@@ -1,4 +1,4 @@
-const shortId = require('shortId')
+const shortId = require('shortid')
 
 module.exports = function(app, options) {
   const { models, API_HOST, passport, jwt } = options
