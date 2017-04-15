@@ -21,7 +21,7 @@
 ## APP TODO:
 
 * Move shit off the CRA crutch
-* Fix presentation shit
+* Fix presentation shit (definitely sessions not saving)
 * Move stripe in
 * Add email confirmation
 * Add sharing stubs by email
