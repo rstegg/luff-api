@@ -13,6 +13,11 @@
 `npm start`
 (also fix this shit)
 
+## General TODO:
+
+* Add staging script
+* Add tests (PRIORITY)
+
 ## APP TODO:
 
 * Move shit off the CRA crutch
