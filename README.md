@@ -21,6 +21,8 @@
 
 * Screen sizes are gay
 * Profile grows too big
+* Redux is logging to console (disable redux inspector on production)
+* No SEO, no meta tags
 
 ## APP TODO:
 
@@ -31,9 +33,9 @@
 * Move off CRA scripts (they work, low priority)
 
 ## SERVER TODO:
-* Refactoring of routes
-* Security of update & delete routes (refuse updating user parameters: id, email, password)
-* Security of image size
 * Add password reset
+* Add Images to stub & payment
+* Security of image size
+* Security of update & delete routes (refuse updating user parameters: id, email, password)
 * Add Stripe
-* Add Images
+* Abstracting routes (i.e. moving functions out when possible)
