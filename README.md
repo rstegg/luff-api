@@ -19,13 +19,14 @@
 
 ## Bugs:
 
-* Screen sizes are gay
+* Screen sizes media queries
 * Profile grows too big
 * Redux is logging to console (disable redux inspector on production)
 * No SEO, no meta tags
 
 ## APP TODO:
 
+* Error messages for forms
 * Develop for different screen sizes (tablet & mobile phones)
 * Move stripe in
 * Add sharing stubs by email
@@ -33,6 +34,8 @@
 * Move off CRA scripts (they work, low priority)
 
 ## SERVER TODO:
+
+* Security of registering multiple emails
 * Add password reset
 * Add Images to stub & payment
 * Security of image size
