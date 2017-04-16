@@ -80,6 +80,21 @@ module.exports = function(app, options) {
     }
   })
 
+  app.post(`${API_HOST}/signup/check_email`, function(req, res) {
+    if(req.body.email) {
+      models.User
+        .findOne({ where: { email: req.body.email } })
+        .then(function(user) {
+          res.status(200).json({emailTaken: true})
+        })
+        .catch(function(error) {
+          res.status(200).json({emailTaken: false})
+        })
+    } else {
+      res.status(400).json({error: 'missing email'})
+    }
+  })
+
   app.get(`/signup/email_confirmation/:permalink/:verify_token`, function(req, res) {
     const permalink = req.params.permalink
     const verify_token = req.params.verify_token
