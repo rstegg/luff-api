@@ -11,7 +11,7 @@ const Header = ({user}) =>
       <Menu.Item header>Luff</Menu.Item>
       <Menu.Item position='right'>
         <Button.Group>
-          <NavLink to="/profile" from="/">
+          <NavLink to={`/profile/view/${user.id}`} from="/">
             <Button primary>
               {user.image && <Label image>
                 <img src={user.image} alt={user.first_name} />

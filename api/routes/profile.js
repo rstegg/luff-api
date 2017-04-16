@@ -1,9 +1,16 @@
 module.exports = function(app, options) {
   const { models, API_HOST, passport, jwt } = options
   //TODO: remove jwt auth
-  app.get(`${API_HOST}/profile/:id`, passport.authenticate('jwt', { session: false }), function(req, res) {
+  app.get(`${API_HOST}/profile/:id`, function(req, res) {
     models.User.findOne({ where: { id: req.params.id }})
-      .then(function(profile) {
+      .then(function(user) {
+        const profile = {
+          id: user.id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          image: user.image,
+          bio: user.bio
+        }
         res.status(200).json({profile})
       })
       .catch(function(err) {

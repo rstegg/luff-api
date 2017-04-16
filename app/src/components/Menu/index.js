@@ -20,7 +20,7 @@ const Menu =
     <Button basic circular onClick={toStubs} icon='tags' size='massive' />
     <Button basic circular onClick={toPayments} icon='shop' size='massive' />
     <Button basic circular onClick={toPencil} icon='edit' size='massive' />
-    <Button basic circular onClick={() => toSettings(user.id)} icon='setting' size='massive' />
+    <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' />
     <Button basic circular onClick={toPower} icon='power' size='massive' />
   </div>
 

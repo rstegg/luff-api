@@ -15,17 +15,21 @@
 
 ## General TODO:
 
-* Add staging script
 * Add tests (PRIORITY)
+
+## Bugs:
+
+* Screen sizes are gay
+* Profile grows too big
 
 ## APP TODO:
 
-* Move shit off the CRA crutch
-* Fix presentation shit (definitely sessions not saving)
-* Move stripe in
+* Develop for different screen sizes (tablet & mobile phones)
 * Add email confirmation
+* Move stripe in
 * Add sharing stubs by email
 * Add option for images on stubs and payments
+* Move shit off the CRA crutch (low priority)
 
 ## SERVER TODO:
 * Refactoring of routes
