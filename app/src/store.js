@@ -15,7 +15,9 @@ export const history = createHistory()
 const epicMiddleware = createEpicMiddleware(rootEpic)
 const routingMiddleware = routerMiddleware(history)
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancers = process.env.NODE_ENV === 'development' ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    : compose
 
 const store = createStore(
   rootReducer,
@@ -29,13 +31,18 @@ const store = createStore(
   )
 )
 
-persistStore(store)
+const persistConfig = {
+  whitelist: ['user']
+}
 
-if (module.hot) {
-  module.hot.accept('./redux/reducers/index', () => {
-    const reducer = require('./redux/reducers/index')
-    store.replaceReducer(reducer)
-  })
+persistStore(store, persistConfig)
+
+if(process.env.NODE_ENV === 'development') {
+  if (module.hot) {
+    module.hot.accept('./redux/reducers/index', () =>
+      store.replaceReducer(require('./redux/reducers/index'))
+    )
+  }
 }
 
 export default store
