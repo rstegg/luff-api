@@ -1,6 +1,6 @@
-import { applyMiddleware, compose } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
-import { createOfflineStore } from 'redux-offline'
+import { offline } from 'redux-offline'
 import offlineConfig from 'redux-offline/lib/defaults'
 
 import createHistory from 'history/createBrowserHistory'
@@ -18,23 +18,12 @@ const routingMiddleware = routerMiddleware(history)
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const initialState = {
-  user: {
-    id: null,
-    token: '',
-    isAuthenticated: false,
-    image: ''
-  }
-}
+const enhancers = composeEnhancers(applyMiddleware(epicMiddleware, routingMiddleware), offline(offlineConfig))
 
-const store = createOfflineStore(
-  rootReducer,
-  initialState,
-  composeEnhancers(
-    applyMiddleware(epicMiddleware, routingMiddleware)
-  ),
-  offlineConfig
-)
+const createStoreWithMiddleware = enhancers(createStore)
+
+const store = createStoreWithMiddleware(rootReducer)
+
 
 if (module.hot) {
   module.hot.accept('./redux/reducers/index', () => {
