@@ -11,12 +11,14 @@ import RouterButton from '../../elements/RouterButton'
 
 import RootLayout from '../../components/layouts/Root'
 
-const Login = ({
+const Signup = ({
   user,
   onSignupSubmit
 }) =>
   user.isAuthenticated ?
     <Redirect to='/stubs' from='/signup' />
+  : user.isRegistered ?
+    <Redirect to='/signup/success' from='/signup' />
   :
     <RootLayout>
       <Card>
@@ -42,4 +44,4 @@ const mapDispatchToProps = dispatch =>
   onSignupSubmit: user => dispatch(onSignupSubmit(user)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

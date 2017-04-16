@@ -11,7 +11,7 @@ const images = require('./routes/images')
 const feed = require('./routes/feed')
 
 const configureAuth = require('./service/auth')
-const sendEmail = require('./service/mail')
+const mailgun = require('./service/mail')
 
 module.exports = function(options) {
 
@@ -22,7 +22,7 @@ module.exports = function(options) {
     models,
     passport,
     jwt,
-    sendEmail
+    mailgun
   }
 
   configureAuth(authOptions)

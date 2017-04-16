@@ -9,8 +9,4 @@ var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 //   text: 'Testing some Mailgun awesomness!'
 // }
 
-module.exports = function(data) {
-  mailgun.messages().send(data, function (error, body) {
-    console.log(body)
-  })
-}
+module.exports = mailgun

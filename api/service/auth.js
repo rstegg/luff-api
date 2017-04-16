@@ -29,6 +29,9 @@ module.exports = function(options) {
           if (!user.validPassword(password)) {
             return done(null, false, { error: 'Incorrect password' })
           }
+          if (!user.verified) {
+            return done(null, false, { error: 'Email has not been verified' })
+          }
           return done(null, user)
         })
         .catch(function(err) {

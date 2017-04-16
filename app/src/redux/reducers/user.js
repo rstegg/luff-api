@@ -2,6 +2,7 @@ const initialState = {
   id: null,
   token: '',
   isAuthenticated: false,
+  isRegistered: false,
   image: '',
   isLoading: false,
   error: null
@@ -16,11 +17,16 @@ export default function(state = initialState, action) {
         isLoading: true
       })
     case 'LOGIN_SUCCESS':
-    case 'SIGNUP_SUCCESS':
       return Object.assign({}, state, {
         ...action.payload.user,
         isAuthenticated: true,
         token: 'JWT ' + action.payload.token,
+        error: false,
+        isLoading: false
+      })
+    case 'SIGNUP_SUCCESS':
+      return Object.assign({}, state, {
+        isRegistered: true,
         error: false,
         isLoading: false
       })
@@ -33,6 +39,11 @@ export default function(state = initialState, action) {
     case 'UPLOAD_AVATAR_SUCCESS':
       return Object.assign({}, state, {
         image: action.payload.image
+      })
+    case 'RESET_SIGNUP':
+      return Object.assign({}, state, {
+        isRegistered: false,
+        isLoading: false
       })
     case 'LOGIN_FAILURE':
     case 'SIGNUP_FAILURE':

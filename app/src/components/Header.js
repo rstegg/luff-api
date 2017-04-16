@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 const Header = ({user}) =>
   user.isAuthenticated ?
     <Menu fluid fixed='top'>
-      <Menu.Item header>Luff</Menu.Item>
+      <Menu.Item header>LuvPay</Menu.Item>
       <Menu.Item position='right'>
         <Button.Group>
           <NavLink to={`/profile/view/${user.id}`} from="/">
@@ -24,7 +24,7 @@ const Header = ({user}) =>
     </Menu>
     :
     <Menu fluid fixed='top'>
-      <Menu.Item header>Luff</Menu.Item>
+      <Menu.Item header>LuvPay</Menu.Item>
       <Menu.Item position='right'>
         <Button.Group>
           <NavLink to="/login" from="/">

@@ -14,7 +14,11 @@ export const onSignupSuccess = res =>
 ({
   type: 'SIGNUP_SUCCESS',
   payload: {
-    user: res.body.user,
-    token: res.body.token
+    registered: true
   }
+})
+
+export const resetSignup = () =>
+({
+  type: 'RESET_SIGNUP'
 })

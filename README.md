@@ -4,17 +4,17 @@
 
 ## Running production:
 
-`cd app && npm run build && mv build ../ && cd .. && npm i && npm start` (fix this shit)
+`cd app && npm run build` (to build app)
+`npm run staging` (to update app without restarting server)
+`npm i && npm start` (to start server)
 
 ## Running development
 
-`npm start --PORT=1337`
-`cd app`
-`npm start`
-(also fix this shit)
+`cd app && npm start` (starts at localhost:3000)
 
 ## General TODO:
 
+* Setup development and production building
 * Add tests (PRIORITY)
 
 ## Bugs:
@@ -25,11 +25,10 @@
 ## APP TODO:
 
 * Develop for different screen sizes (tablet & mobile phones)
-* Add email confirmation
 * Move stripe in
 * Add sharing stubs by email
 * Add option for images on stubs and payments
-* Move shit off the CRA crutch (low priority)
+* Move off CRA scripts (they work, low priority)
 
 ## SERVER TODO:
 * Refactoring of routes

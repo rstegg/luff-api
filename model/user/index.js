@@ -51,6 +51,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 'US'
     },
+    verified: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
+    permalink: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    verify_token: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     bio: {
       type: DataTypes.STRING,
       allowNull: true

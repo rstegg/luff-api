@@ -10,6 +10,7 @@ import { ConnectedRouter as Router } from 'react-router-redux'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import SignupSuccess from './pages/Signup/Success'
 import Stubs from './pages/Stubs'
 import CreateStub from './pages/CreateStub'
 import ViewStub from './pages/ViewStub'
@@ -31,6 +32,7 @@ render(
           <Route exact path='/feed/view/:id' component={ViewFeedStub} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
+          <Route exact path='/signup/success' component={SignupSuccess} />
           <Route exact path='/stubs' component={Stubs} />
           <Route exact path='/stubs/new' component={CreateStub} />
           <Route exact path='/stubs/view/:id' component={ViewStub} />
