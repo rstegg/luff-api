@@ -1,7 +1,6 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
-import { offline } from 'redux-offline'
-import offlineConfig from 'redux-offline/lib/defaults'
+import { persistStore, autoRehydrate } from 'redux-persist'
 
 import createHistory from 'history/createBrowserHistory'
 // import createHistory from 'history/createHashHistory'
@@ -18,12 +17,19 @@ const routingMiddleware = routerMiddleware(history)
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const enhancers = composeEnhancers(applyMiddleware(epicMiddleware, routingMiddleware), offline(offlineConfig))
+const store = createStore(
+  rootReducer,
+  undefined,
+  composeEnhancers(
+    applyMiddleware(
+      epicMiddleware,
+      routingMiddleware
+    ),
+    autoRehydrate()
+  )
+)
 
-const createStoreWithMiddleware = enhancers(createStore)
-
-const store = createStoreWithMiddleware(rootReducer)
-
+persistStore(store)
 
 if (module.hot) {
   module.hot.accept('./redux/reducers/index', () => {

@@ -3,8 +3,6 @@
   "license": "MIT",
   "repository": "",
   "scripts": {
-    "bundle": "node ./app/scripts/start.js",
-    "serve": "nodemon index.js",
     "start": "nodemon index.js"
   },
   "dependencies": {

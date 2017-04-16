@@ -20,7 +20,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.6.1",
     "redux-observable": "^0.14.1",
-    "redux-offline": "^2.0.0",
+    "redux-persist": "^4.6.0",
     "rx-dom": "^7.0.3",
     "rxjs": "^5.2.0",
     "semantic-ui-css": "^2.2.10",
@@ -70,6 +70,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "staging": "rm -rf ../build && mv build ../build",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
