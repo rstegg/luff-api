@@ -24,22 +24,20 @@ class Stubs extends Component {
     }
     return (
       <RootLayout>
-        <div className='main'>
-          <Card>
-            <Card.Content>
-              <Card.Header>Stubs</Card.Header>
-              <Card.Description>
-                <StubsList
-                  stubs={stubs.list}
-                  setCurrentStub={setCurrentStub}
-                />
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <RouterButton to='/stubs/new' from='/stubs' label='Create a Stub' />
-            </Card.Content>
-          </Card>
-        </div>
+        <Card>
+          <Card.Content>
+            <Card.Header>Stubs</Card.Header>
+            <Card.Description>
+              <StubsList
+                stubs={stubs.list}
+                setCurrentStub={setCurrentStub}
+              />
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <RouterButton to='/stubs/new' from='/stubs' label='Create a Stub' />
+          </Card.Content>
+        </Card>
       </RootLayout>
     )
   }

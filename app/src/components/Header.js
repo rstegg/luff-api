@@ -23,7 +23,7 @@ const Header = ({user}) =>
       </Menu.Item>
     </Menu>
     :
-    <Menu fluid fixed='top'>
+    <Menu fluid fixed='top' borderless>
       <Menu.Item header>LuvPay</Menu.Item>
       <Menu.Item position='right'>
         <Button.Group>

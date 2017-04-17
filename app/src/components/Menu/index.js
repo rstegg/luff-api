@@ -6,7 +6,7 @@ import { Button } from 'semantic-ui-react'
 
 import { push } from 'react-router-redux'
 
-const Menu =
+const BottomNav =
 ({
   user,
   toStubs,
@@ -16,14 +16,15 @@ const Menu =
   toSettings,
   toPower
 }) =>
-  <div className='menu'>
-    <Button basic circular onClick={toFeed} icon='globe' size='massive' className='menu--button' />
-    <Button basic circular onClick={toStubs} icon='tags' size='massive' className='menu--button' />
-    <Button basic circular onClick={toPayments} icon='shop' size='massive' className='menu--button' />
-    <Button basic circular onClick={toPencil} icon='edit' size='massive' className='menu--button' />
-    <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' className='menu--button' />
-    <Button basic circular onClick={toPower} icon='power' size='massive' className='menu--button' />
+  <div className='menu--test'>
+    <Button basic circular onClick={toFeed} icon='globe' className='menu--button' />
+    <Button basic circular onClick={toStubs} icon='tags' className='menu--button' />
+    <Button basic circular onClick={toPayments} icon='shop' className='menu--button' />
+    <Button basic circular onClick={toPencil} icon='edit' className='menu--button' />
+    <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' className='menu--button' />
+    <Button basic circular onClick={toPower} icon='power' className='menu--button' />
   </div>
+
 
 const mapDispatchToProps = dispatch =>
 ({
@@ -40,4 +41,4 @@ const mapStateToProps = ({user}) =>
   user
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(BottomNav)

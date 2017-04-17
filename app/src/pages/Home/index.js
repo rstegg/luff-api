@@ -15,20 +15,18 @@ class Home extends Component {
   render() {
     return (
       <RootLayout>
-        <div className='main'>
-          <Card>
-            <Card.Content>
-              <Card.Header>Recent Stubs</Card.Header>
-              <Card.Description>
-                <ul>
-                  {this.props.feed.length ? this.props.feed.map(feedItem =>
-                    <FeedItem key={`feed-${feedItem.id}`} stub={feedItem} />
-                  ) : <li>Nothing</li>}
-                </ul>
-              </Card.Description>
-            </Card.Content>
-          </Card>
-        </div>
+        <Card>
+          <Card.Content>
+            <Card.Header>Recent Stubs</Card.Header>
+            <Card.Description>
+              <ul>
+                {this.props.feed.length ? this.props.feed.map(feedItem =>
+                  <FeedItem key={`feed-${feedItem.id}`} stub={feedItem} />
+                ) : <li>Nothing</li>}
+              </ul>
+            </Card.Description>
+          </Card.Content>
+        </Card>
       </RootLayout>
     )
   }

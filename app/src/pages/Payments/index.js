@@ -24,22 +24,20 @@ class Payments extends Component {
     }
     return (
       <RootLayout>
-        <div className='main'>
-          <Card>
-            <Card.Content className='card__list'>
-              <Card.Header>Payments</Card.Header>
-              <Card.Description>
-                <PaymentsList
-                  payments={payments}
-                  setCurrentPayment={setCurrentPayment}
-                 />
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <RouterButton to='/' from='/payments' label='Pay a Public Stub' />
-            </Card.Content>
-          </Card>
-        </div>
+        <Card>
+          <Card.Content className='card__list'>
+            <Card.Header>Payments</Card.Header>
+            <Card.Description>
+              <PaymentsList
+                payments={payments}
+                setCurrentPayment={setCurrentPayment}
+               />
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <RouterButton to='/' from='/payments' label='Pay a Public Stub' />
+          </Card.Content>
+        </Card>
       </RootLayout>
     )
   }

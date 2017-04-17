@@ -26,16 +26,14 @@ class CreatePayment extends Component {
     }
     return (
       <RootLayout>
-        <div className='main'>
-          <Card>
-            <Card.Content>
-              <Card.Header>New Payment</Card.Header>
-              <Card.Description>
-                <CreatePaymentForm onSubmit={payment => createPayment(payment, user, stub.id)} />
-              </Card.Description>
-            </Card.Content>
-          </Card>
-        </div>
+        <Card>
+          <Card.Content>
+            <Card.Header>New Payment</Card.Header>
+            <Card.Description>
+              <CreatePaymentForm onSubmit={payment => createPayment(payment, user, stub.id)} />
+            </Card.Description>
+          </Card.Content>
+        </Card>
       </RootLayout>
     )
   }

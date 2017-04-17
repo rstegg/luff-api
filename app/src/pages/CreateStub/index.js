@@ -16,16 +16,14 @@ const CreateStub = ({ user, stub, createStub }) =>
     <Redirect to='/stubs' from='/stubs/new' />
   :
   <RootLayout>
-    <div className='main'>
-      <Card>
-        <Card.Content>
-          <Card.Header>New Stub</Card.Header>
-          <Card.Description>
-            <CreateStubForm onSubmit={stub => createStub(stub, user)} />
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    </div>
+    <Card>
+      <Card.Content>
+        <Card.Header>New Stub</Card.Header>
+        <Card.Description>
+          <CreateStubForm onSubmit={stub => createStub(stub, user)} />
+        </Card.Description>
+      </Card.Content>
+    </Card>
   </RootLayout>
 
 const mapStateToProps = ({user, stubs}) =>

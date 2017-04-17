@@ -24,18 +24,16 @@ const EditProfile = ({ user, profile, editProfile, uploadAvatar }) =>
     <Redirect to='/profile' from='/profile/edit' />
   :
   <RootLayout>
-    <div className='main'>
-      <Card>
-        <Avatar image={user.image} name={`${user.first_name} ${user.last_name}`} uploadAvatar={img => uploadAvatar(img[0], user)} />
-        <Card.Content>
-          <Card.Header>Edit Profile</Card.Header>
-          <Card.Description>
-            <EditProfileForm
-              onSubmit={profile => editProfile(profile, user)} />
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    </div>
+    <Card>
+      <Avatar image={user.image} name={`${user.first_name} ${user.last_name}`} uploadAvatar={img => uploadAvatar(img[0], user)} />
+      <Card.Content>
+        <Card.Header>Edit Profile</Card.Header>
+        <Card.Description>
+          <EditProfileForm
+            onSubmit={profile => editProfile(profile, user)} />
+        </Card.Description>
+      </Card.Content>
+    </Card>
   </RootLayout>
 
 const mapStateToProps = ({user, profile}) =>

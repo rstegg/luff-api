@@ -17,18 +17,16 @@ class ViewPayment extends Component {
     const { payment, user } = this.props
     return (
       <RootLayout>
-        <div className='main'>
-          <div className='pay--menu'>
-            <PayMenu />
-          </div>
-          <Card>
-            <Card.Content>
-              <Card.Header>{user.first_name} {user.last_name}</Card.Header>
-              <Card.Meta>{payment.amount}</Card.Meta>
-              <Card.Description>{payment.name}</Card.Description>
-            </Card.Content>
-          </Card>
+        <div className='pay--menu'>
+          <PayMenu />
         </div>
+        <Card>
+          <Card.Content>
+            <Card.Header>{user.first_name} {user.last_name}</Card.Header>
+            <Card.Meta>{payment.amount}</Card.Meta>
+            <Card.Description>{payment.name}</Card.Description>
+          </Card.Content>
+        </Card>
       </RootLayout>
     )
   }

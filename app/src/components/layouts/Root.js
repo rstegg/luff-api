@@ -7,6 +7,8 @@ import Header from '../Header'
 export default ({children}) =>
   <div className='root'>
     <Header />
-    {children}
+      <div className='main--test'>
+        {children}
+      </div>
     <Menu />
   </div>

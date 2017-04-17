@@ -14,16 +14,14 @@ const EditProfile = ({ user, stub, editStub }) =>
     <Redirect to='/login' from='/profile/edit' />
   :
   <RootLayout>
-    <div className='main'>
-      <Card>
-        <Card.Content>
-          <Card.Header>Editting Stub {stub.name}</Card.Header>
-          <Card.Description>
-            <EditProfileForm onSubmit={values => editStub(({...values, id: stub.id}), user)} />
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    </div>
+    <Card>
+      <Card.Content>
+        <Card.Header>Editting Stub {stub.name}</Card.Header>
+        <Card.Description>
+          <EditProfileForm onSubmit={values => editStub(({...values, id: stub.id}), user)} />
+        </Card.Description>
+      </Card.Content>
+    </Card>
   </RootLayout>
 
 const mapStateToProps = ({user, stubs}) =>

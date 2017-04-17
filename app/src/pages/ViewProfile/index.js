@@ -17,18 +17,16 @@ class ViewProfile extends Component {
     const { user, profile } = this.props
     return (
       <RootLayout>
-        <div className='main'>
-          <Card>
-            <Image src={profile.image || '/placeholder.png'} />
-            <Card.Content>
-              <Card.Header>{profile.first_name} {profile.last_name}</Card.Header>
-              <Card.Description>{profile.bio || 'User'}</Card.Description>
-            </Card.Content>
-            {profile.userId === user.id && <Card.Content extra>
-              <RouterButton to="/profile/edit" from="/profile" label="Edit" />
-            </Card.Content>}
-          </Card>
-        </div>
+        <Card>
+          <Image src={profile.image || '/placeholder.png'} />
+          <Card.Content>
+            <Card.Header>{profile.first_name} {profile.last_name}</Card.Header>
+            <Card.Description>{profile.bio || 'User'}</Card.Description>
+          </Card.Content>
+          {profile.userId === user.id && <Card.Content extra>
+            <RouterButton to="/profile/edit" from="/profile" label="Edit" />
+          </Card.Content>}
+        </Card>
       </RootLayout>
     )
   }
