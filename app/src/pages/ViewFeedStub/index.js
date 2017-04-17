@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './ViewFeedStub.css'
 
-import { Card } from 'semantic-ui-react'
+import { Grid, Card, Rail } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import RouterButton from '../../elements/RouterButton'
 
@@ -22,24 +22,30 @@ class ViewStub extends Component {
     fetchFeedStub(params.id, user)
   }
   render() {
-    const { stub } = this.props
+    const { stub, user } = this.props
     return (
       <RootLayout>
-        <div className='main'>
-          <div className='stub--menu'>
-            <StubMenu url={`http://localhost:1337/feed/view/${stub.slug}`} />
-          </div>
-          <Card>
-            <Card.Content>
-              <Card.Header>{stub.name}</Card.Header>
-              <Card.Meta>{renderAmount(stub.amount_type, stub.amount)}</Card.Meta>
-              <Card.Description>{stub.description}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <RouterButton to={`/payments/new/${stub.slug}`} from={`/stub/${stub.slug}`} label='Pay this stub' />
-            </Card.Content>
-          </Card>
-        </div>
+        <Grid>
+          <Grid.Column>
+            <Card>
+              <Card.Content>
+                <Card.Header>{stub.name}</Card.Header>
+                <Card.Meta>{renderAmount(stub.amount_type, stub.amount)}</Card.Meta>
+                <Card.Description>{stub.description}</Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                { stub.userId === user.id ?
+                  <RouterButton to={`/stubs/edit/${stub.slug}`} from={`/stub/${stub.slug}`} label='Edit' />
+                  :
+                  <RouterButton to={`/payments/new/${stub.slug}`} from={`/stub/${stub.slug}`} label='Pay this stub' />
+                }
+              </Card.Content>
+            </Card>
+            <Rail attached position='right'>
+              <StubMenu url={`https://luvpay.io/stubs/view/${stub.slug}`} />
+            </Rail>
+          </Grid.Column>
+        </Grid>
       </RootLayout>
     )
   }

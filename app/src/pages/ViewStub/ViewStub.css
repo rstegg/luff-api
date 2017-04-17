@@ -1,5 +1,8 @@
 .stub--menu {
-    display: flex;
+    height: 100%;
+    float: right;
     position: absolute;
-    transform: translateX(175px);
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
 }

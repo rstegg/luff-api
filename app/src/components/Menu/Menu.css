@@ -3,4 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    bottom: 5vh;
+}
+
+.menu--button {
+  z-index: -101;
+}
+
+.menu--button > i {
+  position: relative;
+  z-index: -100;
 }

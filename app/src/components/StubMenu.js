@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Menu, Button } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import {
@@ -15,23 +15,23 @@ const {
 } = ShareButtons
 
 const StubMenu = ({url}) =>
-  <Menu vertical compact>
-    <Menu.Item>
+  <Segment.Group compact>
+    <Segment>
       <CopyToClipboard text={url}>
         <Button circular basic icon='linkify' size='medium' />
       </CopyToClipboard>
-    </Menu.Item>
-    <Menu.Item>
+    </Segment>
+    <Segment>
       <TwitterShareButton
         title="Pay me money"
         url={url}
         style={{cursor: 'pointer'}}>
           <TwitterIcon size={32} round={true} />
       </TwitterShareButton>
-    </Menu.Item>
-    <Menu.Item>
+    </Segment>
+    <Segment>
       <Button circular basic icon='mail' size='medium' />
-    </Menu.Item>
-  </Menu>
+    </Segment>
+  </Segment.Group>
 
 export default StubMenu

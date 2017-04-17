@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './Menu.css'
 
 import { Button } from 'semantic-ui-react'
 
@@ -16,12 +17,12 @@ const Menu =
   toPower
 }) =>
   <div className='menu'>
-    <Button basic circular onClick={toFeed} icon='globe' size='massive' />
-    <Button basic circular onClick={toStubs} icon='tags' size='massive' />
-    <Button basic circular onClick={toPayments} icon='shop' size='massive' />
-    <Button basic circular onClick={toPencil} icon='edit' size='massive' />
-    <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' />
-    <Button basic circular onClick={toPower} icon='power' size='massive' />
+    <Button basic circular onClick={toFeed} icon='globe' size='massive' className='menu--button' />
+    <Button basic circular onClick={toStubs} icon='tags' size='massive' className='menu--button' />
+    <Button basic circular onClick={toPayments} icon='shop' size='massive' className='menu--button' />
+    <Button basic circular onClick={toPencil} icon='edit' size='massive' className='menu--button' />
+    <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' className='menu--button' />
+    <Button basic circular onClick={toPower} icon='power' size='massive' className='menu--button' />
   </div>
 
 const mapDispatchToProps = dispatch =>
