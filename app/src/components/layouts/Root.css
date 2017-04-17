@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.main--test {
+.main {
     width: 100%;
     display: flex;
     flex: 1;
@@ -25,10 +25,12 @@
 }
 
 .card {
-  flex: 1;
   max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+.ui.card>.content {
+  overflow: auto;
 }
 
 .extra {

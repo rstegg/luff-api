@@ -16,7 +16,7 @@ const BottomNav =
   toSettings,
   toPower
 }) =>
-  <div className='menu--test'>
+  <div className='menu--container'>
     <Button basic circular onClick={toFeed} icon='globe' className='menu--button' />
     <Button basic circular onClick={toStubs} icon='tags' className='menu--button' />
     <Button basic circular onClick={toPayments} icon='shop' className='menu--button' />
