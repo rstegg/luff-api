@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Button, Label, Menu } from 'semantic-ui-react'
+import { Button, Image, Menu } from 'semantic-ui-react'
 
 import { NavLink } from 'react-router-dom'
 
@@ -13,9 +13,7 @@ const Header = ({user}) =>
         <Button.Group>
           <NavLink to={`/profile/view/${user.id}`} from="/">
             <Button primary>
-              {user.image && <Label image>
-                <img src={user.image} alt={user.first_name} />
-              </Label>}
+              {user.image && <Image src={user.image} alt={user.first_name} avatar /> }
               Profile
             </Button>
           </NavLink>
