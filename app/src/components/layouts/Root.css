@@ -19,6 +19,7 @@
     justify-content: space-around;
     align-items: center;
     position: fixed;
+    top: 10vh;
     bottom: 15vh;
     height: 75vh;
     overflow: hidden;
@@ -37,9 +38,37 @@
   padding-bottom: 1.5vh;
 }
 
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media only screen and (min-width : 321px) {
+  .main {
+    top: 15vh;
+  }
+  .card {
+    max-height: 70vh;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+  .extra {
+    display: none;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+  .main {
+    top: 15vh;
+    height: 85vh;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+}
+
+@media only screen and (min-device-width : 640px) and (max-device-width : 640px) and (max-device-height : 640px) and (orientation : landscape) {
+  .main {
+    top: 15vh;
+    height: 85vh;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
 }

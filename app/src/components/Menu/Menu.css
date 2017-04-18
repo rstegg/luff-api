@@ -38,10 +38,78 @@
   flex: 1;
 }
 
-@media only screen  and (max-width : 420px) {
+@media only screen and (min-device-width : 640px) and (max-device-width : 640px) and (max-device-height : 640px) and (orientation : landscape) {
   .menu--container {
-    justify-content: space-around;
+    flex: 1;
+    flex-direction: column;
+    float: left;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 82.5vh;
+    width: 15vh;
+    left: 0;
+  }
+  .menu--button {
+    padding: 0;
+    max-height: 15vh;
+    max-width: 15vh;
+    height: 15vh;
+    width: 15vh;
+  }
+}
+
+@media only screen and (min-device-width : 568px) and (max-device-width : 568px) and (max-device-height : 568px) and (orientation : landscape) {
+  .menu--container {
+    flex: 1;
+    flex-direction: column;
+    float: left;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 80vh;
+    width: 15vh;
+    left: 0;
+  }
+  .menu--button {
+    padding: 0;
+    max-height: 15vh;
+    max-width: 15vh;
+    height: 15vh;
+    width: 15vh;
+  }
+}
+
+@media only screen and (min-device-width : 375px) and (min-device-height : 375px) and (max-device-height : 375px) and (orientation : landscape) {
+  .menu--container {
+    flex: 1;
+    flex-direction: column;
+    float: left;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 82.5vh;
+    width: 15vh;
+    left: 0;
+  }
+  .menu--button {
+    padding: 0;
+    max-height: 15vh;
+    max-width: 15vh;
+    height: 15vh;
+    width: 15vh;
+  }
+}
+
+@media only screen  and (max-device-width : 420px) and (max-width: 420px) {
+  .menu--container {
     bottom: 2.5vh;
+  }
+}
+
+@media only screen  and (max-device-width : 760px) and (max-width: 760px) {
+  .menu--container {
+    bottom: 0;
+  }
+  .menu--button {
+    padding: 0;
   }
 }
 

@@ -85,7 +85,11 @@ module.exports = function(app, options) {
       models.User
         .findOne({ where: { email: req.body.email } })
         .then(function(user) {
-          res.status(200).json({emailTaken: true})
+          if(user) {
+            res.status(200).json({emailTaken: true})
+          } else {
+            res.status(200).json({emailTaken: false})
+          }
         })
         .catch(function(error) {
           res.status(200).json({emailTaken: false})

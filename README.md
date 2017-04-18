@@ -19,9 +19,7 @@
 
 ## Bugs:
 
-* Screen sizes media queries
-* Profile grows too big
-* Redux is logging to console (disable redux inspector on production)
+* React Devtools shows up in console
 * No SEO, no meta tags
 
 ## APP TODO:

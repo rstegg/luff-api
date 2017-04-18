@@ -5,7 +5,7 @@ const SelectField = ({ input: { value, onChange }, meta: { asyncValidating, touc
   <Form.Field>
     <label>{label}</label>
     {options.map(option =>
-    <Form.Field>
+    <Form.Field key={option.key}>
       <Form.Radio
         label={option.text}
         name='selectGroup'
