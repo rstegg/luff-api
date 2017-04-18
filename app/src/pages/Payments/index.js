@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import './Payments.css'
 
 import { Card } from 'semantic-ui-react'
 import RouterButton from '../../elements/RouterButton'

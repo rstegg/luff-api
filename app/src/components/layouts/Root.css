@@ -38,9 +38,9 @@
   padding-bottom: 1.5vh;
 }
 
-/*@media only screen and (min-width : 321px) and (orientation : landscape) {
+@media only screen and (min-width : 768px) {
   .main {
-    top: 15vh;
+    top: 5vh;
   }
   .card {
     max-height: 70vh;
@@ -48,7 +48,7 @@
   .ui.card>.content {
     overflow: auto;
   }
-}*/
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) {
   .main {

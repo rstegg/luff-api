@@ -7,18 +7,16 @@ const PaymentsList =
   payments,
   setCurrentPayment
 }) =>
-  <div className='menu'>
-    <ul>
-      {
-        payments.length ? payments.map((payment, i) =>
-          <PaymentsItem key={`payment-${i}`} payment={payment} onClick={() => setCurrentPayment(payment)} />
-        )
-        :
-        <li>
-          No Payments!
-        </li>
-      }
-    </ul>
-  </div>
+  <ul className='payments--list'>
+    {
+      payments.length ? payments.map((payment, i) =>
+        <PaymentsItem key={`payment-${i}`} payment={payment} onClick={() => setCurrentPayment(payment)} />
+      )
+      :
+      <li>
+        No Payments!
+      </li>
+    }
+  </ul>
 
 export default PaymentsList

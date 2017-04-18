@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import './Home.css'
 
 import { Card } from 'semantic-ui-react'
 import FeedItem from '../../elements/FeedItem'
@@ -19,7 +20,7 @@ class Home extends Component {
           <Card.Content>
             <Card.Header>Recent Stubs</Card.Header>
             <Card.Description>
-              <ul>
+              <ul className='feed--list'>
                 {this.props.feed.length ? this.props.feed.map(feedItem =>
                   <FeedItem key={`feed-${feedItem.id}`} stub={feedItem} />
                 ) : <li>Nothing</li>}
