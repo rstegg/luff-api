@@ -58,6 +58,26 @@
   }
 }
 
+@media only screen and (min-device-width : 736px) and (max-device-width : 736px) and (max-device-height : 736px) and (orientation : landscape) {
+  .menu--container {
+    flex: 1;
+    flex-direction: column;
+    float: left;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 85vh;
+    width: 15vh;
+    left: 0;
+  }
+  .menu--button {
+    padding: 0;
+    max-height: 15vh;
+    max-width: 15vh;
+    height: 15vh;
+    width: 15vh;
+  }
+}
+
 @media only screen and (min-device-width : 568px) and (max-device-width : 568px) and (max-device-height : 568px) and (orientation : landscape) {
   .menu--container {
     flex: 1;
