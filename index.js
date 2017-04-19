@@ -3,6 +3,7 @@ require('dotenv').load()
 const path = require('path')
 const express = require('express')
 const app = express()
+const compress = require('compression')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const http = require('http').Server(app)
@@ -10,10 +11,12 @@ const Sequelize = require('sequelize')
 const passport = require('passport')
 const configureApi = require('./api/v1')
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(passport.initialize())
-app.use(cors())
+app
+  .use(compress())
+  .use(cors())
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(passport.initialize())
 
 const db = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
