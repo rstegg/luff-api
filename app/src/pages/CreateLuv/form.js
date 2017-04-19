@@ -5,6 +5,7 @@ import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { Form } from 'semantic-ui-react'
 
 import InputField from '../../elements/InputField'
+import AreaField from '../../elements/AreaField'
 import SelectField from '../../elements/SelectField'
 import CurrencyField from '../../elements/CurrencyField'
 
@@ -23,7 +24,7 @@ const CheckboxField = ({ input: { value, onChange } }) =>
 const CreateLuvForm = ({handleSubmit, amountTypeValue}) =>
   <Form onSubmit={handleSubmit}>
     <Field component={InputField} name='name' label='Name' placeholder='Luv name' />
-    <Field component={InputField} name='description' label='Description' placeholder='Luv descripton'  />
+    <Field component={AreaField} name='description' label='Description' placeholder='Luv descripton'  />
     <Field component={SelectField} name='amount_type' label='Type' placeholder='Type' options={options} />
     {amountTypeValue === 'fixed' && <Field component={CurrencyField} name='amount' label='Amount' placeholder='0.00' />}
     <Field component={CheckboxField} name='is_public' />

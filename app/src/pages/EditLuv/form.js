@@ -5,6 +5,7 @@ import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { Form } from 'semantic-ui-react'
 
 import InputField from '../../elements/InputField'
+import AreaField from '../../elements/AreaField'
 import CurrencyInput from 'react-currency-input'
 
 const options = [
@@ -28,7 +29,7 @@ const FixedInput = ({ input: { value, onChange } }) =>
 const EditLuvForm = ({handleSubmit, amountTypeValue}) =>
   <Form onSubmit={handleSubmit}>
     <Field component={InputField} name='name' type='text' label='Name' control='input' placeholder='Luv name' />
-    <Field component={InputField} name='description' type='text' label='Description' control='input' placeholder='Luv descripton'  />
+    <Field component={AreaField} name='description' type='text' label='Description' control='input' placeholder='Luv descripton'  />
     <Field component={SelectType} name='amount_type' options={options} />
     {amountTypeValue === 'fixed' && <Field component={FixedInput} name='amount' />}
     <Form.Button type='submit' primary>Submit</Form.Button>
