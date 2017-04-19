@@ -19,6 +19,7 @@
 
 ## Bugs:
 
+* Content.Extra overflow is auto
 * React Devtools shows up in console
 * No SEO, no meta tags
 

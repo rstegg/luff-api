@@ -21,7 +21,7 @@
     position: fixed;
     top: 10vh;
     bottom: 15vh;
-    height: 75vh;
+    height: 80vh;
     overflow: hidden;
 }
 
@@ -34,8 +34,12 @@
   overflow: auto;
 }
 
+.ui.card>.content.extra {
+  overflow: hidden;
+}
+
 .extra {
-  padding-bottom: 1.5vh;
+  overflow: hidden
 }
 
 @media only screen and (min-width : 768px) {

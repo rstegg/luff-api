@@ -2,10 +2,6 @@
 
 process.env.NODE_ENV = 'development';
 
-// Load environment variables from .env file. Suppress warnings using silent
-// if this file is missing. dotenv will never modify any environment variables
-// that have already been set.
-// https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
 
 var chalk = require('chalk');
@@ -38,28 +34,15 @@ var DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 var compiler;
 var handleCompile;
 
-// You can safely remove this after ejecting.
-// We only use this block for testing of Create React App itself:
-var isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1);
-if (isSmokeTest) {
-  handleCompile = function (err, stats) {
-    if (err || stats.hasErrors() || stats.hasWarnings()) {
-      process.exit(1);
-    } else {
-      process.exit(0);
-    }
-  };
-}
-
 function setupCompiler(host, port, protocol) {
-  // "Compiler" is a low-level interface to Webpack.
-  // It lets us listen to some events and provide our own custom messages.
   compiler = webpack(config, handleCompile);
 
-  // "invalid" event fires when you have changed a file, and Webpack is
-  // recompiling a bundle. WebpackDevServer takes care to pause serving the
-  // bundle, so if you refresh, it'll wait instead of serving the old one.
-  // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
+  /*
+  *
+  * Logging based on compiling state
+  *
+  */
+
   compiler.plugin('invalid', function() {
     if (isInteractive) {
       clearConsole();
@@ -69,16 +52,12 @@ function setupCompiler(host, port, protocol) {
 
   var isFirstCompile = true;
 
-  // "done" event fires when Webpack has finished recompiling the bundle.
-  // Whether or not you have warnings or errors, you will get this event.
   compiler.plugin('done', function(stats) {
     if (isInteractive) {
       clearConsole();
     }
 
-    // We have switched off the default Webpack output in WebpackDevServer
-    // options so we are going to "massage" the warnings and errors and present
-    // them in a readable focused way.
+
     var messages = formatWebpackMessages(stats.toJson({}, true));
     var isSuccessful = !messages.errors.length && !messages.warnings.length;
     var showInstructions = isSuccessful && (isInteractive || isFirstCompile);
@@ -99,7 +78,6 @@ function setupCompiler(host, port, protocol) {
       isFirstCompile = false;
     }
 
-    // If errors exist, only show errors.
     if (messages.errors.length) {
       console.log(chalk.red('Failed to compile.'));
       console.log();
@@ -110,7 +88,6 @@ function setupCompiler(host, port, protocol) {
       return;
     }
 
-    // Show warnings if no errors were found.
     if (messages.warnings.length) {
       console.log(chalk.yellow('Compiled with warnings.'));
       console.log();
@@ -126,8 +103,7 @@ function setupCompiler(host, port, protocol) {
   });
 }
 
-// We need to provide a custom onError function for httpProxyMiddleware.
-// It allows us to log custom error messages on the console.
+// httpProxyMiddleware logging
 function onProxyError(proxy) {
   return function(err, req, res){
     var host = req.headers && req.headers.host;
@@ -141,8 +117,6 @@ function onProxyError(proxy) {
     );
     console.log();
 
-    // And immediately send the proper error response to the client.
-    // Otherwise, the request will eventually timeout with ERR_EMPTY_RESPONSE on the client side.
     if (res.writeHead && !res.headersSent) {
         res.writeHead(500);
     }
@@ -157,16 +131,7 @@ function addMiddleware(devServer) {
   // Every unrecognized request will be forwarded to it.
   var proxy = require(paths.appPackageJson).proxy;
   devServer.use(historyApiFallback({
-    // Paths with dots should still use the history fallback.
-    // See https://github.com/facebookincubator/create-react-app/issues/387.
     disableDotRule: true,
-    // For single page apps, we generally want to fallback to /index.html.
-    // However we also want to respect `proxy` for API calls.
-    // So if `proxy` is specified, we need to decide which fallback to use.
-    // We use a heuristic: if request `accept`s text/html, we pick /index.html.
-    // Modern browsers include text/html into `accept` header when navigating.
-    // However API calls like `fetch()` won’t generally accept text/html.
-    // If this heuristic doesn’t work well for you, don’t use `proxy`.
     htmlAcceptHeaders: proxy ?
       ['text/html'] :
       ['text/html', '*/*']
@@ -179,12 +144,9 @@ function addMiddleware(devServer) {
       process.exit(1);
     }
 
-    // Otherwise, if proxy is specified, we will let it handle any request.
-    // There are a few exceptions which we won't send to the proxy:
     // - /index.html (served as HTML5 history API fallback)
     // - /*.hot-update.json (WebpackDevServer uses this too for hot reloading)
     // - /sockjs-node/* (WebpackDevServer uses this for hot reloading)
-    // Tip: use https://jex.im/regulex/ to visualize the regex
     var mayProxy = /^(?!\/(index\.html$|.*\.hot-update\.json$|sockjs-node\/)).*$/;
 
     // Pass the scope regex both to Express and to the middleware for proxying
@@ -208,9 +170,6 @@ function addMiddleware(devServer) {
     });
     devServer.use(mayProxy, hpm);
 
-    // Listen for the websocket 'upgrade' event and upgrade the connection.
-    // If this is not done, httpProxyMiddleware will not try to upgrade until
-    // an initial plain HTTP request is made.
     devServer.listeningApp.on('upgrade', hpm.upgrade);
   }
 

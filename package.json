@@ -3,7 +3,7 @@
   "license": "MIT",
   "repository": "",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "PORT=3030 nodemon dev.js",
     "start": "nodemon index.js"
   },
   "dependencies": {
