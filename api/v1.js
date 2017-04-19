@@ -4,7 +4,7 @@ const API_HOST = process.env.API_HOST
 
 const login = require('./routes/login')
 const signup = require('./routes/signup')
-const stubs = require('./routes/stubs')
+const luvs = require('./routes/luvs')
 const payments = require('./routes/payments')
 const profile = require('./routes/profile')
 const images = require('./routes/images')
@@ -29,7 +29,7 @@ module.exports = function(options) {
 
   login(app, authOptions)
   signup(app, authOptions)
-  stubs(app, authOptions)
+  luvs(app, authOptions)
   payments(app, authOptions)
   profile(app, authOptions)
   images(app, authOptions)

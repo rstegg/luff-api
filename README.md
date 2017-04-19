@@ -28,15 +28,15 @@
 * Error messages for forms
 * Develop for different screen sizes (tablet & mobile phones)
 * Move stripe in
-* Add sharing stubs by email
-* Add option for images on stubs and payments
+* Add sharing luvs by email
+* Add option for images on luvs and payments
 * Move off CRA scripts (they work, low priority)
 
 ## SERVER TODO:
 
 * Security of registering multiple emails
 * Add password reset
-* Add Images to stub & payment
+* Add Images to luv & payment
 * Security of image size
 * Security of update & delete routes (refuse updating user parameters: id, email, password)
 * Add Stripe

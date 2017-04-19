@@ -11,8 +11,8 @@ module.exports = function(app, options) {
   })
 
   app.post(`${API_HOST}/payments`, passport.authenticate('jwt', { session: false }), function(req, res) {
-      if(!req.body.stubId) {
-        res.status(400).json({error: 'Stub ID missing'})
+      if(!req.body.luvId) {
+        res.status(400).json({error: 'Luv ID missing'})
       }
       if(!req.body.name) {
         res.status(400).json({error: 'Payment name required'})
@@ -23,7 +23,7 @@ module.exports = function(app, options) {
       if(!req.user.id) {
         res.status(400).json({error: 'Invalid user'})
       }
-      models.Payment.create({name: req.body.name, description: req.body.description || '', amount: req.body.amount, stubId: req.body.stubId, userId: req.user.id})
+      models.Payment.create({name: req.body.name, description: req.body.description || '', amount: req.body.amount, luvId: req.body.luvId, userId: req.user.id})
         .then(function(payment) {
           res.status(200).json({payment})
         })
@@ -34,7 +34,7 @@ module.exports = function(app, options) {
 
   app.put(`${API_HOST}/payments`, passport.authenticate('jwt', { session: false }), function(req, res) {
     if(req.body.payment && req.body.payment.id) {
-      //TODO: Check that payment doesn't switch stub/user
+      //TODO: Check that payment doesn't switch luv/user
       models.Payment.update(req.body.payment, { where: { id: req.body.payment.id } })
         .then(function(payment) {
           res.status(200).json({payment})

@@ -36,8 +36,8 @@ module.exports = function(app, options) {
       })
   })
 
-  app.post(`${API_HOST}/stub/image`, passport.authenticate('jwt', { session: false }), upload.single('image'), function(req, res) {
-    models.Stub.update({image: req.file.location}, { where: { id: req.body.stub.id, userId: req.user.id } })
+  app.post(`${API_HOST}/luv/image`, passport.authenticate('jwt', { session: false }), upload.single('image'), function(req, res) {
+    models.Luv.update({image: req.file.location}, { where: { id: req.body.luv.id, userId: req.user.id } })
       .then(function(profile) {
         res.status(200).json({image: req.file.location})
       })
