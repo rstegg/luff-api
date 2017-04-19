@@ -4,13 +4,13 @@ import LuvsItem from '../../elements/LuvsItem'
 
 const LuvsList =
 ({
-  Luvs,
+  luvs,
   setCurrentLuv
 }) =>
-  <ul className='Luvs--list'>
+  <ul className='luvs--list'>
     {
-      Luvs.length ? Luvs.map((Luv, i) =>
-        <LuvsItem key={`Luv-${i}`} Luv={Luv} onClick={() => setCurrentLuv(Luv)} />
+      luvs.length ? luvs.map((luv, i) =>
+        <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
       )
       :
       <li>

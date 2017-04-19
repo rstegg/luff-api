@@ -19,7 +19,7 @@ class Luvs extends Component {
     }
   }
   render() {
-    const { Luvs, setCurrentLuv } = this.props
+    const { luvs, setCurrentLuv } = this.props
     if(!this.props.user.isAuthenticated) {
       return <Redirect to='/login' from='/luvs/new' />
     }
@@ -30,7 +30,7 @@ class Luvs extends Component {
             <Card.Header>Luvs</Card.Header>
             <Card.Description>
               <LuvsList
-                Luvs={Luvs.list}
+                luvs={luvs.list}
                 setCurrentLuv={setCurrentLuv}
               />
             </Card.Description>
@@ -43,9 +43,9 @@ class Luvs extends Component {
     )
   }
 }
-const mapStateToProps = ({Luvs, user}) =>
+const mapStateToProps = ({luvs, user}) =>
 ({
-  Luvs,
+  luvs,
   user
 })
 
