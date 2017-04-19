@@ -9,7 +9,7 @@ import { push } from 'react-router-redux'
 const BottomNav =
 ({
   user,
-  toStubs,
+  toLuvs,
   toPayments,
   toFeed,
   toPencil,
@@ -18,7 +18,7 @@ const BottomNav =
 }) =>
   <div className='menu--container'>
     <Button basic circular onClick={toFeed} icon='globe' className='menu--button' />
-    <Button basic circular onClick={toStubs} icon='tags' className='menu--button' />
+    <Button basic circular onClick={toLuvs} icon='tags' className='menu--button' />
     <Button basic circular onClick={toPayments} icon='shop' className='menu--button' />
     <Button basic circular onClick={toPencil} icon='edit' className='menu--button' />
     <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' className='menu--button' />
@@ -28,10 +28,10 @@ const BottomNav =
 
 const mapDispatchToProps = dispatch =>
 ({
-  toStubs:    () => dispatch(push('/stubs')),
+  toLuvs:    () => dispatch(push('/luvs')),
   toPayments: () => dispatch(push('/payments')),
   toFeed:     () => dispatch(push('/')),
-  toPencil:   () => dispatch(push('/stubs/new')),
+  toPencil:   () => dispatch(push('/luvs/new')),
   toSettings: userId => dispatch(push(`/profile/view/${userId}`)),
   toPower:    () => dispatch({type: 'LOGOUT'})
 })

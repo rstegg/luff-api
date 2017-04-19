@@ -17,7 +17,7 @@ class SignupSuccess extends Component {
   render() {
     const { user } = this.props
     if(user.isAuthenticated) {
-      return <Redirect to='/stubs' from='/signup/success' />
+      return <Redirect to='/luvs' from='/signup/success' />
     }
     return (
       <RootLayout>

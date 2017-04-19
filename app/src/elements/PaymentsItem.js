@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const StubsItem = ({className, onClick, payment}) =>
+const LuvsItem = ({className, onClick, payment}) =>
   <NavLink to={`/payments/view/${payment.name}`} className={className || 'link'}>
     <div className={className || 'paymentlist__item'} onClick={onClick}>
       <div className='paymentlist__item--field'>{payment.name}</div>
     </div>
   </NavLink>
-export default StubsItem
+export default LuvsItem

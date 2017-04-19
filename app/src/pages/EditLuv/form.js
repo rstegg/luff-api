@@ -25,25 +25,25 @@ const FixedInput = ({ input: { value, onChange } }) =>
     <CurrencyInput prefix="$" value={value} onChange={onChange} placeholder="$0.00" />
   </Form.Field>
 
-const EditStubForm = ({handleSubmit, amountTypeValue}) =>
+const EditLuvForm = ({handleSubmit, amountTypeValue}) =>
   <Form onSubmit={handleSubmit}>
-    <Field component={InputField} name='name' type='text' label='Name' control='input' placeholder='Stub name' />
-    <Field component={InputField} name='description' type='text' label='Description' control='input' placeholder='Stub descripton'  />
+    <Field component={InputField} name='name' type='text' label='Name' control='input' placeholder='Luv name' />
+    <Field component={InputField} name='description' type='text' label='Description' control='input' placeholder='Luv descripton'  />
     <Field component={SelectType} name='amount_type' options={options} />
     {amountTypeValue === 'fixed' && <Field component={FixedInput} name='amount' />}
     <Form.Button type='submit' primary>Submit</Form.Button>
   </Form>
 
-const connectedEditStubForm = reduxForm({
-  form: 'editStub'
-})(EditStubForm)
+const connectedEditLuvForm = reduxForm({
+  form: 'editLuv'
+})(EditLuvForm)
 
-const selector = formValueSelector('editStub')
+const selector = formValueSelector('editLuv')
 
 const mapStateToProps = state =>
 ({
   amountTypeValue: selector(state, 'amount_type'),
-  initialValues: state.stubs.current
+  initialValues: state.luvs.current
 })
 
-export default connect(mapStateToProps)(connectedEditStubForm)
+export default connect(mapStateToProps)(connectedEditLuvForm)

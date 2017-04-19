@@ -11,17 +11,17 @@ export const onFetchFeedSuccess = res =>
   }
 })
 
-export const fetchFeedStub = stub =>
+export const fetchFeedLuv = luv =>
 ({
-  type: 'FETCH_FEED_STUB',
+  type: 'FETCH_FEED_LUV',
   payload: {
-    stub
+    luv
   }
 })
 
-export const onFetchFeedStubSuccess = res =>
+export const onFetchFeedLuvSuccess = res =>
 ({
-  type: 'FETCH_FEED_STUB_SUCCESS',
+  type: 'FETCH_FEED_LUV_SUCCESS',
   payload: {
     feed: res.body.feed
   }

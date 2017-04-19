@@ -16,7 +16,7 @@ const Signup = ({
   onSignupSubmit
 }) =>
   user.isAuthenticated ?
-    <Redirect to='/stubs' from='/signup' />
+    <Redirect to='/luvs' from='/signup' />
   : user.isRegistered ?
     <Redirect to='/signup/success' from='/signup' />
   :

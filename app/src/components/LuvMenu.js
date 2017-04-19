@@ -14,7 +14,7 @@ const {
   TwitterShareButton
 } = ShareButtons
 
-const StubMenu = ({url}) =>
+const LuvMenu = ({url}) =>
   <Segment.Group compact>
     <Segment>
       <CopyToClipboard text={url}>
@@ -34,4 +34,4 @@ const StubMenu = ({url}) =>
     </Segment>
   </Segment.Group>
 
-export default StubMenu
+export default LuvMenu

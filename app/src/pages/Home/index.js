@@ -18,11 +18,11 @@ class Home extends Component {
       <RootLayout>
         <Card>
           <Card.Content>
-            <Card.Header>Recent Stubs</Card.Header>
+            <Card.Header>Recent Luvs</Card.Header>
             <Card.Description>
               <ul className='feed--list'>
                 {this.props.feed.length ? this.props.feed.map(feedItem =>
-                  <FeedItem key={`feed-${feedItem.id}`} stub={feedItem} />
+                  <FeedItem key={`feed-${feedItem.id}`} luv={feedItem} />
                 ) : <li>Nothing</li>}
               </ul>
             </Card.Description>

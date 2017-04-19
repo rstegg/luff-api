@@ -17,9 +17,9 @@ const api = {
       .set('Authorization', token)
     return Observable.fromPromise(request)
   },
-  createPayment: ({name, description, amount, token, stubId}) => {
+  createPayment: ({name, description, amount, token, luvId}) => {
    const request = su.post(`${API_HOST}/payments`)
-      .send({name, description, amount, stubId})
+      .send({name, description, amount, luvId})
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)

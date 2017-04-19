@@ -9,12 +9,12 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, {
         list: action.payload.feed
       })
-    case 'FETCH_FEED_STUB_SUCCESS':
+    case 'FETCH_FEED_LUV_SUCCESS':
       return Object.assign({}, state, {
         current: action.payload.feed
       })
     case 'FETCH_FEED_FAILURE':
-    case 'FETCH_FEED_STUB_FAILURE':
+    case 'FETCH_FEED_LUV_FAILURE':
     default:
       return state
   }

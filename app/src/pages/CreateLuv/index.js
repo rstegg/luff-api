@@ -3,39 +3,41 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { Card } from 'semantic-ui-react'
-import EditProfileForm from './form'
+import CreateLuvForm from './form'
 
-import { editStub } from '../../redux/actions/stubs'
+import { createLuv } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
-const EditProfile = ({ user, stub, editStub }) =>
+const CreateLuv = ({ user, luv, createLuv }) =>
   !user.isAuthenticated ?
-    <Redirect to='/login' from='/profile/edit' />
+    <Redirect to='/login' from='/luvs/new' />
+  : luv.isCreated ?
+    <Redirect to='/luvs' from='/luvs/new' />
   :
   <RootLayout>
     <Card>
       <Card.Content>
-        <Card.Header>Editting Stub {stub.name}</Card.Header>
+        <Card.Header>New Luv</Card.Header>
         <Card.Description>
-          <EditProfileForm onSubmit={values => editStub(({...values, id: stub.id}), user)} />
+          <CreateLuvForm onSubmit={luv => createLuv(luv, user)} />
         </Card.Description>
       </Card.Content>
     </Card>
   </RootLayout>
 
-const mapStateToProps = ({user, stubs}) =>
+const mapStateToProps = ({user, luvs}) =>
 ({
   user,
-  stub: stubs.current
+  luv: luvs.new
 })
 
 const mapDispatchToProps = dispatch =>
 ({
-  editStub: (stub, user) => dispatch(editStub(stub, user))
+  createLuv: (luv, user) => dispatch(createLuv(luv, user)),
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(EditProfile)
+)(CreateLuv)

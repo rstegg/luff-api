@@ -6,18 +6,18 @@ import { Card } from 'semantic-ui-react'
 import CreatePaymentForm from './form'
 
 import { createPayment } from '../../redux/actions/payments'
-import { fetchSingleStub } from '../../redux/actions/stubs'
+import { fetchSingleLuv } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
 class CreatePayment extends Component {
   componentWillMount() {
     if(this.props.user.isAuthenticated) {
-      this.props.fetchSingleStub(this.props.match.params.id, this.props.user)
+      this.props.fetchSingleLuv(this.props.match.params.id, this.props.user)
     }
   }
   render() {
-    const { user, stub, payment, createPayment } = this.props
+    const { user, luv, payment, createPayment } = this.props
     if(!user.isAuthenticated) {
       return <Redirect to='/login' from='/payments/new' />
     }
@@ -30,7 +30,7 @@ class CreatePayment extends Component {
           <Card.Content>
             <Card.Header>New Payment</Card.Header>
             <Card.Description>
-              <CreatePaymentForm onSubmit={payment => createPayment(payment, user, stub.id)} />
+              <CreatePaymentForm onSubmit={payment => createPayment(payment, user, luv.id)} />
             </Card.Description>
           </Card.Content>
         </Card>
@@ -39,17 +39,17 @@ class CreatePayment extends Component {
   }
 }
 
-const mapStateToProps = ({user, stubs, payments}) =>
+const mapStateToProps = ({user, luvs, payments}) =>
 ({
   user,
-  stub: stubs.current,
+  luv: luvs.current,
   payment: payments.new
 })
 
 const mapDispatchToProps = dispatch =>
 ({
-  createPayment: (payment, user, stubId) => dispatch(createPayment(payment, user, stubId)),
-  fetchSingleStub: (id, user) => dispatch(fetchSingleStub(id, user))
+  createPayment: (payment, user, luvId) => dispatch(createPayment(payment, user, luvId)),
+  fetchSingleLuv: (id, user) => dispatch(fetchSingleLuv(id, user))
 })
 
 export default connect(

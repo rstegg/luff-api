@@ -20,25 +20,25 @@ const CheckboxField = ({ input: { value, onChange } }) =>
     checked={!!value}
     onChange={(_,data) => onChange(data.checked)} />
 
-const CreateStubForm = ({handleSubmit, amountTypeValue}) =>
+const CreateLuvForm = ({handleSubmit, amountTypeValue}) =>
   <Form onSubmit={handleSubmit}>
-    <Field component={InputField} name='name' label='Name' placeholder='Stub name' />
-    <Field component={InputField} name='description' label='Description' placeholder='Stub descripton'  />
+    <Field component={InputField} name='name' label='Name' placeholder='Luv name' />
+    <Field component={InputField} name='description' label='Description' placeholder='Luv descripton'  />
     <Field component={SelectField} name='amount_type' label='Type' placeholder='Type' options={options} />
     {amountTypeValue === 'fixed' && <Field component={CurrencyField} name='amount' label='Amount' placeholder='0.00' />}
     <Field component={CheckboxField} name='is_public' />
     <Form.Button type='submit' primary>Submit</Form.Button>
   </Form>
 
-const connectedCreateStubForm = reduxForm({
-  form: 'newStub'
-})(CreateStubForm)
+const connectedCreateLuvForm = reduxForm({
+  form: 'newLuv'
+})(CreateLuvForm)
 
-const selector = formValueSelector('newStub')
+const selector = formValueSelector('newLuv')
 
 const mapStateToProps = state =>
 ({
   amountTypeValue: selector(state, 'amount_type')
 })
 
-export default connect(mapStateToProps)(connectedCreateStubForm)
+export default connect(mapStateToProps)(connectedCreateLuvForm)

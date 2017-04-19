@@ -36,14 +36,14 @@ export const onFetchSinglePaymentSuccess = res =>
   }
 })
 
-export const createPayment = ({name, amount}, {token}, stubId) =>
+export const createPayment = ({name, amount}, {token}, luvId) =>
 ({
   type: 'CREATE_PAYMENT',
   payload: {
     name,
     amount,
     token,
-    stubId
+    luvId
   }
 })
 

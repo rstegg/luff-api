@@ -1,4 +1,4 @@
-import { onFetchFeedSuccess, onFetchFeedStubSuccess } from '../actions/feed'
+import { onFetchFeedSuccess, onFetchFeedLuvSuccess } from '../actions/feed'
 import su from 'superagent'
 import { Observable } from 'rxjs/Rx'
 
@@ -11,9 +11,9 @@ const api = {
         .set('Accept', 'application/json')
     return Observable.fromPromise(request)
   },
-  fetchFeedStub: ({stub}) => {
+  fetchFeedLuv: ({luv}) => {
     const request =
-      su.get(`${API_HOST}/feed/${stub}`)
+      su.get(`${API_HOST}/feed/${luv}`)
         .set('Accept', 'application/json')
     return Observable.fromPromise(request)
   }
@@ -29,12 +29,12 @@ export const fetchFeed = action$ =>
         }))
     )
 
-export const fetchFeedStub = action$ =>
-  action$.ofType('FETCH_FEED_STUB')
+export const fetchFeedLuv = action$ =>
+  action$.ofType('FETCH_FEED_LUV')
     .mergeMap(action =>
-      api.fetchFeedStub(action.payload)
-        .map(onFetchFeedStubSuccess)
+      api.fetchFeedLuv(action.payload)
+        .map(onFetchFeedLuvSuccess)
         .catch(error => Observable.of({
-          type: 'FETCH_FEED_STUB_FAILURE'
+          type: 'FETCH_FEED_LUV_FAILURE'
         }))
     )

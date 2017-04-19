@@ -1,62 +1,62 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import './Stubs.css'
+import './Luvs.css'
 
 import { Card } from 'semantic-ui-react'
-import StubsList from './list'
+import LuvsList from './list'
 import RouterButton from '../../elements/RouterButton'
 
-import { fetchStubs, refreshStubs, setCurrentStub } from '../../redux/actions/stubs'
+import { fetchLuvs, refreshLuvs, setCurrentLuv } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
-class Stubs extends Component {
+class Luvs extends Component {
   componentDidMount() {
     if(this.props.user.isAuthenticated) {
-      this.props.fetchStubs(this.props.user)
-      this.props.refreshStubs()
+      this.props.fetchLuvs(this.props.user)
+      this.props.refreshLuvs()
     }
   }
   render() {
-    const { stubs, setCurrentStub } = this.props
+    const { Luvs, setCurrentLuv } = this.props
     if(!this.props.user.isAuthenticated) {
-      return <Redirect to='/login' from='/stubs/new' />
+      return <Redirect to='/login' from='/luvs/new' />
     }
     return (
       <RootLayout>
         <Card>
           <Card.Content>
-            <Card.Header>Stubs</Card.Header>
+            <Card.Header>Luvs</Card.Header>
             <Card.Description>
-              <StubsList
-                stubs={stubs.list}
-                setCurrentStub={setCurrentStub}
+              <LuvsList
+                Luvs={Luvs.list}
+                setCurrentLuv={setCurrentLuv}
               />
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <RouterButton to='/stubs/new' from='/stubs' label='Create a Stub' />
+            <RouterButton to='/luvs/new' from='/luvs' label='Create a Luv' />
           </Card.Content>
         </Card>
       </RootLayout>
     )
   }
 }
-const mapStateToProps = ({stubs, user}) =>
+const mapStateToProps = ({Luvs, user}) =>
 ({
-  stubs,
+  Luvs,
   user
 })
 
 const mapDispatchToProps = dispatch =>
 ({
-  fetchStubs: user => dispatch(fetchStubs(user)),
-  refreshStubs: () => dispatch(refreshStubs()),
-  setCurrentStub: stub => dispatch(setCurrentStub(stub)),
+  fetchLuvs: user => dispatch(fetchLuvs(user)),
+  refreshLuvs: () => dispatch(refreshLuvs()),
+  setCurrentLuv: Luv => dispatch(setCurrentLuv(Luv)),
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Stubs)
+)(Luvs)

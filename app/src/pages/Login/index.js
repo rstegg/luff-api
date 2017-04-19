@@ -16,7 +16,7 @@ const Login = ({
   onLoginSubmit
 }) =>
   user.isAuthenticated ?
-    <Redirect to='/stubs' from='/login' />
+    <Redirect to='/luvs' from='/login' />
   :
     <RootLayout>
       <Card>

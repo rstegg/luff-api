@@ -36,7 +36,7 @@ class Payments extends Component {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <RouterButton to='/' from='/payments' label='Pay a Public Stub' />
+            <RouterButton to='/' from='/payments' label='Pay a Public Luv' />
           </Card.Content>
         </Card>
       </RootLayout>
