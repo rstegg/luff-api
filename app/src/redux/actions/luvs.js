@@ -3,6 +3,14 @@ export const refreshLuvs = () =>
   type: 'REFRESH_LUVS'
 })
 
+export const setCurrentLuv = luv =>
+({
+  type: 'SET_CURRENT_LUV',
+  payload: {
+    luv
+  }
+})
+
 export const fetchLuvs = user =>
 ({
   type: 'FETCH_LUVS',
@@ -73,13 +81,5 @@ export const onEditLuvSuccess = res =>
   type: 'EDIT_LUV_SUCCESS',
   payload: {
     luv: res.body.luv
-  }
-})
-
-export const setCurrentLuv = luv =>
-({
-  type: 'SET_CURRENT_LUV',
-  payload: {
-    luv
   }
 })

@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import './Home.css'
 
 import { Card } from 'semantic-ui-react'
-import FeedItem from '../../elements/FeedItem'
+import FeedList from './list'
 
 import { fetchFeed } from '../../redux/actions/feed'
+import { setCurrentLuv } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
@@ -20,11 +21,10 @@ class Home extends Component {
           <Card.Content>
             <Card.Header>Recent Luvs</Card.Header>
             <Card.Description>
-              <ul className='feed--list'>
-                {this.props.feed.length ? this.props.feed.map(feedItem =>
-                  <FeedItem key={`feed-${feedItem.id}`} luv={feedItem} />
-                ) : <li>Nothing</li>}
-              </ul>
+              <FeedList
+                feed={this.props.feed}
+                setCurrentLuv={setCurrentLuv}
+              />
             </Card.Description>
           </Card.Content>
         </Card>

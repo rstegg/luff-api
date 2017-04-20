@@ -21,7 +21,6 @@ import CreatePayment from './pages/CreatePayment'
 import ViewPayment from './pages/ViewPayment'
 import EditProfile from './pages/EditProfile'
 import ViewProfile from './pages/ViewProfile'
-import ViewFeedLuv from './pages/ViewFeedLuv'
 
 import store, { history } from './store'
 
@@ -30,7 +29,6 @@ render(
     <Router history={history}>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/feed/view/:id' component={ViewFeedLuv} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/signup/success' component={SignupSuccess} />

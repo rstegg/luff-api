@@ -19,18 +19,17 @@
 
 ## Bugs:
 
-* Content.Extra overflow is auto
-* React Devtools shows up in console
 * No SEO, no meta tags
 
 ## APP TODO:
 
+* Add bank account form
+* Add credit card form
+* CreatePayment needs card form
 * Error messages for forms
 * Develop for different screen sizes (tablet & mobile phones)
-* Move stripe in
 * Add sharing luvs by email
 * Add option for images on luvs and payments
-* Move off CRA scripts (they work, low priority)
 
 ## SERVER TODO:
 
