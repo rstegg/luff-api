@@ -22,7 +22,7 @@ class Home extends Component {
             <Card.Header>Recent Luvs</Card.Header>
             <Card.Description>
               <FeedList
-                feed={this.props.feed}
+                feed={this.props.feed || []}
                 setCurrentLuv={setCurrentLuv}
               />
             </Card.Description>

@@ -7,6 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     amount: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    card: {
+      type: DataTypes.JSONB,
+      allowNull: false
     }
   }, {
     freezeTableName: true

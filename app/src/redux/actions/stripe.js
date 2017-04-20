@@ -6,12 +6,14 @@ export const createStripeCard = card =>
   }
 })
 
-export const onCreateStripeCardSuccess = (status, response) =>
+export const onCreateStripeCardSuccess = (card, { payment, user, luvId }) =>
 ({
   type: 'CREATE_STRIPE_CARD_SUCCESS',
   payload: {
-    status,
-    response
+    card,
+    payment,
+    user,
+    luvId
   }
 })
 

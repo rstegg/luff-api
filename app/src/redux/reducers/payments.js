@@ -32,6 +32,7 @@ export default function(state = initialState, action) {
         new: initialState.new
       })
     case 'FETCH_PAYMENTS_FAILURE':
+    case 'CREATE_STRIPE_CARD_FAILURE':
     case 'CREATE_PAYMENT_FAILURE':
     default:
       return state

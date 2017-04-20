@@ -107,7 +107,7 @@ module.exports = {
             // Point ESLint to our predefined config.
             options: {
               baseConfig: {
-                extends: ['react-app'],
+                extends: ['react-app']
               },
               useEslintrc: false,
             },

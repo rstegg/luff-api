@@ -4,12 +4,12 @@ import LuvsItem from '../../elements/LuvsItem'
 
 const FeedList =
 ({
-  luvs,
+  feed,
   setCurrentLuv
 }) =>
-  <ul className='luvs--list'>
+  <ul className='feed--list'>
     {
-      luvs.length ? luvs.map((luv, i) =>
+      feed.length ? feed.map((luv, i) =>
         <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
       )
       :

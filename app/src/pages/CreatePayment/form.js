@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-import { Field, reduxForm } from 'redux-form'
+import AmountForm from './amount-form'
+import CardForm from './card-form'
 
-import AreaField from '../../elements/AreaField'
-import CurrencyField from '../../elements/CurrencyField'
-
-import { Form, Button } from 'semantic-ui-react'
-
-const CreatePaymentForm = ({handleSubmit}) =>
-  <Form onSubmit={handleSubmit}>
-    <Field component={AreaField} name='name' type='text' label='Note' control='input' placeholder='Note' />
-    <Field component={CurrencyField}  name='amount' type='text' label='Amount' />
-    <Button type='submit' primary>Submit</Button>
-  </Form>
-
-export default reduxForm({
-  form: 'newPayment'
-})(CreatePaymentForm)
+export default class CreatePaymentForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      page: 1
+    }
+  }
+  nextPage() {
+    this.setState({ page: 2 })
+  }
+  previousPage() {
+    this.setState({ page: 1 })
+  }
+  render() {
+    const { onSubmit } = this.props
+    const { page } = this.state
+    return (
+      <div>
+        {page === 1 && <AmountForm onSubmit={() => this.nextPage()} />}
+        {page === 2 && <CardForm previousPage={() => this.previousPage()} onSubmit={onSubmit} />}
+      </div>
+    )
+  }
+}

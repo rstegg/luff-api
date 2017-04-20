@@ -31,7 +31,7 @@ Object.keys(models)
   .filter(model => model.associate)
   .forEach(model => model.associate(models))
 
-db.sync({force: true})
+db.sync()
 
 const port = process.env.PORT || 3000
 http.listen(port, function() {
@@ -45,8 +45,6 @@ const apiOptions = {
 }
 
 configureApi(apiOptions)
-
-app
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'))

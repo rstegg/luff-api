@@ -17,13 +17,13 @@ const api = {
       .set('Authorization', token)
     return Observable.fromPromise(request)
   },
-  createPayment: ({name, description, amount, token, luvId}) => {
+  createPayment: ({card, payment, user, luvId}) => {
    const request = su.post(`${API_HOST}/payments`)
-      .send({name, description, amount, luvId})
+      .send({card, payment, luvId})
       .set('Accept', 'application/json')
-      .set('Authorization', token)
+      .set('Authorization', user.token)
     return Observable.fromPromise(request)
-  }
+  },
 }
 
 export const fetchPayments = action$ =>
@@ -47,7 +47,7 @@ export const fetchSinglePayment = action$ =>
       )
 
 export const createPayment = action$ =>
-  action$.ofType('CREATE_PAYMENT')
+  action$.ofType('CREATE_STRIPE_CARD_SUCCESS')
     .mergeMap(action =>
       api.createPayment(action.payload)
         .map(onCreatePaymentSuccess)

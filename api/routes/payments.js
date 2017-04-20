@@ -14,16 +14,16 @@ module.exports = function(app, options) {
       if(!req.body.luvId) {
         res.status(400).json({error: 'Luv ID missing'})
       }
-      if(!req.body.name) {
+      if(!req.body.payment.name) {
         res.status(400).json({error: 'Payment name required'})
       }
-      if(!req.body.amount) {
+      if(!req.body.payment.amount) {
         res.status(400).json({error: 'Payment amount type required'})
       }
       if(!req.user.id) {
         res.status(400).json({error: 'Invalid user'})
       }
-      models.Payment.create({name: req.body.name, description: req.body.description || '', amount: req.body.amount, luvId: req.body.luvId, userId: req.user.id})
+      models.Payment.create({card: req.body.card, name: req.body.payment.name, description: req.body.payment.description || '', amount: req.body.payment.amount, luvId: req.body.luvId, userId: req.user.id})
         .then(function(payment) {
           res.status(200).json({payment})
         })
