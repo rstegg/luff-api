@@ -9,9 +9,11 @@ const payments = require('./routes/payments')
 const profile = require('./routes/profile')
 const images = require('./routes/images')
 const feed = require('./routes/feed')
+const account = require('./routes/account')
 
 const configureAuth = require('./service/auth')
 const mailgun = require('./service/mail')
+const stripe = require('./service/stripe')
 
 module.exports = function(options) {
 
@@ -22,7 +24,8 @@ module.exports = function(options) {
     models,
     passport,
     jwt,
-    mailgun
+    mailgun,
+    stripe
   }
 
   configureAuth(authOptions)
@@ -34,6 +37,7 @@ module.exports = function(options) {
   profile(app, authOptions)
   images(app, authOptions)
   feed(app, authOptions)
+  account(app, authOptions)
   /**
    * All of your api routes go here.
    * Format them in the following way:

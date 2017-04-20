@@ -12,6 +12,7 @@ const passport = require('passport')
 const configureApi = require('./api/v1')
 
 app
+  .use(express.static('./build'))
   .use(compress())
   .use(cors())
   .use(bodyParser.json())
@@ -45,7 +46,7 @@ const apiOptions = {
 
 configureApi(apiOptions)
 
-app.use(express.static('./build'))
+app
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'))

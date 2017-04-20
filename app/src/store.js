@@ -15,6 +15,14 @@ export const history = createHistory()
 const epicMiddleware = createEpicMiddleware(rootEpic)
 const routingMiddleware = routerMiddleware(history)
 
+if (
+  process.env.NODE_ENV === 'production' &&
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+  Object.keys(window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers).length
+) {
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers = {};
+}
+
 const composeEnhancers = process.env.NODE_ENV === 'development' ?
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
     : compose

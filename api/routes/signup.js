@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const mailcomposer = require('mailcomposer')
 
 module.exports = function(app, options) {
-  const { models, API_HOST, passport, jwt, mailgun } = options
+  const { models, API_HOST, passport, jwt, mailgun, stripe } = options
   app.post(`${API_HOST}/signup`, function(req, res) {
     if(req.body.email && req.body.password && req.body.first_name && req.body.last_name && req.body.country) {
       //TODO: Check if req.body.country is valid
@@ -27,12 +27,15 @@ module.exports = function(app, options) {
 
       const verify_token = crypto.randomBytes(20).toString('hex')
 
+      const currency = req.body.country === 'CA' ? 'CAD' : 'USD'
+
       const user = {
         email: req.body.email,
         password: hash,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         country: req.body.country,
+        currency,
         salt,
         ip_address: ip,
         verified: false,

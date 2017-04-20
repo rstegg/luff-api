@@ -10,22 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-    payment_bank_accounts: {
+    card_accounts: {
       type: DataTypes.ARRAY(DataTypes.JSONB),
       allowNull: false,
       defaultValue: []
     },
-    payment_card_accounts: {
-      type: DataTypes.ARRAY(DataTypes.JSONB),
-      allowNull: false,
-      defaultValue: []
-    },
-    withdrawal_bank_accounts: {
-      type: DataTypes.ARRAY(DataTypes.JSONB),
-      allowNull: false,
-      defaultValue: []
-    },
-    withdrawal_card_accounts: {
+    bank_accounts: {
       type: DataTypes.ARRAY(DataTypes.JSONB),
       allowNull: false,
       defaultValue: []
@@ -50,6 +40,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'US'
+    },
+    currency: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'USD'
     },
     verified: {
       type: DataTypes.BOOLEAN,
