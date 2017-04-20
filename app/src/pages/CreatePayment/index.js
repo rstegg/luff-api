@@ -30,7 +30,15 @@ class CreatePayment extends Component {
           <Card.Content>
             <Card.Header>New Payment</Card.Header>
             <Card.Description>
-              <CreatePaymentForm onSubmit={payment => createPayment(payment, user, luv.id)} />
+              <CreatePaymentForm
+                luv={this.props.luv}
+                onSubmit={payment => {
+                  if(luv.amount_type === 'fixed') {
+                    payment.amount = luv.amount
+                  }
+                  createPayment(payment, user, luv.id)
+                }}
+              />
             </Card.Description>
           </Card.Content>
         </Card>

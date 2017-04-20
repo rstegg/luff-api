@@ -17,9 +17,9 @@ const api = {
       .set('Authorization', token)
     return Observable.fromPromise(request)
   },
-  createLuv: ({name, description, amount_type, is_public, token}) => {
+  createLuv: ({name, description, amount_type, amount, is_public, token}) => {
    const request = su.post(`${API_HOST}/luvs`)
-      .send({name, description, amount_type, is_public})
+      .send({name, description, amount_type, amount, is_public})
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)

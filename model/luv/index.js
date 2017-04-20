@@ -27,6 +27,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    raised: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '0'
+    },
     goal: {
       type: DataTypes.STRING,
       allowNull: true,

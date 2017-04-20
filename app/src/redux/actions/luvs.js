@@ -44,7 +44,7 @@ export const onFetchSingleLuvSuccess = res =>
   }
 })
 
-export const createLuv = ({name, description, amount_type, is_public}, {token}) =>
+export const createLuv = ({name, description, amount, amount_type, is_public}, {token}) =>
 ({
   type: 'CREATE_LUV',
   payload: {
@@ -52,6 +52,7 @@ export const createLuv = ({name, description, amount_type, is_public}, {token}) 
     description,
     amount_type,
     is_public,
+    amount,
     token
   }
 })

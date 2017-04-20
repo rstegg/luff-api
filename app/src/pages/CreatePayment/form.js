@@ -17,11 +17,11 @@ export default class CreatePaymentForm extends Component {
     this.setState({ page: 1 })
   }
   render() {
-    const { onSubmit } = this.props
+    const { onSubmit, luv } = this.props
     const { page } = this.state
     return (
       <div>
-        {page === 1 && <AmountForm onSubmit={() => this.nextPage()} />}
+        {page === 1 && <AmountForm onSubmit={() => this.nextPage()} luv={luv} />}
         {page === 2 && <CardForm previousPage={() => this.previousPage()} onSubmit={onSubmit} />}
       </div>
     )

@@ -16,7 +16,7 @@ const EditProfile = ({ user, luv, editLuv }) =>
   <RootLayout>
     <Card>
       <Card.Content>
-        <Card.Header>Editting Luv {luv.name}</Card.Header>
+        <Card.Header>Editing Luv {luv.name}</Card.Header>
         <Card.Description>
           <EditProfileForm onSubmit={values => editLuv(({...values, id: luv.id}), user)} />
         </Card.Description>

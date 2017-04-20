@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { Form } from 'semantic-ui-react'
 
+import { validate } from './validators'
+
 import InputField from '../../elements/InputField'
 import AreaField from '../../elements/AreaField'
 import SelectField from '../../elements/SelectField'
@@ -32,7 +34,8 @@ const CreateLuvForm = ({handleSubmit, amountTypeValue}) =>
   </Form>
 
 const connectedCreateLuvForm = reduxForm({
-  form: 'newLuv'
+  form: 'newLuv',
+  validate
 })(CreateLuvForm)
 
 const selector = formValueSelector('newLuv')

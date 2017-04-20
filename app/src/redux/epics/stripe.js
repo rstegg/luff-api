@@ -22,18 +22,6 @@ const api = {
   },
 }
 
-// export const createStripeCard = action$ =>
-//   action$.ofType('CREATE_STRIPE_CARD')
-//     .mergeMap(action =>
-//       api.createStripeCard(action.payload)
-//         .map((status, response) =>
-//           onCreateStripeCardSuccess(status, response, action.payload.user)
-//         )
-//         .catch(error => Observable.of({
-//           type: 'CREATE_STRIPE_CARD_FAILURE'
-//         }))
-//     )
-
 export const createStripeCard = action$ =>
   action$.ofType('CREATE_PAYMENT')
     .mergeMap(action =>
