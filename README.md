@@ -23,15 +23,16 @@
 
 ## APP TODO:
 
+* Add Usernames
 * Save card
 * Add router--link class [l]
 * Add bank account form [m]
-* Error messages for edit profile form [h]
 * Develop for different screen sizes (tablet & mobile phones) [h]
 * Add option for images on payments [m]
 
 ## SERVER TODO:
 
+* Add Usernames
 * Add password reset [l]
 * Add Images to payment [l]
 * Security of image size [m]
