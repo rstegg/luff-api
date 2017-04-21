@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './ViewLuv.css'
 
+import { Redirect } from 'react-router-dom'
 import { Card, Grid, Rail } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import RouterButton from '../../elements/RouterButton'
@@ -23,6 +24,9 @@ class ViewLuv extends Component {
   }
   render() {
     const { luv, user } = this.props
+    if(!luv) {
+      return <Redirect to='/' />
+    }
     return (
       <RootLayout>
         <Grid>

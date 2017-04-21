@@ -23,18 +23,17 @@
 
 ## APP TODO:
 
-* Add router--link class
-* Add bank account form
-* Error messages for edit profile form
-* Develop for different screen sizes (tablet & mobile phones)
-* Add sharing luvs by email
-* Add option for images on payments
+* Save card
+* Add router--link class [l]
+* Add bank account form [m]
+* Error messages for edit profile form [h]
+* Develop for different screen sizes (tablet & mobile phones) [h]
+* Add option for images on payments [m]
 
 ## SERVER TODO:
 
-* Security of registering multiple emails
-* Add password reset
-* Add Images to payment
-* Security of image size
-* Security of update & delete routes (refuse updating user parameters: id, email, password)
-* Abstracting routes (i.e. moving functions out when possible)
+* Add password reset [l]
+* Add Images to payment [l]
+* Security of image size [m]
+* Security of update & delete routes (refuse updating user parameters: id, email, password) [h]
+* Abstracting routes (i.e. moving functions out when possible) [h]

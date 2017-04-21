@@ -9,6 +9,8 @@ import AreaField from '../../elements/AreaField'
 import SelectField from '../../elements/SelectField'
 import MaskedInput from 'react-maskedinput'
 
+import { validate } from './validators'
+
 const options = [
   { key: 'US', value: 'US', text: 'United States' },
   { key: 'CA', value: 'CA', text: 'Canada' }
@@ -34,7 +36,8 @@ const EditProfileForm = ({handleSubmit}) =>
   </Form>
 
 const connectedEditProfileForm = reduxForm({
-  form: 'editProfile'
+  form: 'editProfile',
+  validate
 })(EditProfileForm)
 
 const mapStateToProps = ({user}) =>
