@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Label } from 'semantic-ui-react'
 
-const LuvsItem = ({className, onClick, payment}) =>
+const PaymentsItem = ({className, onClick, payment}) =>
   <NavLink to={`/payments/view/${payment.name}`} className={className || 'link'}>
-    <div className={className || 'paymentlist__item'} onClick={onClick}>
-      <div className='paymentlist__item--field'>{payment.name}</div>
-    </div>
+    <Label tag>{payment.name}</Label>
   </NavLink>
-export default LuvsItem
+
+export default PaymentsItem

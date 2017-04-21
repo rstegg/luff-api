@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './ViewPayment.css'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Label } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import PayMenu from '../../components/PayMenu'
 
@@ -11,7 +11,7 @@ import { fetchSinglePayment } from '../../redux/actions/payments'
 class ViewPayment extends Component {
   componentWillMount() {
     const { match: { params }, user } = this.props
-    fetchSinglePayment(params.id, user)
+    this.props.fetchSinglePayment(params.id, user)
   }
   render() {
     const { payment, user } = this.props
@@ -23,8 +23,10 @@ class ViewPayment extends Component {
         <Card>
           <Card.Content>
             <Card.Header>{user.first_name} {user.last_name}</Card.Header>
-            <Card.Meta>{payment.amount}</Card.Meta>
-            <Card.Description>{payment.name}</Card.Description>
+            <Card.Meta>Paid - ${payment.amount}</Card.Meta>
+            <Card.Description>
+              <Label basic>Note: {payment.name}</Label>
+            </Card.Description>
           </Card.Content>
         </Card>
       </RootLayout>

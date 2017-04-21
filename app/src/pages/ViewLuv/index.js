@@ -12,9 +12,9 @@ import { fetchSingleLuv } from '../../redux/actions/luvs'
 
 const renderAmount = (amt_type, amt) =>
   amt_type === 'fixed' ?
-    <p>Price: {amt}</p>
+    <p>Price: ${amt}</p>
     :
-    <p>Open</p>
+    <p>Open donation</p>
 
 class ViewLuv extends Component {
   componentWillMount() {

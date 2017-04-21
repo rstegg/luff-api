@@ -6,4 +6,5 @@ const LuvsItem = ({className, onClick, luv}) =>
   <NavLink to={`/luvs/view/${luv.slug}`} className={className || 'link'}>
     <Label tag>{luv.name}</Label>
   </NavLink>
+
 export default LuvsItem

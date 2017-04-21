@@ -21,7 +21,7 @@ class ViewProfile extends Component {
           <Image src={profile.image || '/placeholder.png'} />
           <Card.Content>
             <Card.Header>{profile.first_name} {profile.last_name}</Card.Header>
-            <Card.Description>{profile.bio || 'User'}</Card.Description>
+            <Card.Description>{profile.bio || 'New user'}</Card.Description>
           </Card.Content>
           {profile.userId === user.id && <Card.Content extra>
             <RouterButton to="/profile/edit" from="/profile" label="Edit" />

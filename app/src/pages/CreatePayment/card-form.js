@@ -36,13 +36,13 @@ const NumberField = ({ input: { value, onChange }, meta: { touched, error } }) =
 
 const CardForm = ({handleSubmit, previousPage}) =>
   <Form onSubmit={handleSubmit}>
-    <Field component={InputField} name="name" label='Name on card' control='input' placeholder='Full name' />
-    <Field component={NumberField} name="number" validate={[validNumber]} label='Card Number' control='input' placeholder='Number' />
+    <Field component={InputField} name='name' label='Name on card' control='input' placeholder='Full name' />
+    <Field component={NumberField} name='number' validate={[validNumber]} label='Card Number' control='input' placeholder='Number' />
     <Form.Group widths='equal'>
-      <Field component={ExpiryField} name="expiry" validate={[validExpiry]} control='input' />
-      <Field component={InputField} name="cvc" validate={[validCVC]} label='CVC' control='input' placeholder='CVC' />
+      <Field component={ExpiryField} name='expiry' validate={[validExpiry]} control='input' />
+      <Field component={InputField} name='cvc' validate={[validCVC]} label='CVC' control='input' placeholder='CVC' />
     </Form.Group>
-    <Field component={InputField} name="address_zip" label="Zip" placeholder="Zip code" />
+    <Field component={InputField} name='address_zip' label='Zip' placeholder='Zip code' />
       <Button onClick={previousPage} secondary>Back</Button>
       <Button type='submit' primary>Next</Button>
   </Form>
