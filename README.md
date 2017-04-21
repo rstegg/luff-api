@@ -27,8 +27,8 @@
 * Save card
 * Add router--link class [l]
 * Add bank account form [m]
-* Develop for different screen sizes (tablet & mobile phones) [h]
 * Add option for images on payments [m]
+* Test on different screen sizes
 
 ## SERVER TODO:
 
