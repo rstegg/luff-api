@@ -3,7 +3,8 @@ module.exports = function(sequelize, DataTypes) {
     User: require('./model/user')(sequelize, DataTypes),
     Luv: require('./model/luv')(sequelize, DataTypes),
     Ticket: require('./model/ticket')(sequelize, DataTypes),
-    Payment: require('./model/payment')(sequelize, DataTypes)
+    Payment: require('./model/payment')(sequelize, DataTypes),
+    Charge: require('./model/charge')(sequelize, DataTypes)
   }
   /**
    * All of your model definitions go here.

@@ -1,5 +1,5 @@
 module.exports = function(app, options) {
-  const { models, API_HOST, passport, jwt } = options
+  const { models, API_HOST, passport, jwt, stripe } = options
   app.get(`${API_HOST}/payments`, passport.authenticate('jwt', { session: false }), function(req, res) {
     models.Payment.findAll({ where: { userId: req.user.id }})
       .then(function(payments) {
@@ -23,6 +23,23 @@ module.exports = function(app, options) {
       if(!req.user.id) {
         res.status(400).json({error: 'Invalid user'})
       }
+      stripe.charges.create({
+        amount: req.body.payment.amount,
+        currency: req.user.currency,
+        source: req.body.card.id,
+        description: `Payment from ${req.user.email} to luvId ${req.body.luvId}`
+      }, function(err, charge) {
+        if(err) {
+          console.log(err);
+        }
+        models.Charge.create({userId: req.user.id, charge})
+          .then(function(charge) {
+            console.log("Charged!");
+          })
+          .catch(function(err) {
+            console.log("Error!", err)
+          })
+      })
       models.Payment.create({card: req.body.card, name: req.body.payment.name, description: req.body.payment.description || '', amount: req.body.payment.amount, luvId: req.body.luvId, userId: req.user.id})
         .then(function(payment) {
           res.status(200).json({payment})
