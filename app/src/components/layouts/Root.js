@@ -9,6 +9,6 @@ export default ({children}) =>
     <Header />
       <div className='main'>
         {children}
-    </div>
+      </div>
     <Menu />
   </div>
