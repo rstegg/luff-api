@@ -21,7 +21,7 @@
     position: fixed;
     top: 10vh;
     bottom: 15vh;
-    height: 80vh;
+    height: 70vh;
     overflow: hidden;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .card {
-  max-height: 75vh;
+  max-height: 65vh;
   overflow: hidden;
 }
 
