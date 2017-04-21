@@ -29,7 +29,7 @@ Object.keys(models)
 
 db.sync({force: true})
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3030
 http.listen(port, function() {
   console.log(`Listening on port ${port}`)
 })

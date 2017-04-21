@@ -4,7 +4,6 @@ const mailcomposer = require('mailcomposer')
 module.exports = function(app, options) {
   const { models, API_HOST, passport } = options
   app.post(`${API_HOST}/card`, passport.authenticate('jwt', { session: false }), function(req, res) {
-    console.log(req.body);
     models.User
       .findOne({ where: { id: req.user.id } })
       .then(function(user) {
@@ -27,7 +26,7 @@ module.exports = function(app, options) {
         res.status(200).json({error: 'Invalid request'})
       })
   })
-  
+
   app.post(`${API_HOST}/bank`, passport.authenticate('jwt', { session: false }), function(req, res) {
     console.log(req.body);
     models.User
