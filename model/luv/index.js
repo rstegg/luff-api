@@ -46,12 +46,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'self'
     }
   }, {
-    freezeTableName: true,
-    classMethods: {
-      associate () {
-        this.hasMany(sequelize.models['tickets'], { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
-        // this.hasMany(sequelize.models['forms'], { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
-      }
-    }
+    freezeTableName: true
   })
 }

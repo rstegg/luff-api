@@ -143,6 +143,7 @@ module.exports = function(sequelize, DataTypes) {
       associate () {
         this.hasMany(sequelize.models['luvs'], { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
         this.hasMany(sequelize.models['payments'], { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
+        this.hasMany(sequelize.models['charges'], { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
       }
     },
     instanceMethods: {
