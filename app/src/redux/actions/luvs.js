@@ -3,12 +3,23 @@ export const refreshLuvs = () =>
   type: 'REFRESH_LUVS'
 })
 
-export const shareLuv = (email, user) =>
+export const shareLuv = ({name, email, message}, user, url) =>
 ({
   type: 'SHARE_LUV',
   payload: {
+    name,
     email,
-    user
+    message,
+    token: user.token,
+    url
+  }
+})
+
+export const onShareLuvSuccess = res =>
+({
+  type: 'SHARE_LUV_SUCCESS',
+  payload: {
+    luv: res.body.luv
   }
 })
 
@@ -35,6 +46,7 @@ export const onFetchLuvsSuccess = res =>
     luvs: res.body.luvs
   }
 })
+
 
 export const fetchSingleLuv = (id, user) =>
 ({

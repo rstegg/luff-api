@@ -1,7 +1,8 @@
 const shortId = require('shortid')
+const mailcomposer = require('mailcomposer')
 
 module.exports = function(app, options) {
-  const { models, API_HOST, passport, jwt } = options
+  const { models, API_HOST, passport, jwt, mailgun } = options
 
   app.get(`${API_HOST}/luvs`, passport.authenticate('jwt', { session: false }), function(req, res) {
     models.Luv.findAll({ where: { userId: req.user.id }})
@@ -81,6 +82,29 @@ module.exports = function(app, options) {
           }
         })
     }
+  })
+
+  app.post(`${API_HOST}/share/luv`, passport.authenticate('jwt', { session: false }), function(req, res) {
+    const mail = mailcomposer({
+      from: 'luvpay.io <hello@mg.luvpay.io>',
+      to: req.body.email,
+      subject: `${req.body.name}, your friend is collecting with luvpay.io!`,
+      text: `${req.user.first_name} ${req.user.last_name} is collecting with luvpay.io! Go here to contribute: ${req.body.url}`,
+      html: `<div> ${req.user.first_name} ${req.user.last_name} is collecting with luvpay! <a href=${req.body.url}>Go here to contribute</a> Note: ${req.body.message} </div>`
+    })
+    mail.build(function(mailBuildError, message) {
+      const shareEmail = {
+        to: req.body.email,
+        message: message.toString('ascii')
+      }
+      mailgun.messages().sendMime(shareEmail, function(sendError, body) {
+        if(sendError) {
+          console.log(sendError);
+          return;
+        }
+      })
+    })
+    res.status(200).json({sent: true})
   })
 
   app.delete(`${API_HOST}/luvs`, passport.authenticate('jwt', { session: false }), function(req, res) {

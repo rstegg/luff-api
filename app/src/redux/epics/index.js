@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable'
 import loginSubmit from './login'
 import signupSubmit from './signup'
-import { fetchLuvs, fetchSingleLuv, createLuv, uploadLuvImage, editLuv } from './luvs'
+import { fetchLuvs, fetchSingleLuv, createLuv, uploadLuvImage, editLuv, shareLuv } from './luvs'
 import { fetchPayments, createPayment } from './payments'
 import { uploadAvatar, editProfile, fetchProfile } from './profile'
 import { fetchFeed, fetchFeedLuv } from './feed'
@@ -16,6 +16,7 @@ export default combineEpics(
   fetchSingleLuv,
   createLuv,
   editLuv,
+  shareLuv,
   fetchPayments,
   createPayment,
   loginSubmit,

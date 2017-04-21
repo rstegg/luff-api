@@ -1,4 +1,11 @@
-import { onFetchLuvsSuccess, onFetchSingleLuvSuccess, onEditLuvSuccess, onCreateLuvSuccess, onUploadLuvImageSuccess } from '../actions/luvs'
+import {
+  onFetchLuvsSuccess,
+  onFetchSingleLuvSuccess,
+  onEditLuvSuccess,
+  onCreateLuvSuccess,
+  onUploadLuvImageSuccess,
+  onShareLuvSuccess
+} from '../actions/luvs'
 import su from 'superagent'
 import { Observable } from 'rxjs/Rx'
 
@@ -20,6 +27,13 @@ const api = {
   createLuv: ({name, description, image, amount_type, amount, is_public, token}) => {
    const request = su.post(`${API_HOST}/luvs`)
       .send({name, description, image, amount_type, amount, is_public})
+      .set('Accept', 'application/json')
+      .set('Authorization', token)
+    return Observable.fromPromise(request)
+  },
+  shareLuv: ({name, email, message, token, url}) => {
+   const request = su.post(`${API_HOST}/share/luv`)
+      .send({name, email, message, token, url})
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)
@@ -57,6 +71,16 @@ export const fetchSingleLuv = action$ =>
         .map(onFetchSingleLuvSuccess)
         .catch(error => Observable.of({
           type: 'FETCH_SINGLE_LUV_FAILURE'
+        }))
+      )
+
+export const shareLuv = action$ =>
+  action$.ofType('SHARE_LUV')
+    .mergeMap(action =>
+      api.shareLuv(action.payload)
+        .map(onShareLuvSuccess)
+        .catch(error => Observable.of({
+          type: 'SHARE_LUV_FAILURE'
         }))
       )
 

@@ -38,7 +38,7 @@ const LuvMenu = ({url, user, shareLuv}) =>
     <Popup wide trigger={<Button circular basic icon='mail' size='medium' />} on='click'>
         <Popup.Header>Share via Email</Popup.Header>
         <Popup.Content>
-          <LuvMenuForm onSubmit={values => shareLuv(values, user)} />
+          <LuvMenuForm onSubmit={values => shareLuv(values, user, url)} />
         </Popup.Content>
     </Popup>
   </Segment>
@@ -51,7 +51,7 @@ const mapStateToProps = ({user}) =>
 
 const mapDispatchToProps = dispatch =>
 ({
-  shareLuv: ({name, email, message}, user) => dispatch(shareLuv(email, user))
+  shareLuv: (email, user, url) => dispatch(shareLuv(email, user, url))
 })
 
 export default connect(
