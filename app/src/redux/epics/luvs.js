@@ -1,4 +1,4 @@
-import { onFetchLuvsSuccess, onFetchSingleLuvSuccess, onEditLuvSuccess, onCreateLuvSuccess } from '../actions/luvs'
+import { onFetchLuvsSuccess, onFetchSingleLuvSuccess, onEditLuvSuccess, onCreateLuvSuccess, onUploadLuvImageSuccess } from '../actions/luvs'
 import su from 'superagent'
 import { Observable } from 'rxjs/Rx'
 
@@ -17,9 +17,16 @@ const api = {
       .set('Authorization', token)
     return Observable.fromPromise(request)
   },
-  createLuv: ({name, description, amount_type, amount, is_public, token}) => {
+  createLuv: ({name, description, image, amount_type, amount, is_public, token}) => {
    const request = su.post(`${API_HOST}/luvs`)
-      .send({name, description, amount_type, amount, is_public})
+      .send({name, description, image, amount_type, amount, is_public})
+      .set('Accept', 'application/json')
+      .set('Authorization', token)
+    return Observable.fromPromise(request)
+  },
+  uploadLuvImage: ({image, token}) => {
+    const request = su.post(`${API_HOST}/image/luv`)
+      .attach('image', image)
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)
@@ -62,6 +69,16 @@ export const createLuv = action$ =>
           type: 'CREATE_LUV_FAILURE'
         }))
       )
+
+export const uploadLuvImage = action$ =>
+  action$.ofType('UPLOAD_LUV_IMAGE')
+    .mergeMap(action =>
+      api.uploadLuvImage(action.payload)
+        .map(onUploadLuvImageSuccess)
+        .catch(error => Observable.of({
+          type: 'UPLOAD_LUV_IMAGE_FAILURE'
+        }))
+    )
 
 export const editLuv = action$ =>
   action$.ofType('EDIT_LUV')

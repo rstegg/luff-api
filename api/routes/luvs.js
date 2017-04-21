@@ -39,6 +39,7 @@ module.exports = function(app, options) {
         description: req.body.description || '',
         amount_type: req.body.amount_type,
         amount: req.body.amount || '',
+        image: req.body.image || '',
         is_public: req.body.is_public || false,
         userId: req.user.id,
         slug: shortId.generate()

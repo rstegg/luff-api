@@ -2,14 +2,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import CreateLuvForm from './form'
 
-import { createLuv } from '../../redux/actions/luvs'
+import { createLuv, uploadLuvImage } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
-const CreateLuv = ({ user, luv, createLuv }) =>
+import Dropzone from '../../components/Dropzone'
+
+const Avatar = ({image, uploadLuvImage}) =>
+  <Dropzone className='ui image editable' onDrop={uploadLuvImage}>
+    <Image src={image || '/luvholder.png'} />
+  </Dropzone>
+
+const CreateLuv = ({ user, luv, createLuv, uploadLuvImage }) =>
   !user.isAuthenticated ?
     <Redirect to='/login' from='/luvs/new' />
   : luv.isCreated ?
@@ -17,10 +24,11 @@ const CreateLuv = ({ user, luv, createLuv }) =>
   :
   <RootLayout>
     <Card>
+      <Avatar image={luv.image} uploadLuvImage={img => uploadLuvImage(img[0], user)} />
       <Card.Content>
         <Card.Header>New Luv</Card.Header>
         <Card.Description>
-          <CreateLuvForm onSubmit={luv => createLuv(luv, user)} />
+          <CreateLuvForm onSubmit={values => createLuv(({...values, image: luv.image}), user)} />
         </Card.Description>
       </Card.Content>
     </Card>
@@ -35,6 +43,7 @@ const mapStateToProps = ({user, luvs}) =>
 const mapDispatchToProps = dispatch =>
 ({
   createLuv: (luv, user) => dispatch(createLuv(luv, user)),
+  uploadLuvImage: (img, user) => dispatch(uploadLuvImage(img, user))
 })
 
 export default connect(

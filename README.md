@@ -23,19 +23,18 @@
 
 ## APP TODO:
 
+* Add router--link class
 * Add bank account form
-* Add credit card form
-* CreatePayment needs card form
-* Error messages for forms
+* Error messages for edit profile form
 * Develop for different screen sizes (tablet & mobile phones)
 * Add sharing luvs by email
-* Add option for images on luvs and payments
+* Add option for images on payments
 
 ## SERVER TODO:
 
 * Security of registering multiple emails
 * Add password reset
-* Add Images to luv & payment
+* Add Images to payment
 * Security of image size
 * Security of update & delete routes (refuse updating user parameters: id, email, password)
 * Add Stripe

@@ -1,6 +1,8 @@
 const initialState = {
   current: {},
-  new: {},
+  new: {
+    image: null
+  },
   list: []
 }
 
@@ -16,6 +18,13 @@ export default function(state = initialState, action) {
         new: {
           ...state.new,
           isCreated: true
+        }
+      })
+    case 'UPLOAD_LUV_IMAGE_SUCCESS':
+      return Object.assign({}, state, {
+        new: {
+          ...state.new,
+          image: action.payload.image
         }
       })
     case 'FETCH_SINGLE_LUV_SUCCESS':
@@ -35,6 +44,7 @@ export default function(state = initialState, action) {
     case 'FETCH_SINGLE_LUV_FAILURE':
     case 'CREATE_LUV_FAILURE':
     case 'EDIT_LUV_FAILURE':
+    case 'UPLOAD_LUV_IMAGE_FAILURE':
     default:
       return state
   }

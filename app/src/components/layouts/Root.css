@@ -25,7 +25,7 @@
     overflow: hidden;
 }
 
-.link {
+.list--link {
   text-decoration: none;
   margin: 1vh 1vw;
 }

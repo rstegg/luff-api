@@ -44,12 +44,13 @@ export const onFetchSingleLuvSuccess = res =>
   }
 })
 
-export const createLuv = ({name, description, amount, amount_type, is_public}, {token}) =>
+export const createLuv = ({name, description, image, amount, amount_type, is_public}, {token}) =>
 ({
   type: 'CREATE_LUV',
   payload: {
     name,
     description,
+    image,
     amount_type,
     is_public,
     amount,
@@ -62,6 +63,23 @@ export const onCreateLuvSuccess = res =>
   type: 'CREATE_LUV_SUCCESS',
   payload: {
     luv: res.body.luv
+  }
+})
+
+export const uploadLuvImage = (image, {token}) =>
+({
+  type: 'UPLOAD_LUV_IMAGE',
+  payload: {
+    image,
+    token
+  }
+})
+
+export const onUploadLuvImageSuccess = res =>
+({
+  type: 'UPLOAD_LUV_IMAGE_SUCCESS',
+  payload: {
+    image: res.body.image
   }
 })
 
