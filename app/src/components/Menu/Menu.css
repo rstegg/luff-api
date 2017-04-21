@@ -32,20 +32,23 @@
 @media only screen and (min-device-width : 640px) and (max-device-width : 640px) and (max-device-height : 640px) and (orientation : landscape) {
   .menu--container {
     flex: 1;
+    position: fixed;
     flex-direction: column;
-    float: left;
-    justify-content: space-between;
     align-items: flex-start;
-    height: 82.5vh;
-    width: 15vh;
+    flex-wrap: wrap;
+    width: 20vh;
+    height: 20vh;
     left: 0;
+    text-align: center;
+    padding: 10px;
   }
   .menu--button {
-    padding: 0;
-    max-height: 15vh;
-    max-width: 15vh;
-    height: 15vh;
-    width: 15vh;
+    width: 50%;
+    height: 10vh;
+  }
+  .menu--button > .icon {
+    right: 5px;
+    bottom: 4px;
   }
 }
 
