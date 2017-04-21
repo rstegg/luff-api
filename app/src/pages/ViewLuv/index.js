@@ -22,6 +22,7 @@ class ViewLuv extends Component {
     fetchSingleLuv(params.id, user)
   }
   render() {
+    console.log(this.props);
     const { luv, user } = this.props
     return (
       <RootLayout>

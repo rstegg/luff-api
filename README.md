@@ -37,5 +37,4 @@
 * Add Images to payment
 * Security of image size
 * Security of update & delete routes (refuse updating user parameters: id, email, password)
-* Add Stripe
 * Abstracting routes (i.e. moving functions out when possible)

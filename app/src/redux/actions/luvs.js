@@ -3,6 +3,15 @@ export const refreshLuvs = () =>
   type: 'REFRESH_LUVS'
 })
 
+export const shareLuv = (email, user) =>
+({
+  type: 'SHARE_LUV',
+  payload: {
+    email,
+    user
+  }
+})
+
 export const setCurrentLuv = luv =>
 ({
   type: 'SET_CURRENT_LUV',
