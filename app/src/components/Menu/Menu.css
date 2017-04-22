@@ -1,3 +1,6 @@
+.menu--mobile__container {
+  display: none;
+}
 .menu--container {
   width: 100%;
   display: flex;
@@ -93,24 +96,41 @@
 }
 
 @media only screen and (min-device-width : 375px) and (min-device-height : 375px) and (max-device-height : 375px) and (orientation : landscape) {
-  .menu--container {
-    flex: 1;
-    flex-direction: column;
-    float: left;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: 82.5vh;
-    width: 15vh;
-    left: 0;
+
+}
+
+@media (max-width:480px)  {
+  .menu--mobile__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
+
   .menu--button {
-    padding: 0;
-    max-height: 15vh;
-    max-width: 15vh;
-    height: 15vh;
-    width: 15vh;
+    z-index: -101;
+    flex: 1;
+    width: 7.5vh;
+    height: 7.5vh;
+    margin: 1vh 1vw;
+    max-height: 7.5vh;
+    max-width: 7.5vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu--button > i {
+    position: relative;
+    z-index: -100;
+    flex: 1;
   }
 }
+@media only screen and (min-width:480px)  {}
+@media (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) {}
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
+
 
 @media only screen  and (max-device-width : 420px) and (max-width: 420px) {
   .menu--container {

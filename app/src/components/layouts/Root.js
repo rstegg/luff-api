@@ -4,11 +4,13 @@ import './Root.css'
 import Menu from '../Menu'
 import Header from '../Header'
 
+const isMobile = window.matchMedia('only screen and (max-width: 760px)')
+
 export default ({children}) =>
   <div className='root'>
-    <Header />
+    <Header isMobile={isMobile} />
       <div className='main'>
         {children}
       </div>
-    <Menu />
+    <Menu isMobile={isMobile} />
   </div>

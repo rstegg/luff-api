@@ -19,16 +19,16 @@
 
 ## Bugs:
 
-* No SEO, no meta tags
+* No SEO
 
 ## APP TODO:
 
 * Add Usernames
-* Save card
+* Save card [l]
 * Add router--link class [l]
 * Add bank account form [m]
 * Add option for images on payments [m]
-* Test on different screen sizes
+* Test on different screen sizes [h]
 
 ## SERVER TODO:
 
