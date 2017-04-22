@@ -20,12 +20,12 @@ const BottomNav =
   !isMobile &&
   <div>
     <div className='menu--container'>
-      <Button basic circular onClick={toFeed} icon='globe' className='menu--button' />
-      <Button basic circular onClick={toLuvs} icon='tags' className='menu--button' />
-      <Button basic circular onClick={toPayments} icon='shop' className='menu--button' />
-      <Button basic circular onClick={toPencil} icon='edit' className='menu--button' />
-      <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' className='menu--button' />
-      <Button basic circular onClick={toPower} icon='power' className='menu--button' />
+      <Button basic circular onClick={toFeed} icon='globe' size='massive' className='menu--button' />
+      <Button basic circular onClick={toLuvs} icon='tags' size='massive' className='menu--button' />
+      <Button basic circular onClick={toPayments} icon='shop' size='massive' className='menu--button' />
+      <Button basic circular onClick={toPencil} icon='edit' size='massive' className='menu--button' />
+      <Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' className='menu--button' />
+      <Button basic circular onClick={toPower} icon='power' size='massive' className='menu--button' />
     </div>
   </div>
 
