@@ -32,12 +32,30 @@
   flex: 1;
 }
 
-@media only handheld and (min-width : 320px)  {
+.dropdown--mobile {
+  align-self: center;
+  width: 100vw;
+  height: 90vh;
+  right: 0;
+  left: auto;
+}
+
+.dropdown--mobile__item {
+  display: flex;
+  flex: 1;
+  height: 20vh;
+}
+
+@media only screen and (min-width : 320px)  {
   .menu--mobile__container {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
+  }
+
+  .dropdown--mobile {
+    margin-right: -5vw !important;
   }
 
   .menu--button {
@@ -56,6 +74,12 @@
     position: relative;
     z-index: -100;
     flex: 1;
+  }
+}
+
+@media only screen and (min-width : 321px) {
+  .dropdown--mobile {
+    margin-right: -2.5vw !important;
   }
 }
 
@@ -104,6 +128,40 @@
     top: auto;
   }
 }
-@media only screen and (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media only screen and (min-width:801px)  {
+  .menu--mobile__container {
+    display: none;
+  }
+  .menu--container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    top: auto;
+  }
+
+  .menu--button {
+    z-index: -101;
+    flex: 1;
+    width: 7.5vh;
+    height: 7.5vh;
+    margin: 1vh 1vw;
+    max-height: 7.5vh;
+    max-width: 7.5vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu--button > i {
+    position: relative;
+    z-index: -100;
+    flex: 1;
+  }
+}
 @media only screen and (min-width:1025px) {}
 @media only screen and (min-width:1281px) { /* hi-res laptops and desktops */ }

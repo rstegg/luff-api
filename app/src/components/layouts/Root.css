@@ -5,38 +5,52 @@
 
 .card {
   overflow: hidden;
-  max-height: 70%;
 }
 
 .ui.card>.content {
   overflow: hidden;
 }
 
-.ui.card>.content.extra {
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-}
-
-@media only handheld and (min-width:320px), (max-width:320px)  {
+@media only screen and (min-width:320px) and (max-device-width : 480px)  {
   .root {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
     overflow: hidden;
   }
   .main {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    height: 100%;
+    flex-direction: column;
+  }
+  .card {
+    top: 60px;
+    width: 100%;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+}
+
+@media only screen and (min-width : 321px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .main {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   }
   .ui.card {
     top: 60px;
     width: 100%;
-    max-height: 100%;
   }
   .luvimg {
     width: 35%;
@@ -47,24 +61,21 @@
   }
 }
 
-@media only handheld and (min-width:375px), (max-width:375px)  {
+@media only screen and (min-width:375px), (max-width:375px)  {
   .root {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
     overflow: hidden;
   }
   .main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
   }
   .ui.card {
     top: 65px;
     width: 100%;
-    max-height: 100%;
   }
   .luvimg {
     width: 35%;
@@ -75,30 +86,82 @@
   }
 }
 
-@media only handheld and (min-width:480px)  {
+@media only screen and (min-width:414px), (max-width:414px)  {
   .root {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
     overflow: hidden;
   }
   .main {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
   }
-  .ui.card {
-    top: 10%;
+  .card {
+    top: 60px;
     width: 100%;
-    max-height: 100%;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
   }
   .ui.card>.content {
-    padding-bottom: 25%;
+    overflow: auto;
   }
 }
+
+@media only screen and (min-width:480px)  {
+  .root {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .main {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .card {
+    top: 60px;
+    width: 100%;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+}
+
+/* Samsung S6 */
 @media (min-width:600px)  {
+  .root {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .main {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .card {
+    top: 60px;
+    width: 100%;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+}
+@media only screen and (min-width:801px)  {
   .root {
     display: flex;
     flex-direction: column;
@@ -106,8 +169,6 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
-    left: 2.5vw;
-    right: 2.5vw;
     overflow: hidden;
   }
 
@@ -127,8 +188,20 @@
   .card {
     max-height: 100%;
   }
+  .ui.card {
+    min-width: 25%;
+    max-width: 75%;
+    width: auto;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
 }
-@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+
 @media (min-width:1025px) {
 
 }

@@ -5,7 +5,7 @@ function BrowserSyncPlugin(browserSyncOptions, pluginOptions) {
   var self = this;
 
   var defaultPluginOptions = {
-    reload: true,
+    reload: false,
     name: 'bs-webpack-plugin',
     callback: undefined
   };
