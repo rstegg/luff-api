@@ -2,21 +2,31 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import EditProfileForm from './form'
 
-import { editLuv } from '../../redux/actions/luvs'
+import { editLuv, uploadLuvImage } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
-const EditProfile = ({ user, luv, editLuv }) =>
+import Dropzone from '../../components/Dropzone'
+
+const Avatar = ({image, uploadLuvImage}) =>
+  <Dropzone className='ui image editable luvimg' onDrop={uploadLuvImage}>
+    <Image src={image || '/luvholder.png'} />
+  </Dropzone>
+
+const EditProfile = ({ user, luv, editLuv, uploadLuvImage }) =>
   !user.isAuthenticated ?
-    <Redirect to='/login' from='/profile/edit' />
+    <Redirect to='/login' from='/luvs/edit' />
+  : luv.isEdited ?
+    <Redirect to='/luvs' from='/luvs/edit' />
   :
   <RootLayout>
     <Card>
+      <Avatar image={luv.image} uploadLuvImage={img => uploadLuvImage(img[0], user)} />
       <Card.Content>
-        <Card.Header>Editing Luv {luv.name}</Card.Header>
+        <Card.Header>Editing {luv.name}</Card.Header>
         <Card.Description>
           <EditProfileForm onSubmit={values => editLuv(({...values, id: luv.id}), user)} />
         </Card.Description>
@@ -32,7 +42,8 @@ const mapStateToProps = ({user, luvs}) =>
 
 const mapDispatchToProps = dispatch =>
 ({
-  editLuv: (luv, user) => dispatch(editLuv(luv, user))
+  editLuv: (luv, user) => dispatch(editLuv(luv, user)),
+  uploadLuvImage: (img, user) => dispatch(uploadLuvImage(img, user))
 })
 
 export default connect(

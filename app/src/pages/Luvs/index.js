@@ -25,7 +25,7 @@ class Luvs extends Component {
     }
     return (
       <RootLayout>
-        <Card>
+        <Card className='luvs'>
           <Card.Content>
             <Card.Header>Luvs</Card.Header>
             <Card.Description>

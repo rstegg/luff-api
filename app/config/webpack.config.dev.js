@@ -8,6 +8,8 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const BrowserSyncPlugin = require('./bs-wp-plugin');
+const bsConfig = require('./bs.config');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -231,6 +233,7 @@ module.exports = {
     // makes the discovery automatic so you don't have to restart.
     // See https://github.com/facebookincubator/create-react-app/issues/186
     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+    new BrowserSyncPlugin(Object.assign({}, bsConfig, { host: 'localhost', port: 1337, proxy: 'localhost:3000' }, { reload: false }))
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

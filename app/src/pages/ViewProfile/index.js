@@ -18,7 +18,7 @@ class ViewProfile extends Component {
     return (
       <RootLayout>
         <Card>
-          <Image src={profile.image || '/placeholder.png'} />
+          <Image src={profile.image || '/placeholder.png'} className='profimg' />
           <Card.Content>
             <Card.Header>{profile.first_name} {profile.last_name}</Card.Header>
             <Card.Description>{profile.bio || 'New user'}</Card.Description>

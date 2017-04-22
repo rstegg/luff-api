@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './Menu.css'
 
-import { Button, Menu } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 import { push } from 'react-router-redux'
 

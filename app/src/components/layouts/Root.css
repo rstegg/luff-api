@@ -13,19 +13,75 @@
 }
 
 .ui.card>.content.extra {
+  display: flex;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
-.extra {
-  overflow: hidden
-}
-
-@media (max-width:480px)  {
+@media only handheld and (min-width:320px), (max-width:320px)  {
   .root {
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .ui.card {
+    top: 60px;
+    width: 100%;
+    max-height: 100%;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+}
+
+@media only handheld and (min-width:375px), (max-width:375px)  {
+  .root {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .ui.card {
+    top: 65px;
+    width: 100%;
+    max-height: 100%;
+  }
+  .luvimg {
+    width: 35%;
+    align-self: center;
+  }
+  .ui.card>.content {
+    overflow: auto;
+  }
+}
+
+@media only handheld and (min-width:480px)  {
+  .root {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
   .main {
     display: flex;
@@ -38,39 +94,42 @@
     width: 100%;
     max-height: 100%;
   }
-}
-@media only screen and (min-width:480px)  {
-  .main {
-  }
   .ui.card>.content {
-    overflow: auto;
-  }
-  .extra {
-    display: none;
+    padding-bottom: 25%;
   }
 }
-@media (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
-@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) {
-    .root {
-      position: fixed;
-      left: 2.5vw;
-      right: 2.5vw;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+@media (min-width:600px)  {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 2.5vw;
+    right: 2.5vw;
+    overflow: hidden;
   }
 
   .main {
-      position: fixed;
-      width: 100%;
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 7.5%;
+    height: 80%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
+
+  .card {
+    max-height: 100%;
+  }
+}
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) {
+
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */ }

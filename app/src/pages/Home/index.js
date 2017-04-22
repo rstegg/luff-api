@@ -17,7 +17,7 @@ class Home extends Component {
   render() {
     return (
       <RootLayout>
-        <Card>
+        <Card className='feed'>
           <Card.Content>
             <Card.Header>Recent Luvs</Card.Header>
             <Card.Description>

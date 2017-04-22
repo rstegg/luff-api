@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './ViewLuv.css'
 
 import { Redirect } from 'react-router-dom'
-import { Card, Grid, Rail } from 'semantic-ui-react'
+import { Card, Grid, Rail, Image } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import RouterButton from '../../elements/RouterButton'
 
@@ -32,6 +32,7 @@ class ViewLuv extends Component {
         <Grid>
           <Grid.Column>
             <Card>
+              <Image src={luv.image || '/luvholder.png'} className='luvimg' />
               <Card.Content>
                 <Card.Header>{luv.name}</Card.Header>
                 <Card.Meta>{renderAmount(luv.amount_type, luv.amount)}</Card.Meta>

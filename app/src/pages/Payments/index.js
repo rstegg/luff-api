@@ -25,7 +25,7 @@ class Payments extends Component {
     }
     return (
       <RootLayout>
-        <Card>
+        <Card className='payments'>
           <Card.Content className='card__list'>
             <Card.Header>Payments</Card.Header>
             <Card.Description>
