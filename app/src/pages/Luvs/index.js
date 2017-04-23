@@ -34,7 +34,7 @@ class Luvs extends Component {
               />
           </Card.Content>
           <Card.Content extra>
-            <RouterButton to='/luvs/new' from='/luvs' label='Create a luv' />
+            <RouterButton to='/luvs/new' from='/luvs' label='make a luv' />
           </Card.Content>
         </Card>
       </RootLayout>

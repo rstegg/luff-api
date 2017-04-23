@@ -12,12 +12,10 @@ const LuvsList =
       {luvs.length ? luvs.map((luv, i) =>
         <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
       ) :
-        <Feed.Event>
-          <Feed.Label image='/luvholder.png' />
-          <Feed.Summary>
-            No Luvs!
-          </Feed.Summary>
-        </Feed.Event>
+      <Feed.Event>
+        <Feed.Label image='/luvholder.png' />
+        <Feed.Content content='No Luvs!' />
+      </Feed.Event>
       }
     </Feed>
 
