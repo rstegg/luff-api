@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { Table, Header, Image, Button } from 'semantic-ui-react'
 
 const LuvsItem = ({className, onClick, luv}) =>
-    <Table.Row textAlign='center'>
-        <Table.Cell textAlign='center'>
+    <Table.Row>
+        <Table.Cell>
           <Header as='h4' image>
             <Image src={luv.image || '/luvholder.png'} shape='rounded' size='mini' />
             <Header.Content>
@@ -13,7 +13,7 @@ const LuvsItem = ({className, onClick, luv}) =>
             </Header.Content>
           </Header>
         </Table.Cell>
-        <Table.Cell textAlign='center'>
+        <Table.Cell>
           <Header as='h3'>
             <Header.Content>
               ${luv.raised} raised
