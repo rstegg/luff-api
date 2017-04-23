@@ -46,6 +46,11 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'self'
     }
   }, {
-    freezeTableName: true
+    freezeTableName: true,
+    classMethods: {
+      associate () {
+        this.belongsTo(sequelize.models['users'], { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
+      }
+    }
   })
 }

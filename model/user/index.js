@@ -41,6 +41,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 'US'
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     currency: {
       type: DataTypes.STRING,
       allowNull: false,

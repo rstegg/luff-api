@@ -8,6 +8,7 @@ module.exports = function(app, options) {
           id: user.id,
           first_name: user.first_name,
           last_name: user.last_name,
+          username: user.username,
           image: user.image,
           bio: user.bio
         }
@@ -26,7 +27,8 @@ module.exports = function(app, options) {
         email,
         country,
         dob,
-        bio
+        bio,
+        username
       } = req.body.profile
       const updatedUser = {
         first_name,
@@ -34,7 +36,8 @@ module.exports = function(app, options) {
         email,
         country,
         dob,
-        bio
+        bio,
+        username
       }
       models.User.update(updatedUser, { where: { id: req.user.id } })
         .then(function(profile) {
