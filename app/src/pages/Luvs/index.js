@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Luvs.css'
 
-import { Card, Table } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import LuvsList from './list'
 import RouterButton from '../../elements/RouterButton'
 
@@ -26,21 +26,12 @@ class Luvs extends Component {
         <Card className='luvs'>
           <Card.Content>
             <Card.Header>Luvs</Card.Header>
-            <Card.Description>
-              <Table fixed singleLine unstackable>
-                <Table.Header>
-                  <Table.Row textAlign='center'>
-                    <Table.HeaderCell>Collecting for</Table.HeaderCell>
-                    <Table.HeaderCell>Collected</Table.HeaderCell>
-                    <Table.HeaderCell />
-                  </Table.Row>
-                </Table.Header>
-                <LuvsList
-                  luvs={luvs.list}
-                  setCurrentLuv={setCurrentLuv}
-                />
-            </Table>
-            </Card.Description>
+          </Card.Content>
+          <Card.Content>
+              <LuvsList
+                luvs={luvs.list}
+                setCurrentLuv={setCurrentLuv}
+              />
           </Card.Content>
           <Card.Content extra>
             <RouterButton to='/luvs/new' from='/luvs' label='Create a luv' />

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Home.css'
 
-import { Card, Table } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import FeedList from './list'
 
 import { fetchFeed } from '../../redux/actions/feed'
@@ -19,28 +19,18 @@ class Home extends Component {
     const { setCurrentLuv } = this.props
     return (
       <RootLayout>
-        <Card className='feed'>
+        <Card className='luvs'>
           <Card.Content>
-            <Card.Header>World Luv</Card.Header>
-            <Card.Description>
-              <Table fixed singleLine unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>Collecting for</Table.HeaderCell>
-                    <Table.HeaderCell>Collected</Table.HeaderCell>
-                    <Table.HeaderCell />
-                  </Table.Row>
-                </Table.Header>
-
-                <FeedList
-                  feed={this.props.feed || []}
-                  setCurrentLuv={setCurrentLuv}
-                />
-            </Table>
-            </Card.Description>
+            <Card.Header>World Luvs</Card.Header>
+          </Card.Content>
+          <Card.Content>
+            <FeedList
+              feed={this.props.feed || []}
+              setCurrentLuv={setCurrentLuv}
+            />
           </Card.Content>
           <Card.Content extra>
-            <RouterButton to='/luvs/new' from='/' label='Make a luv' />
+            <RouterButton to='/luvs/new' from='/' label='make a luv' />
           </Card.Content>
         </Card>
       </RootLayout>
