@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import './Luvs.css'
 
 import { Card } from 'semantic-ui-react'
@@ -16,13 +15,12 @@ class Luvs extends Component {
     if(this.props.user.isAuthenticated) {
       this.props.fetchLuvs(this.props.user)
       this.props.refreshLuvs()
+    } else {
+      this.props.history.push('/login')
     }
   }
   render() {
     const { luvs, setCurrentLuv } = this.props
-    if(!this.props.user.isAuthenticated) {
-      return <Redirect to='/login' from='/luvs/new' />
-    }
     return (
       <RootLayout>
         <Card className='luvs'>

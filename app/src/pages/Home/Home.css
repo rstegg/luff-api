@@ -4,8 +4,12 @@
   align-items: center;
   justify-content: center;
 }
+
 .feed {
-  height: 88.5vh;
+  min-height: 20%;
+  height: 88.5%;
+  height: auto;
+  overflow: auto;
 }
 
 @media only screen and (min-width:768px)  {

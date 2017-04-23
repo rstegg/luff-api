@@ -30,6 +30,11 @@ const Flydown = ({
     </Dropdown.Menu>
   </Dropdown>
 
+const mapStateToProps = ({user}) =>
+({
+  user
+})
+
 const mapDispatchToProps = dispatch =>
 ({
   toLogin:   () => dispatch(push('/login')),
@@ -40,11 +45,6 @@ const mapDispatchToProps = dispatch =>
   toPencil:   () => dispatch(push('/luvs/new')),
   toSettings: userId => dispatch(push(`/profile/view/${userId}`)),
   toPower:    () => dispatch({type: 'LOGOUT'})
-})
-
-const mapStateToProps = ({user}) =>
-({
-  user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Flydown)
