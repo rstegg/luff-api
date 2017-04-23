@@ -9,14 +9,14 @@ const LuvsItem = ({className, onClick, luv}) =>
             <Image src={luv.image || '/luvholder.png'} shape='rounded' size='mini' />
             <Header.Content>
               {luv.name}
-              <Header.Subheader>{luv.amount_type} {luv.amount_type === 'fixed' && `${luv.amount}`}</Header.Subheader>
+              <Header.Subheader>{luv.amount_type} {luv.amount_type === 'fixed' && `$${luv.amount}`}</Header.Subheader>
             </Header.Content>
           </Header>
         </Table.Cell>
         <Table.Cell textAlign='center'>
           <Header as='h3'>
             <Header.Content>
-              {luv.raised}
+              ${luv.raised} raised
               <Header.Subheader>{luv.amount_type}</Header.Subheader>
             </Header.Content>
           </Header>

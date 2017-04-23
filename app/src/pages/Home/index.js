@@ -23,7 +23,7 @@ class Home extends Component {
           <Card.Content>
             <Card.Header>World Luv</Card.Header>
             <Card.Description>
-              <Table fixed singleLine unstackable color='pink' inverted>
+              <Table fixed singleLine unstackable>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Collecting for</Table.HeaderCell>
