@@ -12,7 +12,7 @@ import RootLayout from '../../components/layouts/Root'
 import Dropzone from '../../components/Dropzone'
 
 const Avatar = ({image, uploadLuvImage}) =>
-  <Dropzone className='ui image editable luvimg' onDrop={uploadLuvImage}>
+  <Dropzone className='ui image editable' onDrop={uploadLuvImage}>
     <Image src={image || '/luvholder.png'} />
   </Dropzone>
 

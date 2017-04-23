@@ -32,7 +32,7 @@ class ViewLuv extends Component {
         <Grid>
           <Grid.Column>
             <Card>
-              <Image src={luv.image || '/luvholder.png'} className='luvimg' />
+              <Image src={luv.image || '/luvholder.png'} />
               <Card.Content>
                 <Card.Header>{luv.name}</Card.Header>
                 <Card.Meta>{renderAmount(luv.amount_type, luv.amount)}</Card.Meta>
