@@ -1,22 +1,25 @@
 import React from 'react'
 
 import LuvsItem from '../../elements/LuvsItem'
+import { Table } from 'semantic-ui-react'
 
 const FeedList =
 ({
   feed,
   setCurrentLuv
 }) =>
-  <ul className='feed--list'>
-    {
-      feed.length ? feed.map((luv, i) =>
+      <Table.Body>
+      {feed.length ? feed.map((luv, i) =>
         <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
-      )
-      :
-      <li>
-        No Luvs!
-      </li>
-    }
-  </ul>
+      ) :
+        <Table.Row>
+          <Table.Cell />
+          <Table.Cell>
+            No World Luvs!
+          </Table.Cell>
+          <Table.Cell />
+        </Table.Row>
+      }
+    </Table.Body>
 
 export default FeedList

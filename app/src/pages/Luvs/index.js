@@ -27,7 +27,7 @@ class Luvs extends Component {
           <Card.Content>
             <Card.Header>Luvs</Card.Header>
             <Card.Description>
-              <Table fixed singleLine>
+              <Table fixed singleLine unstackable color='purple' inverted>
                 <Table.Header>
                   <Table.Row textAlign='center'>
                     <Table.HeaderCell>Collecting for</Table.HeaderCell>

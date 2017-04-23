@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Home.css'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Table } from 'semantic-ui-react'
 import FeedList from './list'
 
 import { fetchFeed } from '../../redux/actions/feed'
@@ -16,16 +16,27 @@ class Home extends Component {
     this.props.fetchFeed()
   }
   render() {
+    const { setCurrentLuv } = this.props
     return (
       <RootLayout>
         <Card className='feed'>
           <Card.Content>
-            <Card.Header>Recent Luvs</Card.Header>
+            <Card.Header>World Luv</Card.Header>
             <Card.Description>
-              <FeedList
-                feed={this.props.feed || []}
-                setCurrentLuv={setCurrentLuv}
-              />
+              <Table fixed singleLine unstackable color='pink' inverted>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Collecting for</Table.HeaderCell>
+                    <Table.HeaderCell>Collected</Table.HeaderCell>
+                    <Table.HeaderCell />
+                  </Table.Row>
+                </Table.Header>
+
+                <FeedList
+                  feed={this.props.feed || []}
+                  setCurrentLuv={setCurrentLuv}
+                />
+            </Table>
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
@@ -44,7 +55,8 @@ const mapStateToProps = ({feed}) =>
 
 const mapDispatchToProps = dispatch =>
 ({
-  fetchFeed: () => dispatch(fetchFeed())
+  fetchFeed: () => dispatch(fetchFeed()),
+  setCurrentLuv: (luv) => dispatch(setCurrentLuv(luv))
 })
 
 export default connect(
