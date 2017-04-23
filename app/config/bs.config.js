@@ -1,6 +1,6 @@
 module.exports = {
   ui: {
-    port: 3030,
+    port: 3080,
     weinre: { port: 8080 }
   },
   port: 1337,

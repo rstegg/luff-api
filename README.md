@@ -14,6 +14,8 @@
 
 ## General TODO:
 
+* Add loading screens
+
 * Setup development and production building
 * Add tests (PRIORITY)
 

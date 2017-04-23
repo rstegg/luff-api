@@ -3,6 +3,14 @@ export const refreshLuvs = () =>
   type: 'REFRESH_LUVS'
 })
 
+export const saveFreeLuv = (luv) =>
+({
+  type: 'SAVE_FREE_LUV',
+  payload: {
+    luv
+  }
+})
+
 export const shareLuv = ({name, email, message}, user, url) =>
 ({
   type: 'SHARE_LUV',

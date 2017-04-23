@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Label } from 'semantic-ui-react'
 
 import { onSignupSubmit } from '../../redux/actions/signup'
 
@@ -13,6 +13,7 @@ import RootLayout from '../../components/layouts/Root'
 
 const Signup = ({
   user,
+  luv,
   onSignupSubmit
 }) =>
   user.isAuthenticated ?
@@ -25,6 +26,7 @@ const Signup = ({
         <Card.Content>
           <Card.Header>Signup</Card.Header>
           <Card.Description>
+            {luv.name && <Label ribbon>Signup to share the luv! {luv.name}</Label>}
             <SignupForm onSubmit={onSignupSubmit} isLoading={user.isLoading} />
           </Card.Description>
         </Card.Content>
@@ -34,9 +36,10 @@ const Signup = ({
       </Card>
     </RootLayout>
 
-const mapStateToProps = ({user}) =>
+const mapStateToProps = ({user, luvs}) =>
 ({
   user,
+  luv: luvs.free
 })
 
 const mapDispatchToProps = dispatch =>

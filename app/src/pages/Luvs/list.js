@@ -1,22 +1,27 @@
 import React from 'react'
 
 import LuvsItem from '../../elements/LuvsItem'
+import { Table } from 'semantic-ui-react'
 
 const LuvsList =
 ({
   luvs,
   setCurrentLuv
 }) =>
-  <ul className='luvs--list'>
-    {
-      luvs.length ? luvs.map((luv, i) =>
+      <Table.Body>
+      {luvs.length ? luvs.map((luv, i) =>
         <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
-      )
-      :
-      <li>
-        No Luvs!
-      </li>
-    }
-  </ul>
+      ) :
+        <Table.Row textAlign='center'>
+          <Table.Cell>
+            No Luvs!
+          </Table.Cell>
+        </Table.Row>
+      }
+    </Table.Body>
+
+
+
+
 
 export default LuvsList

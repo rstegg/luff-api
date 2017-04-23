@@ -19,7 +19,7 @@
 }
 
 .dropdown--mobile {
-  align-self: center;
+  margin-right: -45% !important;
   width: 100vw;
   height: 90vh;
   right: 0;
@@ -27,13 +27,13 @@
 }
 
 .dropdown--mobile__item {
-  display: flex;
-  flex: 1;
-  height: 20vh;
+  margin: 5vh 5vw !important;
+  font-size: 2em !important;
+  text-transform: none !important;
 }
 
-.dropdown--mobile {
-  margin-right: -45% !important;
+.dropdown--mobile__item:hover {
+  background-color: #ccc;
 }
 
 @media only screen and (min-width:768px)  {

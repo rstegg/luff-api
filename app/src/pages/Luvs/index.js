@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Luvs.css'
 
-import { Card } from 'semantic-ui-react'
+import { Card, Table } from 'semantic-ui-react'
 import LuvsList from './list'
 import RouterButton from '../../elements/RouterButton'
 
@@ -14,10 +14,10 @@ class Luvs extends Component {
   componentDidMount() {
     if(this.props.user.isAuthenticated) {
       this.props.fetchLuvs(this.props.user)
-      this.props.refreshLuvs()
     } else {
-      this.props.history.push('/login')
+      this.props.history.push('/')
     }
+    this.props.refreshLuvs()
   }
   render() {
     const { luvs, setCurrentLuv } = this.props
@@ -27,14 +27,23 @@ class Luvs extends Component {
           <Card.Content>
             <Card.Header>Luvs</Card.Header>
             <Card.Description>
-              <LuvsList
-                luvs={luvs.list}
-                setCurrentLuv={setCurrentLuv}
-              />
+              <Table fixed singleLine>
+                <Table.Header>
+                  <Table.Row textAlign='center'>
+                    <Table.HeaderCell>Collecting for</Table.HeaderCell>
+                    <Table.HeaderCell>Collected</Table.HeaderCell>
+                    <Table.HeaderCell />
+                  </Table.Row>
+                </Table.Header>
+                <LuvsList
+                  luvs={luvs.list}
+                  setCurrentLuv={setCurrentLuv}
+                />
+            </Table>
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <RouterButton to='/luvs/new' from='/luvs' label='Create a Luv' />
+            <RouterButton to='/luvs/new' from='/luvs' label='Create a luv' />
           </Card.Content>
         </Card>
       </RootLayout>

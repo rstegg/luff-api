@@ -14,6 +14,7 @@ import Signup from './pages/Signup'
 import SignupSuccess from './pages/Signup/Success'
 import Luvs from './pages/Luvs'
 import CreateLuv from './pages/CreateLuv'
+import CreateFreeLuv from './pages/CreateFreeLuv'
 import ViewLuv from './pages/ViewLuv'
 import EditLuv from './pages/EditLuv'
 import Payments from './pages/Payments'
@@ -34,6 +35,7 @@ render(
           <Route exact path='/signup/success' component={SignupSuccess} />
           <Route exact path='/luvs' component={Luvs} />
           <Route exact path='/luvs/new' component={CreateLuv} />
+          <Route exact path='/luvs/try' component={CreateFreeLuv} />
           <Route exact path='/luvs/view/:id' component={ViewLuv} />
           <Route exact path='/luvs/edit/:id' component={EditLuv} />
           <Route exact path='/payments' component={Payments} />

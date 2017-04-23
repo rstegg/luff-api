@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { Card } from 'semantic-ui-react'
 
 import { resetSignup } from '../../../redux/actions/signup'
+import { createLuv } from '../../../redux/actions/luvs'
 
 import RouterButton from '../../../elements/RouterButton'
 
@@ -13,6 +14,9 @@ import RootLayout from '../../../components/layouts/Root'
 class SignupSuccess extends Component {
   componentWillMount() {
     this.props.resetSignup()
+    if(this.props.luv) {
+      this.props.createLuv(this.props.luv, this.props.user)
+    }
   }
   render() {
     const { user } = this.props
@@ -37,14 +41,16 @@ class SignupSuccess extends Component {
   }
 }
 
-const mapStateToProps = ({user}) =>
+const mapStateToProps = ({user, luvs}) =>
 ({
   user,
+  luv: luvs.free
 })
 
 const mapDispatchToProps = dispatch =>
 ({
   resetSignup: () => dispatch(resetSignup()),
+  createLuv: (luv, user) => dispatch(createLuv(luv, user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupSuccess)

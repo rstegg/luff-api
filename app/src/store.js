@@ -40,7 +40,7 @@ const store = createStore(
 )
 
 const persistConfig = {
-  whitelist: ['user']
+  whitelist: ['user', 'luvs']
 }
 
 persistStore(store, persistConfig)

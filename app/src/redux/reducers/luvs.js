@@ -3,11 +3,16 @@ const initialState = {
   new: {
     image: null
   },
-  list: []
+  list: [],
+  free: {}
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
+    case 'SAVE_FREE_LUV':
+      return Object.assign({}, state, {
+        free: action.payload.luv
+      })
     case 'FETCH_LUVS_SUCCESS':
       return Object.assign({}, state, {
         list: action.payload.luvs
@@ -18,7 +23,8 @@ export default function(state = initialState, action) {
         new: {
           ...state.new,
           isCreated: true
-        }
+        },
+        free: initialState
       })
     case 'UPLOAD_LUV_IMAGE_SUCCESS':
       return Object.assign({}, state, {

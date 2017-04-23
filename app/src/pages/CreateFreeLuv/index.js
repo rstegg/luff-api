@@ -5,22 +5,20 @@ import { Redirect } from 'react-router-dom'
 import { Card, Image } from 'semantic-ui-react'
 import CreateLuvForm from './form'
 
-import { createLuv, uploadLuvImage } from '../../redux/actions/luvs'
+import { saveFreeLuv, uploadLuvImage } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
 
 import Dropzone from '../../components/Dropzone'
 
 const Avatar = ({image, uploadLuvImage}) =>
-  <Dropzone className='ui image editable luvimg' onDrop={uploadLuvImage}>
+  <Dropzone className='ui image editable' onDrop={uploadLuvImage}>
     <Image src={image || '/luvholder.png'} />
   </Dropzone>
 
-const CreateLuv = ({ user, luv, createLuv, uploadLuvImage }) =>
-  !user.isAuthenticated ?
-    <Redirect to='/luvs/try' from='/luvs/new' />
-  : luv.isCreated ?
-    <Redirect to='/luvs' from='/luvs/new' />
+const CreateLuv = ({ user, luv, saveFreeLuv, uploadLuvImage }) =>
+  user.isAuthenticated ?
+    <Redirect to='/luvs/new' from='/luvs/try' />
   :
   <RootLayout>
     <Card>
@@ -28,7 +26,10 @@ const CreateLuv = ({ user, luv, createLuv, uploadLuvImage }) =>
       <Card.Content>
         <Card.Header>New Luv</Card.Header>
         <Card.Description>
-          <CreateLuvForm onSubmit={values => createLuv(({...values, image: luv.image}), user)} />
+          <CreateLuvForm onSubmit={values => {
+            saveFreeLuv(({...values, image: luv.image}), user)
+            this.props.history.push('/signup')
+          }} />
         </Card.Description>
       </Card.Content>
     </Card>
@@ -42,7 +43,7 @@ const mapStateToProps = ({user, luvs}) =>
 
 const mapDispatchToProps = dispatch =>
 ({
-  createLuv: (luv, user) => dispatch(createLuv(luv, user)),
+  saveFreeLuv: (luv, user) => dispatch(saveFreeLuv(luv, user)),
   uploadLuvImage: (img, user) => dispatch(uploadLuvImage(img, user))
 })
 

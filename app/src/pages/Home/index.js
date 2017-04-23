@@ -9,6 +9,7 @@ import { fetchFeed } from '../../redux/actions/feed'
 import { setCurrentLuv } from '../../redux/actions/luvs'
 
 import RootLayout from '../../components/layouts/Root'
+import RouterButton from '../../elements/RouterButton'
 
 class Home extends Component {
   componentWillMount() {
@@ -26,6 +27,9 @@ class Home extends Component {
                 setCurrentLuv={setCurrentLuv}
               />
             </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <RouterButton to='/luvs/new' from='/' label='Make a luv' />
           </Card.Content>
         </Card>
       </RootLayout>

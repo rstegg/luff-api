@@ -340,7 +340,7 @@ class Dropzone extends React.Component {
       >
         {this.renderChildren(children)}
         <input
-          {...inputProps/* expand user provided inputProps first so inputAttributes override them */}
+          {...inputProps}
           {...inputAttributes}
         />
       </div>
@@ -356,39 +356,5 @@ Dropzone.defaultProps = {
   maxSize: Infinity,
   minSize: 0
 }
-
-// Dropzone.propTypes = {
-//   onClick: React.PropTypes.func,
-//   onDrop: React.PropTypes.func,
-//   onDropAccepted: React.PropTypes.func,
-//   onDropRejected: React.PropTypes.func,
-//   onDragStart: React.PropTypes.func,
-//   onDragEnter: React.PropTypes.func,
-//   onDragOver: React.PropTypes.func,
-//   onDragLeave: React.PropTypes.func,
-//
-//   children: React.PropTypes.oneOfType([
-//     React.PropTypes.node,
-//     React.PropTypes.func
-//   ]), // Contents of the dropzone
-//   style: React.PropTypes.object, // CSS styles to apply
-//   activeStyle: React.PropTypes.object, // CSS styles to apply when drop will be accepted
-//   rejectStyle: React.PropTypes.object, // CSS styles to apply when drop will be rejected
-//   className: React.PropTypes.string, // Optional className
-//   activeClassName: React.PropTypes.string, // className for accepted state
-//   rejectClassName: React.PropTypes.string, // className for rejected state
-//
-//   preventDropOnDocument: React.PropTypes.bool, // If false, allow dropped items to take over the current browser window
-//   disablePreview: React.PropTypes.bool, // Enable/disable preview generation
-//   disableClick: React.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
-//   onFileDialogCancel: React.PropTypes.func, // Provide a callback on clicking the cancel button of the file dialog
-//
-//   inputProps: React.PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
-//   multiple: React.PropTypes.bool, // Allow dropping multiple files
-//   accept: React.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
-//   name: React.PropTypes.string, // name attribute for the input tag
-//   maxSize: React.PropTypes.number,
-//   minSize: React.PropTypes.number
-// }
 
 export default Dropzone
