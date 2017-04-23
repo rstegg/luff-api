@@ -26,7 +26,7 @@ const BottomNav =
       <Popup position='top center' trigger={<Button basic circular onClick={toFeed} icon='globe' size='massive' className='menu--button' />} content='public luv' />
       {!user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toFreePencil} icon='edit' size='massive' className='menu--button' />} content='make a luv' />}
       {!user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toLogin} icon='sign in' size='massive' className='menu--button' />} content='login' />}
-      {!user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toSignup} icon='user circle' size='massive' className='menu--button' />} content='sign up' />}
+      {!user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toSignup} icon='add user' size='massive' className='menu--button' />} content='sign up' />}
       {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toLuvs} icon='heart' size='massive' className='menu--button' />} content='your luvs' />}
       {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPayments} icon='shop' size='massive' className='menu--button' />} content='payments' />}
       {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPencil} icon='edit' size='massive' className='menu--button' />} content='make a luv' />}
