@@ -1,12 +1,8 @@
-export const onSignupSubmit = ({email, password, first_name, last_name, country}) =>
+export const onSignupSubmit = user =>
 ({
   type: 'SIGNUP_SUBMIT',
   payload: {
-    email,
-    password,
-    first_name,
-    last_name,
-    country
+    user
   }
 })
 

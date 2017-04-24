@@ -4,6 +4,7 @@ import {
   onEditLuvSuccess,
   onCreateLuvSuccess,
   onUploadLuvImageSuccess,
+  onUploadFreeLuvImageSuccess,
   onShareLuvSuccess
 } from '../actions/luvs'
 import su from 'superagent'
@@ -43,6 +44,12 @@ const api = {
       .attach('image', image)
       .set('Accept', 'application/json')
       .set('Authorization', token)
+    return Observable.fromPromise(request)
+  },
+  uploadFreeLuvImage: ({image}) => {
+    const request = su.post(`${API_HOST}/image/luv/free`)
+      .attach('image', image)
+      .set('Accept', 'application/json')
     return Observable.fromPromise(request)
   },
   editLuv: ({id, name, description, amount_type, is_public, token}) => {
@@ -101,6 +108,16 @@ export const uploadLuvImage = action$ =>
         .map(onUploadLuvImageSuccess)
         .catch(error => Observable.of({
           type: 'UPLOAD_LUV_IMAGE_FAILURE'
+        }))
+    )
+
+export const uploadFreeLuvImage = action$ =>
+  action$.ofType('UPLOAD_FREE_LUV_IMAGE')
+    .mergeMap(action =>
+      api.uploadFreeLuvImage(action.payload)
+        .map(onUploadFreeLuvImageSuccess)
+        .catch(error => Observable.of({
+          type: 'UPLOAD_FREE_LUV_IMAGE_FAILURE'
         }))
     )
 

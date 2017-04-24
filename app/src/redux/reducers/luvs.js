@@ -11,7 +11,10 @@ export default function(state = initialState, action) {
   switch(action.type) {
     case 'SAVE_FREE_LUV':
       return Object.assign({}, state, {
-        free: action.payload.luv
+        free: {
+          ...action.payload.luv,
+          saved: true
+        }
       })
     case 'FETCH_LUVS_SUCCESS':
       return Object.assign({}, state, {
@@ -24,13 +27,21 @@ export default function(state = initialState, action) {
           ...state.new,
           isCreated: true
         },
-        free: initialState
+        free: initialState.free
       })
     case 'UPLOAD_LUV_IMAGE_SUCCESS':
       return Object.assign({}, state, {
         new: {
           ...state.new,
-          image: action.payload.image
+          image: action.payload.image,
+        }
+      })
+    case 'UPLOAD_FREE_LUV_IMAGE_SUCCESS':
+      return Object.assign({}, state, {
+        free: {
+          ...state.free,
+          image: action.payload.image,
+          saved: true
         }
       })
     case 'FETCH_SINGLE_LUV_SUCCESS':
@@ -44,7 +55,8 @@ export default function(state = initialState, action) {
     case 'REFRESH_LUVS':
       return Object.assign({}, state, {
         current: initialState.current,
-        new: initialState.new
+        new: initialState.new,
+        free: initialState.free,
       })
     case 'FETCH_LUVS_FAILURE':
     case 'FETCH_SINGLE_LUV_FAILURE':

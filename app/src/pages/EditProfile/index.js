@@ -25,7 +25,7 @@ const EditProfile = ({ user, profile, editProfile, uploadAvatar }) =>
   :
   <RootLayout>
     <Card>
-      <Avatar image={user.image} name={`${user.first_name} ${user.last_name}`} uploadAvatar={img => uploadAvatar(img[0], user)} />
+      <Avatar image={user.image} name={`${user.name}`} uploadAvatar={img => uploadAvatar(img[0], user)} />
       <Card.Content>
         <Card.Header>Edit Profile</Card.Header>
         <Card.Description>

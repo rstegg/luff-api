@@ -14,7 +14,7 @@ import RootLayout from '../../../components/layouts/Root'
 class SignupSuccess extends Component {
   componentWillMount() {
     this.props.resetSignup()
-    if(this.props.luv) {
+    if(this.props.luv.saved) {
       this.props.createLuv(this.props.luv, this.props.user)
     }
   }

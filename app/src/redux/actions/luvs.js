@@ -3,7 +3,7 @@ export const refreshLuvs = () =>
   type: 'REFRESH_LUVS'
 })
 
-export const saveFreeLuv = (luv) =>
+export const saveFreeLuv = luv =>
 ({
   type: 'SAVE_FREE_LUV',
   payload: {
@@ -107,6 +107,23 @@ export const uploadLuvImage = (image, {token}) =>
 export const onUploadLuvImageSuccess = res =>
 ({
   type: 'UPLOAD_LUV_IMAGE_SUCCESS',
+  payload: {
+    image: res.body.image
+  }
+})
+
+export const uploadFreeLuvImage = (image, {token}) =>
+({
+  type: 'UPLOAD_FREE_LUV_IMAGE',
+  payload: {
+    image,
+    token
+  }
+})
+
+export const onUploadFreeLuvImageSuccess = res =>
+({
+  type: 'UPLOAD_FREE_LUV_IMAGE_SUCCESS',
   payload: {
     image: res.body.image
   }

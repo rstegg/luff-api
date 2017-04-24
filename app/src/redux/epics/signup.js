@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Rx'
 const API_HOST = '/api/v1'
 
 const api = {
-  signup: ({ email, password, first_name, last_name, country }) => {
+  signup: ({user}) => {
     const request = su.post(`${API_HOST}/signup`)
-        .send({ email, password, first_name, last_name, country })
+        .send({user})
         .set('Accept', 'application/json')
     return Observable.fromPromise(request)
   }
@@ -18,9 +18,9 @@ const onSignupSubmit = action$ =>
     .mergeMap(action =>
       api.signup(action.payload)
         .map(onSignupSuccess)
-        .catch(error => Observable.of({
+        .catch(res => Observable.of({
           type: 'SIGNUP_FAILURE'
         }))
-    )
+      )
 
 export default onSignupSubmit

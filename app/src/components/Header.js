@@ -19,7 +19,7 @@ const Header = ({user, isMobile}) =>
           <Button.Group>
             <NavLink to={`/profile/view/${user.id}`} from="/">
               <Button primary>
-                {user.image && <Image src={user.image} alt={user.first_name} avatar /> }
+                {user.image && <Image src={user.image} alt={user.username} avatar /> }
                 Profile
               </Button>
             </NavLink>

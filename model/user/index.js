@@ -36,19 +36,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    country: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: 'US'
-    },
     username: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    currency: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: 'USD'
     },
     verified: {
       type: DataTypes.BOOLEAN,
@@ -79,23 +69,12 @@ module.exports = function(sequelize, DataTypes) {
         isIP: true,
       }
     },
-    first_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         is: ["^[a-z]+$",'i'],
       }
-    },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        is: ["^[a-z]+$",'i'],
-      }
-    },
-    display_name: {
-      type: DataTypes.STRING,
-      allowNull: true
     },
     address: {
       type: DataTypes.STRING,

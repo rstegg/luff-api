@@ -6,8 +6,7 @@ module.exports = function(app, options) {
       .then(function(user) {
         const profile = {
           id: user.id,
-          first_name: user.first_name,
-          last_name: user.last_name,
+          name: user.name,
           username: user.username,
           image: user.image,
           bio: user.bio
@@ -22,8 +21,7 @@ module.exports = function(app, options) {
   app.post(`${API_HOST}/profile`, passport.authenticate('jwt', { session: false }), function(req, res) {
     if(req.body.profile.id === req.user.id) {
       const {
-        first_name,
-        last_name,
+        name,
         email,
         country,
         dob,
@@ -31,8 +29,7 @@ module.exports = function(app, options) {
         username
       } = req.body.profile
       const updatedUser = {
-        first_name,
-        last_name,
+        name,
         email,
         country,
         dob,

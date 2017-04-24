@@ -39,4 +39,8 @@ module.exports = function(app, options) {
   app.post(`${API_HOST}/image/luv`, passport.authenticate('jwt', { session: false }), upload.single('image'), function(req, res) {
       res.status(200).json({image: req.file.location})
   })
+
+  app.post(`${API_HOST}/image/luv/free`, upload.single('image'), function(req, res) {
+      res.status(200).json({image: req.file.location})
+  })
 }
