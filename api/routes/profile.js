@@ -23,7 +23,6 @@ module.exports = function(app, options) {
       const {
         name,
         email,
-        country,
         dob,
         bio,
         username
@@ -31,7 +30,6 @@ module.exports = function(app, options) {
       const updatedUser = {
         name,
         email,
-        country,
         dob,
         bio,
         username

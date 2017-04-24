@@ -5,20 +5,20 @@ const Stripe = window.Stripe
 
 const api = {
   createStripeBank: ({ bank: { routing_number, account_number, account_holder_name, account_holder_type }, user }) => {
-    const { country, currency } = user
     const request =
-      Stripe.bankAccount.createToken({ country, currency, routing_number, account_number, account_holder_name, account_holder_type })
-    return Observable.fromCallback(request)
+      Observable.fromCallback(
+        Stripe.bankAccount.createToken,
+        (status, response) => ({ status, response })
+      )
+      return request({ country: 'US', currency: 'USD', routing_number, account_number, account_holder_name, account_holder_type })
   },
   createStripeCard: ({ payment: { number, cvc, expiry, address_zip }, user, luvId }) => {
-    const exp_month = expiry.split('/')[0]
-    const exp_year = expiry.split('/')[1]
     const request =
       Observable.bindCallback(
         Stripe.card.createToken,
         (status, response) => ({ status, response })
       )
-      return request({ number, cvc, exp_month, exp_year, address_zip })
+      return request({ number, cvc, expiry, address_zip })
   },
 }
 

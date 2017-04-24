@@ -89,8 +89,8 @@ module.exports = function(app, options) {
       from: 'luvpay.io <hello@mg.luvpay.io>',
       to: req.body.email,
       subject: `${req.body.name}, your friend is collecting with luvpay.io!`,
-      text: `${req.user.first_name} ${req.user.last_name} is collecting with luvpay.io! Go here to contribute: ${req.body.url}`,
-      html: `<div> ${req.user.first_name} ${req.user.last_name} is collecting with luvpay! <a href=${req.body.url}>Go here to contribute</a> Note: ${req.body.message} </div>`
+      text: `${req.user.name} is collecting with luvpay.io! Go here to contribute: ${req.body.url}`,
+      html: `<div> ${req.user.name} is collecting with luvpay! <a href=${req.body.url}>Go here to contribute</a> Note: ${req.body.message} </div>`
     })
     mail.build(function(mailBuildError, message) {
       const shareEmail = {

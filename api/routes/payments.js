@@ -25,7 +25,7 @@ module.exports = function(app, options) {
       }
       stripe.charges.create({
         amount: req.body.payment.amount,
-        currency: req.user.currency,
+        currency: 'USD',
         source: req.body.card.id,
         description: `Payment from ${req.user.email} to luvId ${req.body.luvId}`
       }, function(err, charge) {

@@ -20,7 +20,7 @@ class ViewProfile extends Component {
         <Card>
           <Image src={profile.image || '/placeholder.png'} className='profimg' />
           <Card.Content>
-            <Card.Header>{profile.first_name} {profile.last_name}</Card.Header>
+            <Card.Header>{profile.name}</Card.Header>
             <Card.Description>{profile.bio || 'New user'}</Card.Description>
           </Card.Content>
           {profile.userId === user.id && <Card.Content extra>

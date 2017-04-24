@@ -22,7 +22,7 @@ class ViewPayment extends Component {
         </div>
         <Card>
           <Card.Content>
-            <Card.Header>{user.first_name} {user.last_name}</Card.Header>
+            <Card.Header>{user.name}</Card.Header>
             <Card.Meta>Paid - ${payment.amount}</Card.Meta>
             <Card.Description>
               <Label basic>Note: {payment.name}</Label>
