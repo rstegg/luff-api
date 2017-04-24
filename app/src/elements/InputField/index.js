@@ -9,7 +9,7 @@ const InputField = ({ input, meta: { asyncValidating, touched, error }, type, la
       <input type={type || 'text'} {...input} placeholder={placeholder || label} />
       {asyncValidating && <i className='search icon'></i>}
     </div>
-    {touched && error && <Label basic color='red' pointing='left' className='error-tag'>{error}</Label>}
+    {touched && error && <Label basic color='red' pointing>{error}</Label>}
   </Form.Field>
 
 

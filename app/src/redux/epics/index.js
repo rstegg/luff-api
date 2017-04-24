@@ -23,6 +23,7 @@ export default combineEpics(
   signupSubmit,
   uploadAvatar,
   uploadLuvImage,
+  uploadFreeLuvImage,
   editProfile,
   fetchProfile,
 )

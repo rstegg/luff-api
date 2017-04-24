@@ -38,7 +38,7 @@ const connectedCreateFreeLuvForm = reduxForm({
   validate
 })(CreateFreeLuvForm)
 
-const selector = formValueSelector('newLuv')
+const selector = formValueSelector('newFreeLuv')
 
 const mapStateToProps = state =>
 ({
