@@ -30,7 +30,7 @@ class Home extends Component {
             />
           </Card.Content>
           <Card.Content extra>
-            <RouterButton to='/luvs/new' from='/' label='make a luv' />
+            <RouterButton to='/luvs/new' from='/' label='start a luv' />
           </Card.Content>
         </Card>
       </RootLayout>

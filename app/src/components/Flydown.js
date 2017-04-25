@@ -29,7 +29,7 @@ const Flydown = ({
       <DropItem onClick={toFeed} text='public luv' icon='globe'   />
       {user.isAuthenticated && <DropItem onClick={toLuvs} text='your luv' icon='heart'   />}
       {user.isAuthenticated && <DropItem onClick={toPayments} text='payments' icon='shop'   />}
-      <DropItem onClick={toPencil} text='make a luv' icon='edit'   />
+      <DropItem onClick={toPencil} text='start a luv' icon='edit'   />
       {user.isAuthenticated && <DropItem onClick={() => user.id && toSettings(user.id)} text='profile' icon='setting'   />}
       {user.isAuthenticated && <Dropdown.Divider   />}
       {user.isAuthenticated && <DropItem onClick={toPower}  icon='power' text='logout'   />}
