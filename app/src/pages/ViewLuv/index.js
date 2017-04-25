@@ -3,15 +3,13 @@ import { connect } from 'react-redux'
 import './ViewLuv.css'
 
 import { Redirect } from 'react-router-dom'
-import { Card, Grid, Rail, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import RouterButton from '../../elements/RouterButton'
 
 import LuvMenu from '../../components/LuvMenu'
 
 import { fetchSingleLuv } from '../../redux/actions/luvs'
-
-import isMobile from '../../utils/isMobile'
 
 const renderAmount = (amt_type, amt) =>
   amt_type === 'fixed' ?
@@ -26,6 +24,9 @@ class ViewLuv extends Component {
   }
   render() {
     const { luv, user } = this.props
+    if(!luv) {
+      return <Redirect to='/' />
+    }
       return (
         <RootLayout>
           <Card>
