@@ -38,7 +38,7 @@ const CreateFreeLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage, history }) 
 const mapStateToProps = ({user, luvs}) =>
 ({
   user,
-  luv: luvs.new
+  luv: luvs.free
 })
 
 const mapDispatchToProps = dispatch =>

@@ -74,8 +74,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "staging": "rm -rf ../build && mv build ../build && zip -r -X build.zip ../build",
+    "staging": "rm -rf ../build && mv build ../build && 7z a build.zip ../build",
     "deploy": "scp build.zip root@luvpay.io:/root/",
+    "deploy:build": "npm-run-all --serial build staging deploy",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {

@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
+const shortId = require('shortid')
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -21,7 +22,7 @@ module.exports = function(app, options) {
         cb(null, {fieldName: file.fieldname});
       },
       key: function (req, file, cb) {
-        cb(null, req.user.id + '__' + Date.now().toString())
+        cb(null, shortId.generate() + '__' + Date.now().toString())
       }
     })
   })
