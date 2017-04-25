@@ -1,3 +1,5 @@
+import { REHYDRATE } from 'redux-persist/constants'
+
 const initialState = {
   current: {},
   new: {
@@ -57,6 +59,11 @@ export default function(state = initialState, action) {
         current: initialState.current,
         new: initialState.new,
         free: initialState.free,
+      })
+    case REHYDRATE:
+      return Object.assign({}, state, {
+        ...state,
+        free: action.payload.luvs.free
       })
     case 'FETCH_LUVS_FAILURE':
     case 'FETCH_SINGLE_LUV_FAILURE':
