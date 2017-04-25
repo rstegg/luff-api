@@ -19,15 +19,15 @@ const Signup = ({
   user.isAuthenticated ?
     <Redirect to='/luvs' from='/signup' />
   : user.isRegistered ?
-    <Redirect to='/signup/success' from='/signup' />
+    <Redirect to='/' from='/signup' />
   :
     <RootLayout>
       <Card>
         <Card.Content>
           <Card.Header>Signup</Card.Header>
           <Card.Description>
-            {luv.name && <Label ribbon>Signup to share the luv! {luv.name}</Label>}
-            <SignupForm onSubmit={onSignupSubmit} isLoading={user.isLoading} />
+            {luv.name && <Label ribbon>Signup to share your luv!</Label>}
+            <SignupForm onSubmit={onSignupSubmit} />
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

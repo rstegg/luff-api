@@ -13,7 +13,7 @@ const LuvsList =
         <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
       ) :
       <Feed.Event>
-        <Feed.Label image='/luvholder.png' />
+        <Feed.Label image='/images/luvholder.png' />
         <Feed.Content content='No Luvs!' />
       </Feed.Event>
       }

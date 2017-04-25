@@ -14,7 +14,7 @@ const FeedList =
         <LuvsItem key={`luv-${i}`} luv={luv} onClick={() => setCurrentLuv(luv)} />
       ) :
       <Feed.Event>
-        <Feed.Label image='/luvholder.png' />
+        <Feed.Label image='/images/luvholder.png' />
         <Feed.Content content='No World Luvs!' />
       </Feed.Event>
       }

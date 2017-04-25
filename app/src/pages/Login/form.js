@@ -14,11 +14,11 @@ const InputField = ({ input: { value, onChange }, name, type, label, control, pl
     control={control}
     placeholder={placeholder} />
 
-const LoginForm = ({handleSubmit, isLoading}) =>
+const LoginForm = ({handleSubmit, submitting}) =>
   <Form onSubmit={handleSubmit}>
-    <Field component={InputField} name="email" type="email" label='Email' control='input' placeholder='Email' />
+    <Field component={InputField} name="username" type="text" label='Username' control='input' placeholder='Username' />
     <Field component={InputField} name="password" type="password" label='Password' control='input' placeholder='Password' />
-    <Form.Button loading={isLoading} type="submit" primary>Log in</Form.Button>
+    <Form.Button loading={submitting} type="submit" primary>Log in</Form.Button>
   </Form>
 
 export default reduxForm({

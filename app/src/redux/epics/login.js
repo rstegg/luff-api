@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Rx'
 const API_HOST = '/api/v1'
 
 const api = {
-  login: ({email, password}) => {
+  login: ({username, password}) => {
     const request = su.post(`${API_HOST}/login`)
-        .send({email, password})
+        .send({username, password})
         .set('Accept', 'application/json')
     return Observable.fromPromise(request)
   }

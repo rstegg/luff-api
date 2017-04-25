@@ -20,7 +20,7 @@ import LuvMenuForm from './form'
 import { shareLuv } from '../../redux/actions/luvs'
 
 const LuvMenu = ({url, user, shareLuv}) =>
-  <Segment.Group compact>
+  <Segment.Group compact horizontal>
     <Segment>
       <CopyToClipboard text={url}>
         <Button circular basic icon='linkify' size='medium' />

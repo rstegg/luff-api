@@ -3,6 +3,7 @@ import './Root.css'
 
 import Menu from '../Menu'
 import Header from '../Header'
+import SignupSuccess from '../SuccessMessage'
 
 import isMobile from '../../utils/isMobile'
 
@@ -13,4 +14,5 @@ export default ({children}) =>
         {children}
       </div>
     <Menu isMobile={isMobile()} />
+    <SignupSuccess />
   </div>

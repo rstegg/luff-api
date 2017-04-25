@@ -23,7 +23,7 @@ const Login = ({
         <Card.Content>
           <Card.Header>Login</Card.Header>
           <Card.Description>
-            <LoginForm onSubmit={onLoginSubmit} isLoading={user.isLoading} />
+            <LoginForm onSubmit={onLoginSubmit} />
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

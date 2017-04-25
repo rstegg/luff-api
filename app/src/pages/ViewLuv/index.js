@@ -11,6 +11,8 @@ import LuvMenu from '../../components/LuvMenu'
 
 import { fetchSingleLuv } from '../../redux/actions/luvs'
 
+import isMobile from '../../utils/isMobile'
+
 const renderAmount = (amt_type, amt) =>
   amt_type === 'fixed' ?
     <p>Price: ${amt}</p>
@@ -24,35 +26,26 @@ class ViewLuv extends Component {
   }
   render() {
     const { luv, user } = this.props
-    if(!luv) {
-      return <Redirect to='/' />
-    }
-    return (
-      <RootLayout>
-        <Grid>
-          <Grid.Column>
-            <Card>
-              <Image src={luv.image || '/luvholder.png'} />
-              <Card.Content>
-                <Card.Header>{luv.name}</Card.Header>
-                <Card.Meta>{renderAmount(luv.amount_type, luv.amount)}</Card.Meta>
-                <Card.Description>{luv.description}</Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                { luv.userId === user.id ?
-                  <RouterButton to={`/luvs/edit/${luv.slug}`} from={`/luv/${luv.slug}`} label='Edit' />
-                  :
-                  <RouterButton to={`/payments/new/${luv.slug}`} from={`/luv/${luv.slug}`} label='Pay this luv' />
-                }
-              </Card.Content>
-            </Card>
-            <Rail attached position='right'>
-              <LuvMenu url={`https://luvpay.io/luvs/view/${luv.slug}`} />
-            </Rail>
-          </Grid.Column>
-        </Grid>
-      </RootLayout>
-    )
+      return (
+        <RootLayout>
+          <Card>
+            <Image src={luv.image || '/images/luvholder.png'} />
+            <Card.Content>
+              <Card.Header>{luv.name}</Card.Header>
+              <Card.Meta>{renderAmount(luv.amount_type, luv.amount)}</Card.Meta>
+              <Card.Description>{luv.description}</Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              { luv.userId === user.id ?
+                <RouterButton to={`/luvs/edit/${luv.slug}`} from={`/luv/${luv.slug}`} label='Edit' />
+                :
+                <RouterButton to={`/payments/new/${luv.slug}`} from={`/luv/${luv.slug}`} label='Pay this luv' />
+              }
+            </Card.Content>
+          </Card>
+          <LuvMenu url={`https://luvpay.io/luvs/view/${luv.slug}`} />
+        </RootLayout>
+      )
   }
 }
 

@@ -12,7 +12,7 @@ const feed = require('./routes/feed')
 const account = require('./routes/account')
 
 const configureAuth = require('./service/auth')
-const mailgun = require('./service/mail')
+const { mailgun } = require('./service/mail')
 const stripe = require('./service/stripe')
 
 module.exports = function(options) {

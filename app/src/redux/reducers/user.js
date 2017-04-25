@@ -26,6 +26,9 @@ export default function(state = initialState, action) {
       })
     case 'SIGNUP_SUCCESS':
       return Object.assign({}, state, {
+        ...action.payload.user,
+        isAuthenticated: true,
+        token: 'JWT ' + action.payload.token,
         isRegistered: true,
         error: false,
         isLoading: false

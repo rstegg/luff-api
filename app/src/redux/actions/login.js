@@ -1,8 +1,8 @@
-export const onLoginSubmit = ({email, password}) =>
+export const onLoginSubmit = ({username, password}) =>
 ({
   type: 'LOGIN_SUBMIT',
   payload: {
-    email,
+    username,
     password
   }
 })

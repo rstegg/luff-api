@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { Card, Image } from 'semantic-ui-react'
-import CreateLuvForm from './form'
+import CreateFreeLuvForm from './form'
 
 import { saveFreeLuv, uploadFreeLuvImage } from '../../redux/actions/luvs'
 
@@ -13,10 +13,10 @@ import Dropzone from '../../components/Dropzone'
 
 const Avatar = ({image, uploadFreeLuvImage}) =>
   <Dropzone className='ui image editable' onDrop={uploadFreeLuvImage}>
-    <Image src={image || '/luvholder.png'} />
+    <Image src={image || '/images/luvholder.png'} />
   </Dropzone>
 
-const CreateLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage }) =>
+const CreateFreeLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage, history }) =>
   user.isAuthenticated ?
     <Redirect to='/luvs/new' from='/luvs/try' />
   :
@@ -26,9 +26,9 @@ const CreateLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage }) =>
       <Card.Content>
         <Card.Header>New Luv</Card.Header>
         <Card.Description>
-          <CreateLuvForm onSubmit={values => {
+          <CreateFreeLuvForm onSubmit={values => {
             saveFreeLuv(({...values, image: luv.image}), user)
-            this.props.history.push('/signup')
+            history.push('/signup')
           }} />
         </Card.Description>
       </Card.Content>
@@ -50,4 +50,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CreateLuv)
+)(CreateFreeLuv)

@@ -6,13 +6,13 @@ import InputField from '../../elements/InputField'
 
 import { validate, asyncValidate } from './validators'
 
-const SignupForm = ({handleSubmit, isLoading}) =>
+const SignupForm = ({handleSubmit, submitting}) =>
   <Form onSubmit={handleSubmit}>
     <Field component={InputField} name="name" label='Full name' placeholder='Full name' />
     <Field component={InputField} name="username" label='Username' placeholder='Username' />
     <Field component={InputField} name="email" type="email" label='Email' placeholder='Email' />
     <Field component={InputField} name="password" type="password" label='Password' placeholder='Password' />
-    <Form.Button loading={isLoading} type="submit" primary>Sign up</Form.Button>
+    <Form.Button loading={submitting} type="submit" primary>Sign up</Form.Button>
   </Form>
 
 export default reduxForm({

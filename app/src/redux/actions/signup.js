@@ -10,7 +10,8 @@ export const onSignupSuccess = res =>
 ({
   type: 'SIGNUP_SUCCESS',
   payload: {
-    registered: true
+    user: res.body.user,
+    token: res.body.token
   }
 })
 

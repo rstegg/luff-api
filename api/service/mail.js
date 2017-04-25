@@ -1,5 +1,31 @@
 const api_key = process.env.MAILGUN_SECRET
 const domain = 'mg.luvpay.io'
 const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
+const mailcomposer = require('mailcomposer')
 
-module.exports = mailgun
+const confirmationTemplate = require('../emails/confirmation')
+
+const confirmationMail = (user, permalink_url) => mailcomposer({
+  from: 'luvpay.io <hello@mg.luvpay.io>',
+  to: user.email,
+  subject: 'Verify your email address to use luvpay.io',
+  text: `Hi there, this message is to confirm that the LuvPay account with the username ${user.username} belongs to you. To confirm that this is your luvpay account, click here: ${permalink_url}`,
+  html: confirmationTemplate(user, permalink_url)
+})
+
+const sendConfirmation = (mail, user) => {
+  mail.build(function(mailBuildError, message) {
+    const verifyEmail = {
+      to: user.email,
+      message: message.toString('ascii')
+    }
+    mailgun.messages().sendMime(verifyEmail, function(sendError, body) {
+      if(sendError) {
+        console.log(sendError);
+        return;
+      }
+    })
+  })
+}
+
+module.exports = { mailgun, confirmationMail, sendConfirmation }

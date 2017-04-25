@@ -13,7 +13,7 @@ import Dropzone from '../../components/Dropzone'
 
 const Avatar = ({image, uploadLuvImage}) =>
   <Dropzone className='ui image editable' onDrop={uploadLuvImage}>
-    <Image src={image || '/luvholder.png'} />
+    <Image src={image || '/images/luvholder.png'} />
   </Dropzone>
 
 const EditProfile = ({ user, luv, editLuv, uploadLuvImage }) =>

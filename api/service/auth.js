@@ -9,28 +9,18 @@ module.exports = function(options) {
     models
   } = options
 
-  const { User } = models
-
   const { ExtractJwt, Strategy: JwtStrategy } = passportJWT
   const { Strategy: LocalStrategy } = passportLocal
 
-  const jwtOptions = {}
-  jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader()
-  jwtOptions.secretOrKey = process.env.JWT_SECRET
-
   const localStrategy = new LocalStrategy(
-    { usernameField: 'email', passwordField: 'password' },
-    function(email, password, done) {
-      User.findOne({ where: { email: email } })
+    function(username, password, done) {
+      models.User.findOne({ where: { username: username } })
         .then(function (user) {
           if (!user) {
-            return done(null, false, { error: 'Incorrect email' })
+            return done(null, false, { error: 'Incorrect username' })
           }
           if (!user.validPassword(password)) {
             return done(null, false, { error: 'Incorrect password' })
-          }
-          if (!user.verified) {
-            return done(null, false, { error: 'Email has not been verified' })
           }
           return done(null, user)
         })
@@ -40,9 +30,13 @@ module.exports = function(options) {
     }
   )
 
+  const jwtOptions = {}
+  jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader()
+  jwtOptions.secretOrKey = process.env.JWT_SECRET
+
   const jwtStrategy = new JwtStrategy(jwtOptions,
     function(jwt_payload, done) {
-      User.findById(jwt_payload.id)
+      models.User.findById(jwt_payload.id)
         .then(function(user) {
           if(!user) {
             return done(null, false, { error: 'Invalid token' })

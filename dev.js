@@ -27,7 +27,7 @@ Object.keys(models)
   .filter(model => model.associate)
   .forEach(model => model.associate(models))
 
-db.sync({force: true})
+db.sync()
 
 const port = process.env.PORT || 3030
 http.listen(port, function() {
