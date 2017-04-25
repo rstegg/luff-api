@@ -20,7 +20,7 @@ const EditProfile = ({ user, profile, editProfile, uploadAvatar }) =>
   !user.isAuthenticated ?
     <Redirect to='/login' from='/profile/edit' />
   : profile.isEdited ?
-    <Redirect to={`/profile/view/${user.id}`} from='/profile/edit' />
+    <Redirect to={`/user/${user.username}`} from='/profile/edit' />
   :
   <RootLayout>
     <Card>

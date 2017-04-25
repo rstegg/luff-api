@@ -41,7 +41,7 @@ render(
           <Route exact path='/payments' component={Payments} />
           <Route exact path='/payments/new/:id' component={CreatePayment} />
           <Route exact path='/payments/view/:id' component={ViewPayment} />
-          <Route exact path='/profile/view/:id' component={ViewProfile} />
+          <Route exact path='/user/:id' component={ViewProfile} />
           <Route exact path='/profile/edit' component={EditProfile} />
         </Switch>
     </Router>

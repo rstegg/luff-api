@@ -30,7 +30,7 @@ const Flydown = ({
       {user.isAuthenticated && <DropItem onClick={toLuvs} text='your luv' icon='heart'   />}
       {user.isAuthenticated && <DropItem onClick={toPayments} text='payments' icon='shop'   />}
       <DropItem onClick={toPencil} text='start a luv' icon='edit'   />
-      {user.isAuthenticated && <DropItem onClick={() => user.id && toSettings(user.id)} text='profile' icon='setting'   />}
+      {user.isAuthenticated && <DropItem onClick={() => user.username && toSettings(user.username)} text='profile' icon='setting'   />}
       {user.isAuthenticated && <Dropdown.Divider   />}
       {user.isAuthenticated && <DropItem onClick={toPower}  icon='power' text='logout'   />}
     </Dropdown.Menu>
@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch =>
   toPayments: () => dispatch(push('/payments')),
   toFeed:     () => dispatch(push('/')),
   toPencil:   () => dispatch(push('/luvs/new')),
-  toSettings: userId => dispatch(push(`/profile/view/${userId}`)),
+  toSettings: username => dispatch(push(`/user/${username}`)),
   toPower:    () => dispatch({type: 'LOGOUT'})
 })
 

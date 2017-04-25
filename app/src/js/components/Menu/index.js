@@ -33,7 +33,7 @@ const BottomNav =
         {!user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toLogin} icon='sign in' size='massive' className='menu--button' />} content='login' />}
         {!user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toSignup} icon='add user' size='massive' className='menu--button' />} content='sign up' />}
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPencil} icon='edit' size='massive' className='menu--button' />} content='start a luv' />}
-        {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' className='menu--button' />} content='profile' />}
+        {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={() => user.username && toSettings(user.username)} icon='setting' size='massive' className='menu--button' />} content='profile' />}
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPower} icon='power' size='massive' className='menu--button' />} content='logout' />}
       </div>
     </div>
@@ -47,7 +47,7 @@ const BottomNav =
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toLuvs} icon='heart' size='massive' className='menu--button' />} content='your luvs' />}
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPayments} icon='shop' size='massive' className='menu--button' />} content='payments' />}
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPencil} icon='edit' size='massive' className='menu--button' />} content='start a luv' />}
-        {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={() => user.id && toSettings(user.id)} icon='setting' size='massive' className='menu--button' />} content='profile' />}
+        {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={() => user.username && toSettings(user.username)} icon='setting' size='massive' className='menu--button' />} content='profile' />}
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPower} icon='power' size='massive' className='menu--button' />} content='logout' />}
       </div>
     </div>
@@ -63,7 +63,7 @@ const mapDispatchToProps = dispatch =>
   toFeed:     () => dispatch(push('/')),
   toPencil:   () => dispatch(push('/luvs/new')),
   toFreePencil:   () => dispatch(push('/luvs/try')),
-  toSettings: userId => dispatch(push(`/profile/view/${userId}`)),
+  toSettings: username => dispatch(push(`/user/${username}`)),
   toPower:    () => dispatch({type: 'LOGOUT'})
 })
 
