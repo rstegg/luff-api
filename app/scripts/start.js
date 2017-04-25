@@ -34,19 +34,16 @@ const useYarn = fs.existsSync(paths.yarnLockFile);
 const cli = useYarn ? 'yarn' : 'npm';
 const isInteractive = process.stdout.isTTY;
 
-// Warn and crash if required files are missing
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
-// Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 
 function run(port) {
   const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
   const host = process.env.HOST || 'localhost';
 
-  // Create a webpack compiler that is configured with custom messages.
   const compiler = createWebpackCompiler(
     config,
     function onReady(showInstructions) {

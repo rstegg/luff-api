@@ -56,7 +56,7 @@ const validate = (User, req) => {
 
 module.exports = ({models, jwt}) => (req, res) => {
     validate(models.User, req)
-      .then((validatedUser) => {
+      .then(validatedUser => {
         const salt = (Math.floor(Math.random() * 1000000000)).toString(36)
         const hash = crypto.createHash('md5').update(validatedUser.password + salt).digest('hex')
         const ip = getIp(req)
