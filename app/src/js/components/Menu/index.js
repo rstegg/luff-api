@@ -20,7 +20,7 @@ const BottomNav =
   toSettings,
   toPower
 }) =>
-  !isMobile &&
+  !isMobile && (
     isTablet ?
     <div>
       <div className='menu--container--left'>
@@ -51,6 +51,7 @@ const BottomNav =
         {user.isAuthenticated && <Popup position='top center' trigger={<Button basic circular onClick={toPower} icon='power' size='massive' className='menu--button' />} content='logout' />}
       </div>
     </div>
+  )
 
 
 const mapDispatchToProps = dispatch =>
