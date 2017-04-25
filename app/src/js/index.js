@@ -36,7 +36,7 @@ render(
           <Route exact path='/luvs' component={Luvs} />
           <Route exact path='/luvs/new' component={CreateLuv} />
           <Route exact path='/luvs/try' component={CreateFreeLuv} />
-          <Route exact path='/luvs/view/:id' component={ViewLuv} />
+          <Route exact path='/luv/:id' component={ViewLuv} />
           <Route exact path='/luvs/edit/:id' component={EditLuv} />
           <Route exact path='/payments' component={Payments} />
           <Route exact path='/payments/new/:id' component={CreatePayment} />

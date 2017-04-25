@@ -43,7 +43,7 @@ class ViewLuv extends Component {
               }
             </Card.Content>
           </Card>
-          <LuvMenu url={`https://luvpay.io/luvs/view/${luv.slug}`} />
+          <LuvMenu url={`https://luvpay.io/luv/${luv.slug}`} />
         </RootLayout>
       )
   }

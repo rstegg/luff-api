@@ -11,7 +11,7 @@ const luvUserImage = path(['user', 'image'])
 const formatDate = date => moment(date, 'YYYY-MM-DD').fromNow()
 
 const LuvsItem = ({className, onClick, luv}) =>
-    <Feed.Event as='a' href={`/luvs/view/${luv.slug}`}>
+    <Feed.Event as='a' href={`/luv/${luv.slug}`}>
       <Feed.Label className='luv--img'>
         <Image src={luv.image || '/images/luvholder.png'} alt={luv.name} avatar />
       </Feed.Label>
