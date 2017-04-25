@@ -22,7 +22,7 @@ const CreateFreeLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage, history }) 
   :
   <RootLayout>
     <Card>
-      <Avatar image={luv.image} uploadFreeLuvImage={img => uploadFreeLuvImage(img[0], user)} />
+      <Avatar image={luv.image} uploadFreeLuvImage={img => uploadFreeLuvImage(img[0])} />
       <Card.Content>
         <Card.Header>New Luv</Card.Header>
         <Card.Description>
@@ -44,7 +44,7 @@ const mapStateToProps = ({user, luvs}) =>
 const mapDispatchToProps = dispatch =>
 ({
   saveFreeLuv: (luv, user) => dispatch(saveFreeLuv(luv, user)),
-  uploadFreeLuvImage: (img, user) => dispatch(uploadFreeLuvImage(img, user))
+  uploadFreeLuvImage: (img) => dispatch(uploadFreeLuvImage(img))
 })
 
 export default connect(

@@ -112,12 +112,11 @@ export const onUploadLuvImageSuccess = res =>
   }
 })
 
-export const uploadFreeLuvImage = (image, {token}) =>
+export const uploadFreeLuvImage = image =>
 ({
   type: 'UPLOAD_FREE_LUV_IMAGE',
   payload: {
-    image,
-    token
+    image
   }
 })
 
