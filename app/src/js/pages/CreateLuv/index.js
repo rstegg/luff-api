@@ -16,7 +16,7 @@ const Avatar = ({image, uploadLuvImage}) =>
     <Image src={image || '/images/luvholder.png'} />
   </Dropzone>
 
-const CreateLuv = ({ user, luv, createLuv, uploadLuvImage }) =>
+const CreateLuv = ({ user, luv, image, createLuv, uploadLuvImage }) =>
   !user.isAuthenticated ?
     <Redirect to='/luvs/try' from='/luvs/new' />
   : luv.isCreated ?
@@ -24,7 +24,7 @@ const CreateLuv = ({ user, luv, createLuv, uploadLuvImage }) =>
   :
   <RootLayout>
     <Card>
-      <Avatar image={luv.image} uploadLuvImage={img => uploadLuvImage(img[0], user)} />
+      <Avatar image={image || luv.image} uploadLuvImage={img => uploadLuvImage(img[0], user)} />
       <Card.Content>
         <Card.Header>New Luv</Card.Header>
         <Card.Description>
@@ -37,7 +37,8 @@ const CreateLuv = ({ user, luv, createLuv, uploadLuvImage }) =>
 const mapStateToProps = ({user, luvs}) =>
 ({
   user,
-  luv: luvs.new
+  luv: luvs.new,
+  image: luvs.image
 })
 
 const mapDispatchToProps = dispatch =>

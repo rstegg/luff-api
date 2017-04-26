@@ -16,7 +16,7 @@ const Avatar = ({image, uploadLuvImage}) =>
     <Image src={image || '/images/luvholder.png'} />
   </Dropzone>
 
-const EditProfile = ({ user, luv, editLuv, uploadLuvImage }) =>
+const EditProfile = ({ user, luv, image, editLuv, uploadLuvImage }) =>
   !user.isAuthenticated ?
     <Redirect to='/login' from='/luvs/edit' />
   : luv.isEdited ?
@@ -24,11 +24,11 @@ const EditProfile = ({ user, luv, editLuv, uploadLuvImage }) =>
   :
   <RootLayout>
     <Card>
-      <Avatar image={luv.image} uploadLuvImage={img => uploadLuvImage(img[0], user)} />
+      <Avatar image={image || luv.image} uploadLuvImage={img => uploadLuvImage(img[0], user)} />
       <Card.Content>
         <Card.Header>Editing {luv.name}</Card.Header>
         <Card.Description>
-          <EditProfileForm onSubmit={values => editLuv(({...values, id: luv.id}), user)} />
+          <EditProfileForm onSubmit={values => editLuv(({...values, image: image || luv.image, id: luv.id}), user)} />
         </Card.Description>
       </Card.Content>
     </Card>
@@ -37,7 +37,8 @@ const EditProfile = ({ user, luv, editLuv, uploadLuvImage }) =>
 const mapStateToProps = ({user, luvs}) =>
 ({
   user,
-  luv: luvs.current
+  luv: luvs.current,
+  image: luvs.image
 })
 
 const mapDispatchToProps = dispatch =>

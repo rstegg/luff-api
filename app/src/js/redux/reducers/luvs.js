@@ -40,10 +40,7 @@ export default function(state = initialState, action) {
       })
     case 'UPLOAD_LUV_IMAGE_SUCCESS':
       return Object.assign({}, state, {
-        new: {
-          ...state.new,
-          image: action.payload.image,
-        }
+        image: action.payload.image,
       })
     case 'UPLOAD_FREE_LUV_IMAGE_SUCCESS':
       return Object.assign({}, state, {
