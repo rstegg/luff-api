@@ -33,6 +33,7 @@ module.exports = function(options) {
   const jwtOptions = {}
   jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader()
   jwtOptions.secretOrKey = process.env.JWT_SECRET
+  jwtOptions.ignoreExpiration = true
 
   const jwtStrategy = new JwtStrategy(jwtOptions,
     function(jwt_payload, done) {

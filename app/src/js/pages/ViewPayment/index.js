@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { Card, Label } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
@@ -14,6 +15,9 @@ class ViewPayment extends Component {
   }
   render() {
     const { payment, user } = this.props
+    if(!payment) {
+      return <Redirect to='/' />
+    }
     return (
       <RootLayout>
         <div className='pay--menu'>

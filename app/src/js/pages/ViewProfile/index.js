@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import RouterButton from '../../elements/RouterButton'
 
@@ -15,6 +16,9 @@ class ViewProfile extends Component {
   }
   render() {
     const { user, profile } = this.props
+    if(!profile.userId) {
+      return <Redirect to='/' />
+    }
     return (
       <RootLayout>
         <Card>
