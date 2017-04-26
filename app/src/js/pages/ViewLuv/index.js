@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 import { Card, Image } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import RouterButton from '../../elements/RouterButton'
@@ -11,10 +11,7 @@ import LuvMenu from '../../components/LuvMenu'
 import { fetchSingleLuv } from '../../redux/actions/luvs'
 
 const renderAmount = (amt_type, amt) =>
-  amt_type === 'fixed' ?
-    <p>Price: ${amt}</p>
-    :
-    <p>Open donation</p>
+  amt_type === 'fixed' ? `Price: ${amt}` : 'Open donation'
 
 class ViewLuv extends Component {
   componentWillMount() {
@@ -29,10 +26,15 @@ class ViewLuv extends Component {
       return (
         <RootLayout>
           <Card>
-            <Image src={luv.image || '/images/luvholder.png'} />
+            <Image src={luv.image || '/images/luvholder.png'} className='luv--image' />
             <Card.Content>
               <Card.Header>{luv.name}</Card.Header>
-              <Card.Meta>{renderAmount(luv.amount_type, luv.amount)}</Card.Meta>
+              {luv.user &&
+                <NavLink to={`/user/${luv.user.username}`} from={`/luv/${luv.slug}`}>
+                  started by <Image avatar src={luv.user.image || '/images/placeholder.png'} /> {luv.user.username}
+                </NavLink>
+              }
+              <Card.Meta>{renderAmount(luv.amount_type, luv.amount)}, ${luv.raised} raised</Card.Meta>
               <Card.Description>{luv.description}</Card.Description>
             </Card.Content>
             <Card.Content extra>

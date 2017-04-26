@@ -64,10 +64,13 @@ export default function(state = initialState, action) {
         free: initialState.free,
       })
     case REHYDRATE:
-      return Object.assign({}, state, {
-        ...state,
-        free: action.payload.luvs.free
-      })
+      const incoming = action.payload.luvs
+      if(incoming) {
+        return Object.assign({}, state, {
+          free: action.payload.luvs.free
+        })
+      }
+      return state
     case 'FETCH_LUVS_FAILURE':
     case 'FETCH_SINGLE_LUV_FAILURE':
     case 'CREATE_LUV_FAILURE':

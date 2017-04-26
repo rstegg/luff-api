@@ -1,16 +1,6 @@
-const { allPass, merge, path, pick, pipe } = require('ramda')
-
-const validField = (p) => (obj) => Boolean(path([p], obj))
-
-const validProfile = pipe(
-    path(['body', 'profile']),
-    allPass([
-        validField('name')
-    ]))
+const { pick } = require('ramda')
 
 const validate = (User, req) => {
-  if (!validProfile(req)) return Promise.reject('missing fields')
-
   return User.findOne({
       where: { username: req.params.id }
   })

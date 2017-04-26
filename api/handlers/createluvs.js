@@ -8,8 +8,7 @@ const validBody = pipe(
     path(['body']),
     allPass([
         validField('name'),
-        validField('amount_type'),
-        validField('is_public')
+        validField('amount_type')
     ]))
 
 const getValidSlug = (Luv, slug) =>

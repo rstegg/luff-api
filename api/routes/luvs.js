@@ -9,20 +9,26 @@ module.exports = function(app, options) {
 
   app.get(`${API_HOST}/luvs`, passport.authenticate('jwt', { session: false }), function(req, res) {
     models.Luv.findAll({ where: { userId: req.user.id }})
-      .then(function(luvs) {
+      .then(luvs => {
         res.status(200).json({luvs})
       })
-      .catch(function(err) {
+      .catch(err => {
         res.status(400).json({error: 'Bad request'})
       })
   })
 
   app.get(`${API_HOST}/luv/:id`, function(req, res) {
-    models.Luv.findOne({ where: { slug: req.params.id }})
-      .then(function(luv) {
+    models.Luv.findOne({
+      include: [{
+        model: models.User,
+        attributes: ['image', 'username']
+      }],
+      where: { slug: req.params.id, is_public: true }
+    })
+      .then(luv => {
         res.status(200).json({luv})
       })
-      .catch(function(err) {
+      .catch(err => {
         res.status(400).json({error: 'Bad request'})
       })
   })
@@ -57,7 +63,7 @@ module.exports = function(app, options) {
 
   app.delete(`${API_HOST}/luvs`, passport.authenticate('jwt', { session: false }), function(req, res) {
     if(req.body.luv && req.body.luv.id) {
-      models.Luv.destroy({ where: { id: req.body.luv.id } })
+      models.Luv.destroy({ where: { id: req.body.luv.id, userId: req.user.id } })
         .then(function(luv) {
           res.status(200)
         })

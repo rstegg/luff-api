@@ -133,7 +133,7 @@ export const editLuv = ({id, name, description, image, amount, amount_type, is_p
   type: 'EDIT_LUV',
   payload: {
     id,
-    name, 
+    name,
     description,
     image,
     amount,

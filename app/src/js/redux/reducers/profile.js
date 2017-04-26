@@ -15,6 +15,10 @@ export default function(state = initialState, action) {
         isLoading: true,
         isEdited: false
       })
+    case 'FETCH_PROFILE':
+      return Object.assign({}, state, {
+        isLoading: true
+      })
     case 'FETCH_PROFILE_SUCCESS':
       return Object.assign({}, state, {
         ...action.payload.profile,
