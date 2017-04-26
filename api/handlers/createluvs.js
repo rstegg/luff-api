@@ -32,6 +32,7 @@ const validate = (Luv, req) => {
 
   const slug =
     req.body.name
+      .replace("'", '')
       .replace(/[^a-z0-9]/gi, '-')
       .toLowerCase()
       .trim()

@@ -12,10 +12,12 @@ const validBody = pipe(
         validField('is_public')
     ]))
 
-const getValidSlug = (Luv, slug) =>
+const getValidSlug = (Luv, slug, id) =>
   new Promise(resolve =>
     Luv.findOne({
-      where: { slug }
+      where: { slug, id: {
+          $ne: id
+      }}
     })
     .then(luv => {
       if(luv) {
@@ -32,11 +34,12 @@ const validate = (Luv, req) => {
 
   const slug =
     req.body.name
+      .replace("'", '')
       .replace(/[^a-z0-9]/gi, '-')
       .toLowerCase()
       .trim()
 
-  return getValidSlug(Luv, slug)
+  return getValidSlug(Luv, slug, req.params.id)
 }
 
 module.exports = ({models}) => (req, res) => {
