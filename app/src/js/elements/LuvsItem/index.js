@@ -8,7 +8,7 @@ import { path } from 'ramda'
 const luvUsername = path(['user', 'username'])
 const luvUserImage = path(['user', 'image'])
 
-const formatDate = date => moment(date, 'YYYY-MM-DD').fromNow()
+const formatDate = date => moment(date, 'YYYY-MM-DD HH:mm Z').fromNow()
 
 const LuvsItem = ({className, onClick, luv}) =>
     <Feed.Event as='a' href={`/luv/${luv.slug}`}>

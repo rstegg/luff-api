@@ -39,7 +39,7 @@ class ViewLuv extends Component {
               { luv.userId === user.id ?
                 <RouterButton to={`/luvs/edit/${luv.slug}`} from={`/luv/${luv.slug}`} label='Edit' />
                 :
-                <RouterButton to={`/payments/new/${luv.slug}`} from={`/luv/${luv.slug}`} label='Pay this luv' />
+                <RouterButton to={`/payments/new/${luv.slug}`} from={`/luv/${luv.slug}`} label='Show some luv' />
               }
             </Card.Content>
           </Card>

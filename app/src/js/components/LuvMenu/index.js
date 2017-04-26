@@ -28,7 +28,7 @@ const LuvMenu = ({url, user, shareLuv}) =>
     </Segment>
     <Segment>
       <TwitterShareButton
-        title="Pay me money"
+        title="Show some love"
         url={url}
         style={{cursor: 'pointer'}}>
           <TwitterIcon size={32} round={true} />
