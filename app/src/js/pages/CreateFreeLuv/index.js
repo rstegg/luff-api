@@ -20,6 +20,9 @@ const CreateFreeLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage, history }) 
   user.isAuthenticated ?
     <Redirect to='/luvs/new' from='/luvs/try' />
   :
+  luv.isSaved ?
+    <Redirect to='/signup' from='/luvs/try' />
+  :
   <RootLayout>
     <Card>
       <Avatar image={luv.image} uploadFreeLuvImage={img => uploadFreeLuvImage(img[0])} />
@@ -28,7 +31,6 @@ const CreateFreeLuv = ({ user, luv, saveFreeLuv, uploadFreeLuvImage, history }) 
         <Card.Description>
           <CreateFreeLuvForm onSubmit={values => {
             saveFreeLuv(({...values, image: luv.image}), user)
-            history.push('/signup')
           }} />
         </Card.Description>
       </Card.Content>

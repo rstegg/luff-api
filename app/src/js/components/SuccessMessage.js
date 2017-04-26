@@ -8,7 +8,7 @@ import { createLuv } from '../redux/actions/luvs'
 class SuccessMessage extends Component {
   componentWillUpdate() {
     if(this.props.visible) {
-      if(this.props.luv.saved) {
+      if(this.props.luv.isSaved) {
         this.props.createLuv(this.props.luv, this.props.user)
       }
     }

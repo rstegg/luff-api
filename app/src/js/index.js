@@ -11,7 +11,6 @@ import { ConnectedRouter as Router } from 'react-router-redux'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import SignupSuccess from './pages/Signup/Success'
 import Luvs from './pages/Luvs'
 import CreateLuv from './pages/CreateLuv'
 import CreateFreeLuv from './pages/CreateFreeLuv'
@@ -32,7 +31,6 @@ render(
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
-          <Route exact path='/signup/success' component={SignupSuccess} />
           <Route exact path='/luvs' component={Luvs} />
           <Route exact path='/luvs/new' component={CreateLuv} />
           <Route exact path='/luvs/try' component={CreateFreeLuv} />

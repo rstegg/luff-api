@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, {
         free: {
           ...action.payload.luv,
-          saved: true
+          isSaved: true
         }
       })
     case 'FETCH_LUVS_SUCCESS':
@@ -46,8 +46,7 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, {
         free: {
           ...state.free,
-          image: action.payload.image,
-          saved: true
+          image: action.payload.image
         }
       })
     case 'FETCH_SINGLE_LUV_SUCCESS':
