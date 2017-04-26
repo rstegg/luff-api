@@ -20,7 +20,7 @@ class Home extends Component {
       <RootLayout>
         <Card className='luvs'>
           <Card.Content>
-            <Card.Header>World Luvs</Card.Header>
+            <Card.Header>Public Luvs</Card.Header>
           </Card.Content>
           <Card.Content>
             <FeedList

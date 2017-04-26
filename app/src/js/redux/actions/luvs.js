@@ -128,14 +128,17 @@ export const onUploadFreeLuvImageSuccess = res =>
   }
 })
 
-export const editLuv = ({id, name, description, amount_type}, {token}) =>
+export const editLuv = ({id, name, description, image, amount, amount_type, is_public}, {token}) =>
 ({
   type: 'EDIT_LUV',
   payload: {
     id,
-    name,
+    name, 
     description,
+    image,
+    amount,
     amount_type,
+    is_public,
     token,
   }
 })

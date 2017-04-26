@@ -15,7 +15,7 @@ const FeedList =
       ) :
       <Feed.Event>
         <Feed.Label image='/images/luvholder.png' />
-        <Feed.Content content='No World Luvs!' />
+        <Feed.Content content='No Public Luvs!' />
       </Feed.Event>
       }
     </Feed>

@@ -13,13 +13,18 @@ const validBody = pipe(
     ]))
 
 const getValidSlug = (Luv, slug) =>
-  Luv.findOne({
-    where: { slug }
-  })
-  .then(luv =>
-    luv ?
-      getValidSlug(Luv, `${slug}-${shortId.slice(0,1)}`)
-      : slug
+  new Promise(resolve =>
+    Luv.findOne({
+      where: { slug }
+    })
+    .then(luv => {
+      if(luv) {
+        console.log(slug);
+        return resolve(getValidSlug(Luv, `${slug}-${shortId.generate().slice(0,1)}`))
+      } else {
+        return resolve(slug)
+      }
+    })
   )
 
 const validate = (Luv, req) => {
@@ -27,9 +32,8 @@ const validate = (Luv, req) => {
 
   const slug =
     req.body.name
+      .replace(/[^a-z0-9]/gi, '-')
       .toLowerCase()
-      .replace(' ', '')
-      .replace(/[^\w\s]/gi, '')
       .trim()
 
   return getValidSlug(Luv, slug)
@@ -38,6 +42,7 @@ const validate = (Luv, req) => {
 module.exports = ({models}) => (req, res) => {
   validate(models.Luv, req)
     .then(slug => {
+      console.log(slug);
       const safeLuv = merge({
         userId: req.user.id,
         amount: req.body.amount || '',

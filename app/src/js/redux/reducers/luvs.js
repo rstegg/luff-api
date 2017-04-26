@@ -31,6 +31,13 @@ export default function(state = initialState, action) {
         },
         free: initialState.free
       })
+    case 'EDIT_LUV_SUCCESS':
+      return Object.assign({}, state, {
+        current: {
+          ...state.current,
+          isEdited: true
+        }
+      })
     case 'UPLOAD_LUV_IMAGE_SUCCESS':
       return Object.assign({}, state, {
         new: {

@@ -1,7 +1,8 @@
 const shortId = require('shortid')
 const mailcomposer = require('mailcomposer')
 
-const createLuvHandler = require('../handlers/luvs')
+const createLuvHandler = require('../handlers/createluvs')
+const editLuvHandler = require('../handlers/editluvs')
 
 module.exports = function(app, options) {
   const { models, API_HOST, passport, jwt, mailgun } = options
@@ -29,32 +30,7 @@ module.exports = function(app, options) {
   app.post(`${API_HOST}/luvs`, passport.authenticate('jwt', { session: false }), createLuvHandler(options))
 
   //TODO: Test with multiple users?
-  app.put(`${API_HOST}/luv/:id`, passport.authenticate('jwt', { session: false }), function(req, res) {
-    if(!req.body.luv.slug) {
-      models.Luv.update(req.body.luv, { where: { id: req.body.luv.id, userId: req.user.id } })
-        .then(function(luv) {
-          res.status(200).json({luv})
-        })
-        .catch(function(err) {
-          res.status(400).json({error: 'Bad request'})
-        })
-    } else {
-      models.Luv.findOne({ where: { slug: req.body.luv.slug }})
-        .then(function(luv) {
-          if(!luv) {
-            models.Luv.update(req.body.luv, { where: { id: req.body.luv.id, userId: req.user.id } })
-              .then(function(luv) {
-                res.status(200).json({luv})
-              })
-              .catch(function(err) {
-                res.status(400).json({error: 'Bad request'})
-              })
-          } else {
-            res.status(400).json({error: 'Slug taken'})
-          }
-        })
-    }
-  })
+  app.put(`${API_HOST}/luv/:id`, passport.authenticate('jwt', { session: false }), editLuvHandler(options))
 
   app.post(`${API_HOST}/share/luv`, passport.authenticate('jwt', { session: false }), function(req, res) {
     const mail = mailcomposer({

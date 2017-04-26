@@ -52,9 +52,9 @@ const api = {
       .set('Accept', 'application/json')
     return Observable.fromPromise(request)
   },
-  editLuv: ({id, name, description, amount_type, is_public, token}) => {
+  editLuv: ({id, name, description, image, amount, amount_type, is_public, token}) => {
    const request = su.put(`${API_HOST}/luv/${id}`)
-      .send({name, description, amount_type, is_public})
+      .send({name, description, image, amount, amount_type, is_public})
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)
