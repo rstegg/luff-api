@@ -65,6 +65,7 @@
     "react-dev-utils": "^0.5.2",
     "stack-frame-resolver": "^0.1.5",
     "style-loader": "^0.16.1",
+    "sw-precache": "^5.1.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.2",
@@ -73,7 +74,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && sw-precache --root='build/' --static-file-globs='build/**/!(*map*)'",
     "staging": "rm -rf ../build && mv build ../build",
     "deploy": "rsync -avh ../build root@luvpay.io:/root/luff-api",
     "deploy:build": "npm-run-all --serial build staging deploy",
@@ -110,5 +111,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "homepage": "./"
 }
