@@ -38,6 +38,10 @@ export default function(state = initialState, action) {
           isEdited: true
         }
       })
+    case 'DELETE_LUV_SUCCESS':
+      return Object.assign({}, state, {
+        current: null
+      })
     case 'UPLOAD_LUV_IMAGE_SUCCESS':
       return Object.assign({}, state, {
         image: action.payload.image,

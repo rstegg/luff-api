@@ -21,7 +21,6 @@ const getValidSlug = (Luv, slug, id) =>
     })
     .then(luv => {
       if(luv) {
-        console.log(slug);
         return resolve(getValidSlug(Luv, `${slug}-${shortId.generate().slice(0,1)}`))
       } else {
         return resolve(slug)

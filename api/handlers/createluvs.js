@@ -18,7 +18,6 @@ const getValidSlug = (Luv, slug) =>
     })
     .then(luv => {
       if(luv) {
-        console.log(slug);
         return resolve(getValidSlug(Luv, `${slug}-${shortId.generate().slice(0,1)}`))
       } else {
         return resolve(slug)
@@ -42,7 +41,6 @@ const validate = (Luv, req) => {
 module.exports = ({models}) => (req, res) => {
   validate(models.Luv, req)
     .then(slug => {
-      console.log(slug);
       const safeLuv = merge({
         userId: req.user.id,
         amount: req.body.amount || '',

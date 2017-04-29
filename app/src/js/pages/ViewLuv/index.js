@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { Redirect, NavLink } from 'react-router-dom'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Label } from 'semantic-ui-react'
 import RootLayout from '../../components/layouts/Root'
 import RouterButton from '../../elements/RouterButton'
 
 import LuvMenu from '../../components/LuvMenu'
 
-import { fetchSingleLuv } from '../../redux/actions/luvs'
+import { fetchSingleLuv, deleteLuv } from '../../redux/actions/luvs'
 
 const renderAmount = (amt_type, amt) =>
   amt_type === 'fixed' ? `Price: ${amt}` : 'Open donation'
@@ -19,7 +19,7 @@ class ViewLuv extends Component {
     fetchSingleLuv(params.id, user)
   }
   render() {
-    const { luv, user } = this.props
+    const { luv, user, deleteLuv } = this.props
     if(!luv) {
       return <Redirect to='/' />
     }
@@ -43,9 +43,14 @@ class ViewLuv extends Component {
                 :
                 <RouterButton to={`/payments/new/${luv.slug}`} from={`/luv/${luv.slug}`} label='Show some luv' />
               }
+              { luv.userId === user.id &&
+                <button onClick={() => deleteLuv(luv.id, user)}>
+                  <Label basic>Delete</Label>
+                </button>
+              }
             </Card.Content>
           </Card>
-          <LuvMenu url={`https://luvpay.io/luv/${luv.slug}`} />
+          <LuvMenu url={`https://luvpay.io/luv/${luv.slug}`} luvId={luv.id} />
         </RootLayout>
       )
   }
@@ -59,7 +64,8 @@ const mapStateToProps = ({luvs, user}) =>
 
 const mapDispatchToProps = dispatch =>
 ({
-  fetchSingleLuv: (id, user) => dispatch(fetchSingleLuv(id, user))
+  fetchSingleLuv: (id, user) => dispatch(fetchSingleLuv(id, user)),
+  deleteLuv: (id, user) => dispatch(deleteLuv(id, user))
 })
 
 export default connect(

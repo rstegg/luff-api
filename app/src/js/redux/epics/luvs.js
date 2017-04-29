@@ -2,6 +2,7 @@ import {
   onFetchLuvsSuccess,
   onFetchSingleLuvSuccess,
   onEditLuvSuccess,
+  onDeleteLuvSuccess,
   onCreateLuvSuccess,
   onUploadLuvImageSuccess,
   onUploadFreeLuvImageSuccess,
@@ -32,9 +33,9 @@ const api = {
       .set('Authorization', token)
     return Observable.fromPromise(request)
   },
-  shareLuv: ({name, email, message, token, url}) => {
+  shareLuv: ({name, email, message, token, url, luvId}) => {
    const request = su.post(`${API_HOST}/share/luv`)
-      .send({name, email, message, token, url})
+      .send({name, email, message, token, url, luvId})
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)
@@ -55,6 +56,12 @@ const api = {
   editLuv: ({id, name, description, image, amount, amount_type, is_public, token}) => {
    const request = su.put(`${API_HOST}/luv/${id}`)
       .send({name, description, image, amount, amount_type, is_public})
+      .set('Accept', 'application/json')
+      .set('Authorization', token)
+    return Observable.fromPromise(request)
+  },
+  deleteLuv: ({id, token}) => {
+   const request = su.delete(`${API_HOST}/luv/${id}`)
       .set('Accept', 'application/json')
       .set('Authorization', token)
     return Observable.fromPromise(request)
@@ -128,5 +135,15 @@ export const editLuv = action$ =>
         .map(onEditLuvSuccess)
         .catch(error => Observable.of({
           type: 'EDIT_LUV_FAILURE'
+        }))
+      )
+
+export const deleteLuv = action$ =>
+  action$.ofType('DELETE_LUV')
+    .mergeMap(action =>
+      api.deleteLuv(action.payload)
+        .map(onDeleteLuvSuccess)
+        .catch(error => Observable.of({
+          type: 'DELETE_LUV_FAILURE'
         }))
       )

@@ -19,7 +19,7 @@ import LuvMenuForm from './form'
 
 import { shareLuv } from '../../redux/actions/luvs'
 
-const LuvMenu = ({url, user, shareLuv}) =>
+const LuvMenu = ({url, user, shareLuv, luvId}) =>
   <Segment.Group compact horizontal>
     <Segment>
       <CopyToClipboard text={url}>
@@ -38,7 +38,7 @@ const LuvMenu = ({url, user, shareLuv}) =>
     <Popup wide trigger={<Button circular basic icon='mail' size='medium' />} on='click'>
         <Popup.Header>Share via Email</Popup.Header>
         <Popup.Content>
-          <LuvMenuForm onSubmit={values => shareLuv(values, user, url)} />
+          <LuvMenuForm onSubmit={values => shareLuv({...values, luvId}, user, url)} />
         </Popup.Content>
     </Popup>
   </Segment>

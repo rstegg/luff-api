@@ -11,13 +11,14 @@ export const saveFreeLuv = luv =>
   }
 })
 
-export const shareLuv = ({name, email, message}, user, url) =>
+export const shareLuv = ({name, email, message, luvId}, user, url) =>
 ({
   type: 'SHARE_LUV',
   payload: {
     name,
     email,
     message,
+    luvId,
     token: user.token,
     url
   }
@@ -26,6 +27,23 @@ export const shareLuv = ({name, email, message}, user, url) =>
 export const onShareLuvSuccess = res =>
 ({
   type: 'SHARE_LUV_SUCCESS',
+  payload: {
+    luv: res.body.luv
+  }
+})
+
+export const deleteLuv = (id, user) =>
+({
+  type: 'DELETE_LUV',
+  payload: {
+    id,
+    token: user.token
+  }
+})
+
+export const onDeleteLuvSuccess = res =>
+({
+  type: 'DELETE_LUV_SUCCESS',
   payload: {
     luv: res.body.luv
   }
